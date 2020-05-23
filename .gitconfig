@@ -17,3 +17,5 @@
 [alias]
 	plog=log --pretty='format:%C(yellow)%h %C(green)%cd %C(cyan)[%an] %C(reset)%s %C(red)%d' --date=iso -n10
 	graph=log --graph --oneline --decorate=full -20 --date=short --format='%C(yellow)%h%C(reset) %C(magenta)[%ad]%C(reset)%C(auto)%d%C(reset) %s %C(cyan)@%an%C(reset)'
+[fetch]
+	prune = true
