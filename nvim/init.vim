@@ -40,6 +40,9 @@ if dein#check_install()
 endif
 
 colorscheme molokai
+let g:lightline = {
+  \ 'colorscheme': 'nord',
+  \ }
 
 " setting
 "文字コードをUFT-8に設定
