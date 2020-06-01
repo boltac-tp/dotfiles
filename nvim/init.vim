@@ -17,13 +17,15 @@ Plug 'tomasr/molokai'
 
 " status bar
 Plug 'itchyny/lightline.vim'
-
-call plug#end()
-
 " setting lightline
 let g:lightline = {
   \ 'colorscheme': 'nord',
   \ }
+
+" file tree
+Plug 'scrooloose/nerdtree'
+
+call plug#end()
 
 " setting
 "文字コードをUFT-8に設定
