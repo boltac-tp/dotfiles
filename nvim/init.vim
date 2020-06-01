@@ -1,45 +1,26 @@
-" dein
-if &compatible
-	set nocompatible
+"
+" install vim-plug
+"
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" dein.vim をインストールしたディレクトリ
-let s:dein_dir = expand('~/dotfiles/nvim/dein')
+"
+" plugin loading
+"
 
-" dein.vim の実態があるディレクトリ
-let s:dein_repo_dir = s:dein_dir.'/repos/github.com/Shougo/dein.vim'
+call plug#begin('~/.config/nvim/plugged')
 
-" dein.vim が存在していない場合はGithubからclone
-if &runtimepath !~# '/dein.vim'
-	if !isdirectory(s:dein_repo_dir)
-		execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-	endif
-	execute 'set runtimepath^='.fnamemodify(s:dein_repo_dir, ':p')
-endif
+" color scheme 
+Plug 'tomasr/molokai'
 
-if dein#load_state(s:dein_dir)
-	call dein#begin(s:dein_dir)
+" status bar
+Plug 'itchyny/lightline.vim'
 
-	" dein.toml, dein_layz.tomlファイルのディレクトリをセット
-	let s:toml_dir = expand('~/.config/nvim')
+call plug#end()
 
-	" 起動時に読み込むプラングイン
-	call dein#load_toml(s:toml_dir . '/dein.toml', {'lazy': 0})
-
-	"遅延読み込みするプラグイン
-	call dein#load_toml(s:toml_dir . '/dein_lazy.toml', {'lazy': 1})
-
-	call dein#end()
-	call dein#save_state()
-endif
-
-filetype plugin indent on
-
-if dein#check_install()
-	call dein#install()
-endif
-
-colorscheme molokai
+" setting lightline
 let g:lightline = {
   \ 'colorscheme': 'nord',
   \ }
@@ -60,6 +41,8 @@ set showcmd
 
 
 " 見た目系
+" カラースキームの選択
+colorscheme molokai
 " 行番号を表示
 set number
 " 現在の行を強調表示
