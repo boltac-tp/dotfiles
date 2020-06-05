@@ -94,3 +94,22 @@ set wrapscan
 set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+"コマンドラインモード補完
+set nocompatible
+set wildmenu
+
+"キーバインド
+"ESC -> JJ
+inoremap <silent> jj <ESC>
+"cursol move in insertmode
+inoremap <C-h> <left>
+inoremap <C-l> <right>
+
+"auto brackets
+inoremap { {}<left>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap ( ()<ESC>i
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+inoremap ' ''<LEFT>
+inoremap " ""<LEFT>
