@@ -71,8 +71,9 @@ syntax enable
 
 
 " Tab系
-" 不可視文字を可視化(タブが「▸-」と表示される)
+" 不可視文字を可視化
 " set list listchars=tab:\▸\-
+set list listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 " Tab文字を半角スペースにする
 set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
