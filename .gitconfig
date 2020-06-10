@@ -2,7 +2,7 @@
 	name = boltac-tp
 	email = boltac.tp@gmail.com
 [core]
-	editor = vim
+	editor = nvim
 [diff]
 	tool = vimdiff
 [merge]
