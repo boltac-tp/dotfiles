@@ -24,3 +24,5 @@
 	push-f = push --force-with-lease
 [fetch]
 	prune = true
+[push]
+	default = current
