@@ -18,12 +18,21 @@ Plug 'tomasr/molokai'
 " status bar
 Plug 'itchyny/lightline.vim'
 " setting lightline
-let g:lightline = {
-  \ 'colorscheme': 'nord',
-  \ }
+let g:lightline = { 'colorscheme': 'nord' }
+" indentLine
+Plug 'Yggdroot/indentLine'
+let g:indentLine_setColors = 202
+
+" Git
+Plug 'airblade/vim-gitgutter'
+set updatetime=100
+
+" auto brackets
+Plug 'jiangmiao/auto-pairs'
 
 " file tree
 Plug 'scrooloose/nerdtree'
+Plug 'xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
 
@@ -107,13 +116,5 @@ inoremap <silent> jj <ESC>
 inoremap <C-h> <left>
 inoremap <C-l> <right>
 
-"auto brackets
-inoremap { {}<left>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap ( ()<ESC>i
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-inoremap ' ''<LEFT>
-inoremap " ""<LEFT>
-
-map <C-n> :NERDTreeToggle
+map <C-e> :NERDTreeToggle <CR>
 
