@@ -114,3 +114,6 @@ inoremap ( ()<ESC>i
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 inoremap ' ''<LEFT>
 inoremap " ""<LEFT>
+
+map <C-n> :NERDTreeToggle
+
