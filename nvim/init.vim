@@ -117,4 +117,9 @@ inoremap <C-h> <left>
 inoremap <C-l> <right>
 
 map <C-e> :NERDTreeToggle <CR>
-
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+nnoremap gj j
+nnoremap gk k
