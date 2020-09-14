@@ -45,7 +45,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias vim='nvim'
 # yarn PATH
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 
 # ls colors
