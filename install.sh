@@ -25,6 +25,8 @@ sudo apt install -y python3-venv
 
 pip3 install --user python-language-server
 
+sudo npm install -g yarn
+
 mkdir ~/.config
 mkdir ~/lab
 mkdir =/site
