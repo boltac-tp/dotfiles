@@ -551,7 +551,7 @@
     },
     "InterpreterAutoSeletionRule-cachedInterpreters": {
       "architecture": 3,
-      "path": "/home/ubuntu2004/lab/py/venv/bin/python3",
+      "path": "/bin/python3",
       "version": {
         "options": {
           "loose": false,
@@ -568,8 +568,8 @@
         "build": [],
         "version": "3.8.2-final"
       },
-      "sysPrefix": "/home/ubuntu2004/lab/py/venv",
-      "fileHash": "6ad8207a4f5efa392cb6c91ff673c79ffcaee0389abd592e8a1b07923406edea434c86bff4802754af7e98972e1b009a7d698bdb89def5f20f8dd93df29d3058",
+      "sysPrefix": "/usr",
+      "fileHash": "cd78bccf5d6f7249b784d0185343e72288d4b3be8cb19e89670e63258ff839c42b6f98a917c8f34000e607a1fdface595c0aa75eac190a8cba51db372b1fac2e",
       "type": "Unknown",
       "cachedEntry": true,
       "displayName": "Python 3.8.2 64-bit"
@@ -719,6 +719,10 @@
     }
   },
   "coc-python|/home/ubuntu2004/dotfiles/nvim": {
+    "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": [],
+    "INTERPRETERS_CACHE_v3_PipEnvService": []
+  },
+  "coc-python|/home/ubuntu2004": {
     "INTERPRETERS_CACHE_v3_WorkspaceVirtualEnvService": [],
     "INTERPRETERS_CACHE_v3_PipEnvService": []
   }

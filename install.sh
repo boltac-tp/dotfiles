@@ -1,7 +1,9 @@
 #!bin/bash
 
 sudo apt update
-sudo apt install zsh
+sudo apt upgrade -y
+
+sudo apt install -y zsh
 chsh -s $(which zsh)
 
 sudo apt install -y vim
@@ -24,6 +26,8 @@ sudo apt install -y python3-venv
 pip3 install --user python-language-server
 
 mkdir ~/.config
+mkdir ~/lab
+mkdir =/site
 ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/coc ~/.config/coc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
