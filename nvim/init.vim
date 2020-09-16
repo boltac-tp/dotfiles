@@ -34,9 +34,18 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 
+" Language Server
 Plug 'neoclide/coc.nvim',{'branch': 'release'}
 
+" Terminal
+Plug 'kassio/neoterm'
+
 call plug#end()
+let g:neoterm_default_mod='belowright'
+let g:neoterm_size=10
+let g:neoterm_autoscroll=1
+tnoremap <silent> <C-w> <C-\><C-n><c-w>
+
 
 " setting
 "文字コードをUFT-8に設定
