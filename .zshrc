@@ -48,6 +48,8 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias vim='nvim'
+alias cat='bat'
+
 
 # apps
 alias weather='curl wttr.in/sapporo'

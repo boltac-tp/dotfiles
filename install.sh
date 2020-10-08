@@ -31,13 +31,18 @@ curl https://sh.rustup.rs -sSf | sh
 
 cargo install exa
 
+sudo apt update
+sudo apt install bat -y
 
 mkdir ~/.config
 mkdir ~/lab
 mkdir ~/site
 mkdir ~/develop
+mkdir -p ~/.local/bin
+
 ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/coc ~/.config/coc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/usr/bin/batcat ~/.local/bin/bat
