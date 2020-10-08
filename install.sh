@@ -27,6 +27,11 @@ pip3 install --user python-language-server
 
 sudo npm install -g yarn
 
+curl https://sh.rustup.rs -sSf | sh
+
+cargo install exa
+
+
 mkdir ~/.config
 mkdir ~/lab
 mkdir ~/site
