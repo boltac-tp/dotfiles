@@ -27,7 +27,7 @@ pip3 install --user python-language-server
 
 sudo npm install -g yarn
 
-curl https://sh.rustup.rs -sSf | sh
+curl https://sh.rustup.rs -sSf | sh -s --y
 
 ~/.cargo/bin/cargo install exa
 
