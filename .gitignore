@@ -1,9 +1,3 @@
-__pycache__/
-venv/
-
-
-
-
 .nvimlog
 nvim/dein
 nvim/autoload
