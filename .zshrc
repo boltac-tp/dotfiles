@@ -56,7 +56,7 @@ alias weather='curl wttr.in/sapporo'
 
 # alias exa
 if [[ $(command -v exa) ]]; then
-  alias e='exa --icons'
+  alias e=exa
   alias l=e
   alias ls=e
   alias ea='exa -a'
