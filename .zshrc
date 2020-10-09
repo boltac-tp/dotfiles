@@ -59,13 +59,13 @@ if [[ $(command -v exa) ]]; then
   alias e='exa --icons'
   alias l=e
   alias ls=e
-  alias ea='exa -a --icons'
+  alias ea='exa -a'
   alias la=ea
-  alias ee='exa -ahl --git --icons'
+  alias ee='exa -ahl --git'
   alias ll=ee
-  alias et='exa -T -L 3 -a -I --git --icons'
+  alias et='exa -T -L 3 -a -I --git'
   alias lt=et
-  alias eta='exa -T -a -I --git --color=always --icons | less -r'
+  alias eta='exa -T -a -I --git --color=always | less -r'
   alias lta=eta
 fi
 

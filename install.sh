@@ -45,4 +45,5 @@ ln -s ~/dotfiles/coc ~/.config/coc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
-ln -s ~/usr/bin/batcat ~/.local/bin/bat
+
+ln -s /usr/bin/batcat ~/.local/bin/bat
