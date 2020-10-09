@@ -29,7 +29,7 @@ sudo npm install -g yarn
 
 curl https://sh.rustup.rs -sSf | sh
 
-cargo install exa
+~/.cargo/bin/cargo install exa
 
 sudo apt update
 sudo apt install bat -y
