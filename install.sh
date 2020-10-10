@@ -17,6 +17,11 @@ sudo apt install -y git
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs
 
+mkdir ~/.node_modules
+npm config set prefix=$HOME/.node_modules
+
+npm install npm -g
+
 sudo apt update
 sudo apt install -y python3-pip
 
@@ -24,8 +29,6 @@ sudo apt update
 sudo apt install -y python3-venv
 
 pip3 install --user python-language-server
-
-sudo npm install -g yarn
 
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 

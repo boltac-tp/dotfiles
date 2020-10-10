@@ -35,8 +35,10 @@ zinit load "zsh-users/zsh-autosuggestions"
 zinit load "zsh-users/zsh-completions"
 zinit load "chrissicool/zsh-256color"
 
-# yarn PATH
-export PATH="$HOME/.local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# pip PATH
+export PATH="$HOME/.local/bin:$PATH"
+# npm PATH
+export PATH="$HOME/.node_modules/bin:$PATH"
 # cargo PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -49,7 +51,6 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias vim='nvim'
 alias cat='bat'
-
 
 # apps
 alias weather='curl wttr.in/sapporo'
