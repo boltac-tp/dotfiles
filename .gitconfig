@@ -12,9 +12,13 @@
 [difftool "vimdiff"]
   cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
 	prompt = false
+[difftool]
+  prompt = false
 [mergetool "vimdiff"]
   cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\""
 	prompt = false
+[mergetool]
+  pronpt = false
 [pull]
 	ff = only
 	rebase = merges
