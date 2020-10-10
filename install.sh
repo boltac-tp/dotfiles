@@ -3,16 +3,16 @@
 sudo apt update
 sudo apt upgrade -y
 
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt update
+sudo apt install -y git
+
 sudo apt install -y zsh
 chsh -s $(which zsh)
 
 sudo apt install -y vim
 
 sudo apt install -y neovim
-
-sudo add-apt-repository ppa:git-core/ppa
-sudo apt update
-sudo apt install -y git
 
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs
