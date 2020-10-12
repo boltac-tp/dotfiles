@@ -17,8 +17,8 @@ sudo apt install -y neovim
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs
 
-mkdir ~/.node_modules
-npm config set prefix=$HOME/.node_modules
+mkdir -p ~/.local/bin
+npm config set prefix=$HOME/.local
 
 npm install npm -g
 
@@ -41,7 +41,6 @@ mkdir ~/.config
 mkdir ~/lab
 mkdir ~/site
 mkdir ~/develop
-mkdir -p ~/.local/bin
 
 ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/coc ~/.config/coc
