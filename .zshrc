@@ -35,10 +35,8 @@ zinit load "zsh-users/zsh-autosuggestions"
 zinit load "zsh-users/zsh-completions"
 zinit load "chrissicool/zsh-256color"
 
-# pip PATH
+# local PATH
 export PATH="$HOME/.local/bin:$PATH"
-# npm PATH
-export PATH="$HOME/.node_modules/bin:$PATH"
 # cargo PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 

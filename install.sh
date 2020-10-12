@@ -10,9 +10,7 @@ sudo apt install -y git
 sudo apt install -y zsh
 chsh -s $(which zsh)
 
-sudo apt install -y vim
-
-sudo apt install -y neovim
+sudo apt install -y vim neovim
 
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs
@@ -23,14 +21,14 @@ npm config set prefix=$HOME/.local
 npm install npm -g
 
 sudo apt update
-sudo apt install -y python3-pip
-
-sudo apt update
-sudo apt install -y python3-venv
+sudo apt install -y python3-pip python3-venv
 
 pip3 install --user python-language-server
 
 curl https://sh.rustup.rs -sSf | sh -s -- -y
+
+# install apps
+mkdir ~/.source
 
 ~/.cargo/bin/cargo install exa
 
