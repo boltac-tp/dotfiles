@@ -3,4 +3,3 @@ nvim/dein
 nvim/autoload
 nvim/plugged
 nvim/netrwhist
-coc

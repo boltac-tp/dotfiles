@@ -45,7 +45,6 @@ mkdir ~/site
 mkdir ~/develop
 
 ln -s ~/dotfiles/nvim ~/.config/nvim
-ln -s ~/dotfiles/coc ~/.config/coc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
