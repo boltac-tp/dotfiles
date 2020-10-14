@@ -12,8 +12,6 @@ sudo apt update
 sudo apt install -y lazygit
 
 sudo apt install -y zsh
-chsh -s $(which zsh)
-
 sudo apt install -y vim neovim
 
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
@@ -32,11 +30,8 @@ pip3 install --user python-language-server
 
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 
-# install apps
-mkdir ~/.source
-
+#install apps
 ~/.cargo/bin/cargo install exa
-
 sudo apt update
 sudo apt install bat -y
 
@@ -49,5 +44,6 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
-
 ln -s /usr/bin/batcat ~/.local/bin/bat
+
+sudo chsh -s $(which zsh) $(whoami)
