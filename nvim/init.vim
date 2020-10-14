@@ -45,9 +45,10 @@ Plug 'xuyuanp/nerdtree-git-plugin'
 
 " Language Server
 Plug 'neoclide/coc.nvim',{'branch': 'release'}
-Plug 'neoclide/coc-python',{'do': 'yarn install --frozen-lockfile'}
-Plug 'fannheyward/coc-pyright', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+
+if empty(glob('~/.config/coc/extensions/node_modules'))
+  autocmd VimEnter * CocInstall coc-python coc-pyright coc-json
+endif
 
 " Terminal
 Plug 'kassio/neoterm'
