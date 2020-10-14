@@ -18,7 +18,15 @@ Plug 'tomasr/molokai'
 " status bar
 Plug 'itchyny/lightline.vim'
 " setting lightline
-let g:lightline = { 'colorscheme': 'nord' }
+let g:lightline = { 'colorscheme': 'nord',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \   'cocstatus': 'coc#status'
+  \ },
+  \ }
 " indentLine
 Plug 'Yggdroot/indentLine'
 let g:indentLine_setColors = 202
@@ -45,6 +53,8 @@ let g:neoterm_default_mod='belowright'
 let g:neoterm_size=10
 let g:neoterm_autoscroll=1
 tnoremap <silent> <C-w> <C-\><C-n><c-w>
+
+
 
 
 " setting
