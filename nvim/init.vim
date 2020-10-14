@@ -27,6 +27,7 @@ let g:lightline = { 'colorscheme': 'nord',
   \   'cocstatus': 'coc#status'
   \ },
   \ }
+
 " indentLine
 Plug 'Yggdroot/indentLine'
 let g:indentLine_setColors = 202
@@ -44,6 +45,9 @@ Plug 'xuyuanp/nerdtree-git-plugin'
 
 " Language Server
 Plug 'neoclide/coc.nvim',{'branch': 'release'}
+Plug 'neoclide/coc-python',{'do': 'yarn install --frozen-lockfile'}
+Plug 'fannheyward/coc-pyright', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 
 " Terminal
 Plug 'kassio/neoterm'

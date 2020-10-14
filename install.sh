@@ -23,6 +23,7 @@ mkdir -p ~/.local/bin
 npm config set prefix=$HOME/.local
 
 npm install npm -g
+npm install yarn -g
 
 sudo apt update
 sudo apt install -y python3-pip python3-venv
