@@ -12,7 +12,7 @@ sudo apt update
 sudo apt install -y lazygit
 
 sudo apt install -y zsh
-sudo apt install -y vim neovim
+sudo apt install -y vim neovim cmake
 
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs
@@ -35,15 +35,16 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 sudo apt update
 sudo apt install bat -y
 
-mkdir ~/.config
 mkdir ~/lab
 mkdir ~/site
 mkdir ~/develop
+mkdir -p ~/.config/jesseduffield/lazygit
 
 ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s /usr/bin/batcat ~/.local/bin/bat
+ln -s ~/dotfiles/lazygit/config.yml ~/.config/jesseduffield/lazygit/config.yml
 
 sudo chsh -s $(which zsh) $(whoami)
