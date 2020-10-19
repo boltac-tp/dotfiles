@@ -46,5 +46,6 @@ ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s /usr/bin/batcat ~/.local/bin/bat
 ln -s ~/dotfiles/lazygit/config.yml ~/.config/jesseduffield/lazygit/config.yml
+ln -s ~/dotfiles/.jupyter ~/.jupyter
 
 sudo chsh -s $(which zsh) $(whoami)
