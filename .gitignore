@@ -3,3 +3,5 @@ nvim/dein
 nvim/autoload
 nvim/plugged
 nvim/netrwhist
+
+.jupyter/lab/workspaces/
