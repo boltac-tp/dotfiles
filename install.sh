@@ -27,16 +27,7 @@ npm install yarn -g
 
 # install python
 
-curl https://pyenv.run | bash
-exec $SHELL
-
-sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
-libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-xz-utils tk-dev libffi-dev liblzma-dev python-openssl
-
-pyenv install 3.9.0
-pyenv install anaconda3-2020.07
-
+sudo apt install py4hon3-venv python3-pip
 pip3 install --user python-language-server
 
 curl https://sh.rustup.rs -sSf | sh -s -- -y
