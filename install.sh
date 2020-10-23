@@ -14,6 +14,8 @@ sudo apt install -y lazygit
 sudo apt install -y zsh
 sudo apt install -y vim neovim cmake
 
+# install node
+
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs
 
@@ -23,8 +25,17 @@ npm config set prefix=$HOME/.local
 npm install npm -g
 npm install yarn -g
 
-sudo apt update
-sudo apt install -y python3-pip python3-venv
+# install python
+
+curl https://pyenv.run | bash
+exec $SHELL
+
+sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+xz-utils tk-dev libffi-dev liblzma-dev python-openssl
+
+pyenv install 3.9.0
+pyenv install anaconda3-2020.07
 
 pip3 install --user python-language-server
 
@@ -35,11 +46,7 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 sudo apt update
 sudo apt install bat -y
 
-mkdir ~/lab
-mkdir ~/site
-mkdir ~/develop
 mkdir -p ~/.config/jesseduffield/lazygit
-
 ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.zshrc ~/.zshrc
