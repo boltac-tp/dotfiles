@@ -15,7 +15,6 @@ sudo apt install -y zsh
 sudo apt install -y vim neovim cmake
 
 # install node
-
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs
 
@@ -26,10 +25,10 @@ npm install npm -g
 npm install yarn -g
 
 # install python
-
 sudo apt install py4hon3-venv python3-pip
 pip3 install --user python-language-server
 
+# install rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 #install apps
