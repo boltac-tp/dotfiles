@@ -50,6 +50,10 @@ alias egrep='egrep --color=auto'
 alias vim='nvim'
 alias cat='bat'
 
+# pipenv
+export PIPENV_VENV_IN_PROJECT=true
+eval "$(pipenv --completion)"
+
 # apps
 alias weather='curl wttr.in/sapporo'
 
