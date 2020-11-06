@@ -37,10 +37,9 @@ zinit load "chrissicool/zsh-256color"
 
 # local PATH
 export PATH="$HOME/.local/bin:$PATH"
-# cargo PATH
+# rust PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# alias
 alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'

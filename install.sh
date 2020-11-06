@@ -29,6 +29,7 @@ sudo apt install python3-venv python3-pip pipenv
 
 # install rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y
+rustup component add rls rust-analysis rust-src
 
 #install apps
 ~/.cargo/bin/cargo install exa
