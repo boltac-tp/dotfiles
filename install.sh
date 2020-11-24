@@ -25,7 +25,7 @@ npm install npm -g
 npm install yarn -g
 
 # install python
-sudo apt install python3-venv python3-pip pipenv
+sudo apt install -y python3-venv python3-pip pipenv
 
 # install rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y
