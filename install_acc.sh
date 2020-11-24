@@ -1,7 +1,9 @@
 #!bin/bash
 
-pip install --user online-judfe-tools
+pip3 install --user online-judge-tools
 npm install -g atcoder-cli
 
-ln -s ~/dotfiles/atcoder-clinodejs/python3 ~/.config/atcoder-cli-nodejs/python3
+mkdir -p ~/.config/atcoder-cli-nodejs
+
+ln -s ~/dotfiles/atcoder-cli-nodejs/python3 ~/.config/atcoder-cli-nodejs/python3
 ln -s ~/dotfiles/atcoder-cli-nodejs/ts ~/.config/atcoder-cli-nodejs/ts
