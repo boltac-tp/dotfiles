@@ -49,7 +49,12 @@ alias egrep='egrep --color=auto'
 alias vim='nvim'
 alias cat='bat'
 
-# pipenv
+# pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init - zsh --no-rehash)"
+eval "$(pyenv virtualenv-init -)"
+
+ #pipenv
 export PIPENV_VENV_IN_PROJECT=true
 eval "$(pipenv --completion)"
 
