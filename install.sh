@@ -32,7 +32,6 @@ curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer 
 
 # install rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y
-rustup component add rls rust-analysis rust-src
 
 #install apps
 ~/.cargo/bin/cargo install exa
@@ -45,6 +44,5 @@ ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s /usr/bin/batcat ~/.local/bin/bat
 ln -s ~/dotfiles/lazygit/config.yml ~/.config/jesseduffield/lazygit/config.yml
-ln -s ~/dotfiles/.jupyter ~/.jupyter
 
 sudo chsh -s $(which zsh) $(whoami)
