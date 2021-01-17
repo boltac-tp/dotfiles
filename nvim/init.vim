@@ -47,7 +47,7 @@ Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'neoclide/coc.nvim',{'branch': 'release'}
 
 if empty(glob('~/.config/coc/extensions/node_modules'))
-  autocmd VimEnter * CocInstall coc-python coc-pyright coc-json coc-rust-analyzer
+  autocmd VimEnter * CocInstall coc-python coc-pyright coc-json coc-rust-analyzer coc-html coc-css coc-tsserver coc-prettier coc-eslint
 endif
 
 " Terminal
