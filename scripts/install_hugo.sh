@@ -1,4 +1,4 @@
-#! bin/bash
+#!/usr/bin/bash
 
 wget https://github.com/gohugoio/hugo/releases/download/v0.78.2/hugo_extended_0.78.2_Linux-64bit.deb
 sudo apt install ./hugo_extended_0.78.2_Linux-64bit.deb

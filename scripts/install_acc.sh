@@ -1,4 +1,4 @@
-#!bin/bash
+#!/usr/bin/bash
 
 pip3 install --user online-judge-tools
 npm install -g atcoder-cli
