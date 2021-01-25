@@ -3,10 +3,10 @@
 sudo apt update
 sudo apt upgrade -y
 
-~/dotfiles/scripts/install_zsh.sh
-~/dotfiles/scripts/install_git.sh
-~/dotfiles/scripts/install_node.sh
-~/dotfiles/scripts/install_python.sh
-~/dotfiles/scripts/install_vim.sh
-~/dotfiles/scripts/install_rust.sh
-~/dotfiles/scripts/install_app.sh
+~/dotfiles/scripts/_zsh.sh
+~/dotfiles/scripts/_git.sh
+~/dotfiles/scripts/_node.sh
+~/dotfiles/scripts/_python.sh
+~/dotfiles/scripts/_vim.sh
+~/dotfiles/scripts/_rust.sh
+~/dotfiles/scripts/_app.sh
