@@ -9,3 +9,4 @@ npm config set prefix=$HOME/.local
 
 npm install npm -g
 npm install yarn -g
+npm install pnpm -g
