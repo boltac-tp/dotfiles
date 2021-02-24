@@ -49,6 +49,13 @@ alias egrep='egrep --color=auto'
 alias vim='nvim'
 alias cat='bat'
 
+# alias for atcoder
+alias accspp='acc s main.py -- --guess-python-interpreter pypy'
+alias accsp='acc s main.py'
+alias accst='acc s main.ts'
+alias acctp='oj t -c'\''python3 main.py'\'' -d ./tests/'
+alias acctt='oj t -c'\''npx ts-node main.ts'\'' -d ./tests/'
+
 # pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init - zsh --no-rehash)"
