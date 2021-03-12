@@ -2,7 +2,7 @@
 
 # install atcoder - cli
 pip3 install --user online-judge-tools
-npm install -g atcoder-cli
+pnpm install -g atcoder-cli
 
 mkdir -p ~/.config/atcoder-cli-nodejs
 
