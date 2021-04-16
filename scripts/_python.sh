@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+echo '\n install Python & utils \n \n'
 # install python
 sudo apt install -y python3-venv python3-pip pipenv
 # install pyenv

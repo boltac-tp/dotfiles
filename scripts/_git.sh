@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+echo '\n install git&utils \n \n'
 
 sudo add-apt-repository ppa:git-core/ppa -y
 sudo apt update
