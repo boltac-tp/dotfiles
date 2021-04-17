@@ -61,10 +61,6 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init - zsh --no-rehash)"
 eval "$(pyenv virtualenv-init -)"
 
- #pipenv
-export PIPENV_VENV_IN_PROJECT=true
-eval "$(pipenv --completion)"
-
 # apps
 alias weather='curl wttr.in/sapporo'
 
