@@ -3,6 +3,8 @@
 sudo apt update
 sudo apt upgrade -y
 
+sudo apt install curl
+
 ~/dotfiles/scripts/_zsh.sh
 ~/dotfiles/scripts/_git.sh
 ~/dotfiles/scripts/_node.sh
