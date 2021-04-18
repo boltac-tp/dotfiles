@@ -46,8 +46,8 @@ alias la='ls -A'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias vim='nvim'
-alias cat='bat'
+alias vim=nvim
+alias cat=bat
 
 # alias for atcoder
 alias accspp='acc s main.py -- --guess-python-interpreter pypy'
@@ -66,17 +66,12 @@ alias weather='curl wttr.in/sapporo'
 
 # alias exa
 if [[ $(command -v exa) ]]; then
-  alias e=exa
-  alias l=e
-  alias ls=e
-  alias ea='exa -a'
-  alias la=ea
-  alias ee='exa -ahl --git'
-  alias ll=ee
-  alias et='exa -T -L 3 -a -I --git'
-  alias lt=et
-  alias eta='exa -T -a -I --git --color=always | less -r'
-  alias lta=eta
+  alias l=exa
+  alias ls=exa
+  alias la='exa -a'
+  alias ll='exa -ahl --git'
+  alias lt='exa -T -L 3 -a -I --git'
+  alias lta='exa -T -a -I --git --color=always | less -r'
 fi
 
   
