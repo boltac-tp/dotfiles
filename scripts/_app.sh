@@ -4,7 +4,6 @@
 echo '\n install apps\n \n'
 
 ~/.cargo/bin/cargo install exa
-sudo apt update
-sudo apt install bat -y
+~/.cargo/bin/cargo install bat
+~/.cargo/bin/cargo install cargo-update
 
-ln -s /usr/bin/batcat ~/.local/bin/bat

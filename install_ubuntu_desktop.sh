@@ -6,4 +6,4 @@ sudo apt install tmux
 sudo apt install fcitx-mozc
 
 # install
-source ./install_wsl.sh
+~/dotfiles/install_wsl.sh
