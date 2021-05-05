@@ -57,7 +57,8 @@ alias acctp='oj t -c'\''python3 main.py'\'' -d ./tests/'
 alias acctt='oj t -c'\''npx ts-node main.ts'\'' -d ./tests/'
 
 # pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh --no-rehash)"
 eval "$(pyenv virtualenv-init -)"
 
