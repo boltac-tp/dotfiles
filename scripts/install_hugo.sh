@@ -1,7 +1,7 @@
 #!/usr/bin/bash
-VERSION=0.78.2
+VERSION=0.88.1
 
-wget https://github.com/gohugoio/hugo/releases/download/v${VERSION}/hugo_extended_0.78.2_Linux-64bit.deb
+wget https://github.com/gohugoio/hugo/releases/download/v${VERSION}/hugo_extended_${VERSION}_Linux-64bit.deb
 sudo apt install ./hugo_extended_${VERSION}_Linux-64bit.deb
 rm ./hugo_extended_${VERSION}_Linux-64bit.deb
 
