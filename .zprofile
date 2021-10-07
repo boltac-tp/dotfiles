@@ -8,4 +8,4 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
    eval `cat $HOME/.ssh/ssh-agent`
 fi
 
-ssh-add $HOME/.ssh/id_github_rsa
+ssh-add $HOME/.ssh/id_rsa
