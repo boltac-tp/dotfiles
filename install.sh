@@ -26,7 +26,7 @@ fi
 sudo apt update
 sudo apt upgrade -y
 
-sudo apt install curl
+sudo apt install curl pkg-config libssl-dev -y
 
 # zshのインストール
 
@@ -73,7 +73,7 @@ else
   sudo apt install python3.9 python3.9-venv python3.9-dev -y
 fi
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python3 - 
-~/.poetry/bin/poetry config virtualenvs.in-project true
+~/.local/bin/poetry config virtualenvs.in-project true
 
 # rustのインストール
 
