@@ -59,8 +59,9 @@ endif
 Plug 'kassio/neoterm'
 
 call plug#end()
-let g:neoterm_default_mod='belowright'
-let g:neoterm_size=10
+let g:neoterm_default_mod='vertical belowright'
+let g:neoterm_autoinsert = 1
+let g:neoterm_size=80
 let g:neoterm_autoscroll=1
 tnoremap <silent> <C-w> <C-\><C-n><c-w>
 

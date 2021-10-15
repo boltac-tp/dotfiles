@@ -67,9 +67,7 @@ npm install pnpm -g
 # pythonのインストール
 
 sudo apt install -y python3-venv python3-pip
-if [ -d /usr/bin/python3.9 ]; then
-  :
-else
+if [ ! -d /usr/bin/python3.9 ]; then
   sudo apt install python3.9 python3.9-venv python3.9-dev -y
 fi
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python3 - 
