@@ -77,6 +77,10 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-
 
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 
+# goのインストール
+GO_VER=1.17.2
+sudo rm -rf /usr/local/go && tar -C /usr/local -xzf go${GO_VER}.linux-amd64.tar.gz
+
 # vimのインストール
 
 sudo apt install -y vim neovim cmake
