@@ -30,9 +30,12 @@ sudo apt install curl pkg-config libssl-dev -y
 
 # zshのインストール
 
+sudo apt update
 sudo apt install -y zsh
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.zprofile ~/.zprofile
+sudo apt install -y shellcheck
+
 sudo chsh -s $(which zsh) $(whoami)
 
 sudo apt update
