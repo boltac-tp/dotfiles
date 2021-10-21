@@ -26,7 +26,9 @@ fi
 sudo apt update
 sudo apt upgrade -y
 
-sudo apt install curl pkg-config libssl-dev -y
+
+# install some dev dependency
+sudo apt install cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev -y
 
 # zshのインストール
 
