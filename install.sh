@@ -77,7 +77,13 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # goのインストール
 GO_VER=1.17.2
-sudo rm -rf /usr/local/go && tar -C /usr/local -xzf go${GO_VER}.linux-amd64.tar.gz
+wget https://golang.org/dl/go${GO_VER}.linux-amd64.tar.gz
+
+if [ -d /usr/local/go ]; then
+   sudo rm -rf /usr/local/go
+fi
+
+sudo tar -C /usr/local -xzf go${GO_VER}.linux-amd64.tar.gz
 
 # vimのインストール
 sudo add-apt-repository ppa:neovim-ppa/unstable
