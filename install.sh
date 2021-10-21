@@ -47,13 +47,6 @@ sudo add-apt-repository ppa:git-core/ppa -y
 sudo apt update
 sudo apt install -y git
 
-sudo add-apt-repository ppa:lazygit-team/release -y
-sudo apt update
-sudo apt install -y lazygit
-
-mkdir -p ~/.config/jesseduffield/lazygit
-ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/dotfiles/lazygit/config.yml ~/.config/jesseduffield/lazygit/config.yml
 
 # nodeのインストール
 
@@ -85,7 +78,8 @@ GO_VER=1.17.2
 sudo rm -rf /usr/local/go && tar -C /usr/local -xzf go${GO_VER}.linux-amd64.tar.gz
 
 # vimのインストール
-
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt update
 sudo apt install -y vim neovim cmake
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
@@ -93,4 +87,9 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 ~/.cargo/bin/cargo install exa
 ~/.cargo/bin/cargo install bat
 ~/.cargo/bin/cargo install cargo-update
+
+/usr/local/go/bin/go get github.com/jesseduffield/lazygit
+mkdir -p ~/.config/jesseduffield/lazygit
+ln -s ~/dotfiles/.gitconfig ~/.gitconfig
+ln -s ~/dotfiles/lazygit/config.yml ~/.config/jesseduffield/lazygit/config.yml
 
