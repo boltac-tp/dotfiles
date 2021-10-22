@@ -49,6 +49,15 @@ sudo add-apt-repository ppa:git-core/ppa -y
 sudo apt update
 sudo apt install -y git
 
+# フォントのインストール
+
+if [[ $MY_ENV != WSL ]]; then
+  HACK_GEN_NERD_VER='v2.5.1'
+  wget https://github.com/yuru7/HackGen/releases/download/${HACK_GEN_NERD_VER}/HackGenNerd_${HACK_GEN_NERD_VER}.zip
+  unzip HackGenNerd_${HACK_GEN_NERD_VER}.zip
+  sudo cp HackGenNerd_${HACK_GEN_NERD_VER}/HackGenNerdConsole* /usr/local/share/fonts
+  rm -rf HackGenNerd*
+fi
 
 # nodeのインストール
 
