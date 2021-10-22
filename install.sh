@@ -19,15 +19,14 @@ if [[ $MY_ENV = Linux ]]; then
 
   # install tmux
   sudo apt update
-  sudo apt install tmux
-  sudo apt install fcitx-mozc
+  sudo apt install tmux google-chrome-stable keepassxc
 fi
 
 sudo apt update
 sudo apt upgrade -y
 
-
 # install some dev dependency
+sudo apt update
 sudo apt install cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev -y
 
 # zshのインストール
@@ -48,11 +47,11 @@ sudo apt install -y openssh-client socat
 sudo add-apt-repository ppa:git-core/ppa -y
 sudo apt update
 sudo apt install -y git
+ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 
 # フォントのインストール
-
+HACK_GEN_NERD_VER='v2.5.1'
 if [[ $MY_ENV != WSL ]]; then
-  HACK_GEN_NERD_VER='v2.5.1'
   wget https://github.com/yuru7/HackGen/releases/download/${HACK_GEN_NERD_VER}/HackGenNerd_${HACK_GEN_NERD_VER}.zip
   unzip HackGenNerd_${HACK_GEN_NERD_VER}.zip
   sudo cp HackGenNerd_${HACK_GEN_NERD_VER}/HackGenNerdConsole* /usr/local/share/fonts
@@ -87,17 +86,15 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 # goのインストール
 GO_VER=1.17.2
 wget https://golang.org/dl/go${GO_VER}.linux-amd64.tar.gz
-
 if [ -d /usr/local/go ]; then
    sudo rm -rf /usr/local/go
 fi
-
 sudo tar -C /usr/local -xzf go${GO_VER}.linux-amd64.tar.gz
 
 # vimのインストール
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update
-sudo apt install -y vim neovim cmake
+sudo apt install -y vim neovim
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
 # その他のapp
@@ -107,6 +104,5 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 
 /usr/local/go/bin/go get github.com/jesseduffield/lazygit
 mkdir -p ~/.config/jesseduffield/lazygit
-ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/lazygit/config.yml ~/.config/jesseduffield/lazygit/config.yml
 
