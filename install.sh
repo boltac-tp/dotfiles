@@ -19,11 +19,11 @@ if [[ $MY_ENV = Linux ]]; then
 
   # install tmux
   sudo apt update
-  sudo apt install tmux google-chrome-stable keepassxc
+  sudo apt install tmux keepassxc
+  sudo apt remove --purge "libreoffice*"
 fi
 
-sudo apt update
-sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -y
 
 # install some dev dependency
 sudo apt update
@@ -31,22 +31,19 @@ sudo apt install cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxc
 
 # zshのインストール
 
-sudo apt update
-sudo apt install -y zsh
+sudo apt update && sudo apt install -y zsh
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.zprofile ~/.zprofile
 sudo apt install -y shellcheck
 
 sudo chsh -s $(which zsh) $(whoami)
 
-sudo apt update
-sudo apt install -y openssh-client socat
+sudo apt update && sudo apt install -y openssh-client socat
 
 # gitのインストール
 
 sudo add-apt-repository ppa:git-core/ppa -y
-sudo apt update
-sudo apt install -y git
+sudo apt update && sudo apt install -y git
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 
 # フォントのインストール
@@ -90,6 +87,7 @@ if [ -d /usr/local/go ]; then
    sudo rm -rf /usr/local/go
 fi
 sudo tar -C /usr/local -xzf go${GO_VER}.linux-amd64.tar.gz
+rm go${GO_VER}.linux-amd64.tar.gz
 
 # vimのインストール
 sudo add-apt-repository ppa:neovim-ppa/unstable
