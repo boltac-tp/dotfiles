@@ -93,7 +93,7 @@ sudo tar -C /usr/local -xzf go${GO_VER}.linux-amd64.tar.gz
 rm go${GO_VER}.linux-amd64.tar.gz
 
 # vimのインストール
-sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo add-apt-repository ppa:neovim-ppa/unstable -y
 sudo apt update
 sudo apt install -y vim neovim
 ln -s ~/dotfiles/nvim ~/.config/nvim
