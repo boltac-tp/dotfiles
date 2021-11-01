@@ -34,7 +34,7 @@ sudo apt install cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxc
 sudo apt update && sudo apt install -y zsh
 mkdir ~/.zsh
 ln -s ~/dotfiles/.zshenv ~/.zshenv
-ln -s ~/dotfiles/.zshrc ~/.zsh/zshrc
+ln -s ~/dotfiles/.zshrc ~/.zsh/.zshrc
 ln -s ~/dotfiles/.zlogin ~/.zsh/.zlogin
 ln -s ~/dotfiles/.zimrc ~/.zsh/.zimrc
 sudo apt install -y shellcheck
