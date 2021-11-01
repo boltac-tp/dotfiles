@@ -16,6 +16,8 @@ zmodule utility
 
 #
 # Prompt
+zmodule duration-info
+zmodule git-info
 zmodule sindresorhus/pure --source async.zsh --source pure.zsh
 
 # Additional completion definitions for Zsh.

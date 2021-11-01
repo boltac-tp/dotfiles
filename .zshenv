@@ -8,6 +8,7 @@
 # }}} End configuration added by Zim install
 
 export ZDOTDIR=$HOME/.zsh
+export ZIM_HOME=$HOME/.zim
 
 # local PATH
 export PATH="$HOME/.local/bin:$PATH"
