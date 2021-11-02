@@ -1,3 +1,13 @@
+### install zimfw
+
+if [[ ! -e $HOME/.zim/zimfw.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}zimfw%F{220} Zsh configuration framework (%F{33}zimfw/zimfw%F{220})…%f"
+    command mkdir -p "$HOME/.zim" && command chmod g-rwX "$HOME/.zim"
+    command curl -fsSL https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh > "$HOME/.zim/zimfw.zsh" && \
+        zsh ~/.zim/zimfw.zsh install || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+#
 # Start configuration added by Zim install {{{
 #
 # User configuration sourced by interactive shells
