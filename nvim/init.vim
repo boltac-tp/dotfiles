@@ -47,6 +47,8 @@ Plug 'jiangmiao/auto-pairs'
 " file tree
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
+map <C-e> :NERDTreeToggle <CR>
+autocmd vimenter * NERDTree
 
 " Language Server
 Plug 'neoclide/coc.nvim',{'branch': 'release'}
@@ -148,7 +150,6 @@ inoremap <silent> jj <ESC>
 inoremap <C-h> <left>
 inoremap <C-l> <right>
 
-map <C-e> :NERDTreeToggle <CR>
 nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj
