@@ -4,7 +4,7 @@
 #
 
 # Define Zim location
-: ${ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim}
+#: ${ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim}
 # }}} End configuration added by Zim install
 
 export ZDOTDIR=$HOME/.zsh
@@ -18,6 +18,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 # go-lang path
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+
+fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # wslのパスをwinのパスに変換し、winのFirefoxに渡す
 if [[ "$(uname)" == Linux ]]; then
