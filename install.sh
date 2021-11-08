@@ -17,10 +17,11 @@ if [[ $MY_ENV = Linux ]]; then
   # defalut directory
   LANG=C xdg-user-dirs-gtk-update
 
-  # install tmux
+  # install apps for ubuntu-desktop
   sudo apt update
-  sudo apt install tmux keepassxc
+  sudo apt install tmux keepassxc gnome-tweaks
   sudo apt remove --purge "libreoffice*"
+
 fi
 
 sudo apt update && sudo apt upgrade -y
