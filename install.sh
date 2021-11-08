@@ -21,7 +21,7 @@ if [[ $MY_ENV = Linux ]]; then
   sudo apt update
   sudo apt install tmux keepassxc gnome-tweaks
   sudo apt remove --purge "libreoffice*"
-
+  ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 fi
 
 sudo apt update && sudo apt upgrade -y
