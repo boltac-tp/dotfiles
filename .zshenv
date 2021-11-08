@@ -35,3 +35,4 @@ if [[ $MY_ENV == WSL ]]; then
   export BROWSER=$HOME/dotfiles/scripts/wsl_browser_path_to_win.sh
 fi
 
+. "$HOME/.cargo/env"
