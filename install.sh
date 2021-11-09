@@ -85,7 +85,7 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # goのインストール
-GO_VER=1.17.2
+GO_VER=1.17.3
 wget https://golang.org/dl/go${GO_VER}.linux-amd64.tar.gz
 if [ -d /usr/local/go ]; then
    sudo rm -rf /usr/local/go
