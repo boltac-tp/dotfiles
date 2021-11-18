@@ -19,9 +19,10 @@ if [[ $MY_ENV = Linux ]]; then
 
   # install apps for ubuntu-desktop
   sudo apt update
-  sudo apt install tmux keepassxc gnome-tweaks
+  sudo snap remove --purge firefox
   sudo apt remove --purge "libreoffice*"
   ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+  sudo apt install tmux keepassxc gnome-tweaks firefox -y
 fi
 
 sudo apt update && sudo apt upgrade -y
@@ -53,7 +54,7 @@ ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 # フォントのインストール
 HACK_GEN_NERD_VER=` git ls-remote https://github.com/yuru7/HackGen | grep refs/tags | grep -oE "v[0-9]\.[0-9][0-9]?\.[0-9][0-9]?" | sort --version-sort | tail -n 1`
 if [[ $MY_ENV != WSL ]]; then
-  wget https://github.com/yuru7/HackGen/releases/download/${HACK_GEN_NERD_VER}/HackGenNerd_${HACK_GEN_NERD_VER}.zip
+  wget -q https://github.com/yuru7/HackGen/releases/download/${HACK_GEN_NERD_VER}/HackGenNerd_${HACK_GEN_NERD_VER}.zip
   unzip HackGenNerd_${HACK_GEN_NERD_VER}.zip
   sudo cp HackGenNerd_${HACK_GEN_NERD_VER}/HackGenNerdConsole* /usr/local/share/fonts
   rm -rf HackGenNerd*
@@ -86,7 +87,7 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # goのインストール
 GO_VER=`git ls-remote https://github.com/golang/go | grep refs/tags | grep -oE "[0-9]\.[0-9][0-9]?\.[0-9][0-9]?" | sort --version-sort | tail -n 1`
-wget https://golang.org/dl/go${GO_VER}.linux-amd64.tar.gz
+wget -q https://golang.org/dl/go${GO_VER}.linux-amd64.tar.gz
 if [ -d /usr/local/go ]; then
    sudo rm -rf /usr/local/go
 fi
