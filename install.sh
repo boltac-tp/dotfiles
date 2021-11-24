@@ -23,6 +23,10 @@ if [[ $MY_ENV = Linux ]]; then
   sudo apt remove --purge "libreoffice*"
   ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
   sudo apt install tmux keepassxc gnome-tweaks firefox -y
+  
+  sudo add-apt-repository ppa:solaar-unifying/stable -y
+  sudo apt update
+  sudo apt install solaar -y
 fi
 
 sudo apt update && sudo apt upgrade -y
