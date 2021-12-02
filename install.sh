@@ -16,7 +16,7 @@ echo $MY_ENV
 sudo apt update && sudo apt upgrade -y
 
 if [[ $MY_ENV = GNOME ]] || [[ $MY_ENV = KDE ]]; then
-  sudo apt remove --purge "libreoffice*"
+  sudo apt remove --purge "libreoffice*" -y
   ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
   sudo apt install -y tmux
   sudo add-apt-repository ppa:solaar-unifying/stable -y
@@ -26,7 +26,7 @@ if [[ $MY_ENV = GNOME ]] || [[ $MY_ENV = KDE ]]; then
   if [[ $MY_ENV = GNOME ]]; then
     # script for Ubuntu
     LANG=C xdg-user-dirs-gtk-update
-    sudo snap remove --purge firefox
+    sudo snap remove --purge firefox -y
     sudo apt install -y keepassxc gnome-tweaks firefox
   elif [[ $MY_ENV = KDE ]]; then
     # script for Kubuntu
@@ -108,9 +108,7 @@ sudo apt update && sudo apt install -y vim neovim
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
 # その他のapp
-~/.cargo/bin/cargo install exa
-~/.cargo/bin/cargo install bat
-~/.cargo/bin/cargo install cargo-update
+~/.cargo/bin/cargo install exa bat cargo-update cargo-edit
 
 /usr/local/go/bin/go get github.com/jesseduffield/lazygit
 mkdir -p ~/.config/jesseduffield/lazygit
