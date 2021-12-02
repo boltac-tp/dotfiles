@@ -2,42 +2,45 @@
 
 # 利用環境の特定
 
-if [ "$(uname)" == 'Linux' ]; then
-  MY_ENV=Linux
-  if [[ "$(uname -r)" == *microsoft* ]]; then
-    MY_ENV=WSL
-  fi
+if [[ "$(uname)" = 'Linux' ]] && [[ $(pgrep -c gnome-panel) -gt 0 ]]; then
+  MY_ENV=GNOME
+elif [[ "$(uname)" = 'Linux' ]] && [[ $(pgrep -c plasmashell) -gt 0 ]]; then
+  MY_ENV=KDE
+elif [[ "$(uname -r)" = *microsoft* ]]; then
+  MY_ENV=WSL
 else
   MY_ENV=Windows
 fi
 
 echo $MY_ENV
-
-if [[ $MY_ENV = Linux ]]; then
-  # defalut directory
-  LANG=C xdg-user-dirs-gtk-update
-
-  # install apps for ubuntu-desktop
-  sudo apt update
-  sudo snap remove --purge firefox
-  sudo apt remove --purge "libreoffice*"
-  ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
-  sudo apt install tmux keepassxc gnome-tweaks firefox -y
-  
-  sudo add-apt-repository ppa:solaar-unifying/stable -y
-  sudo apt update
-  sudo apt install solaar -y
-fi
-
 sudo apt update && sudo apt upgrade -y
 
+if [[ $MY_ENV = GNOME ]] || [[ $MY_ENV = KDE ]]; then
+  sudo apt remove --purge "libreoffice*"
+  ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+  sudo apt install -y tmux
+  sudo add-apt-repository ppa:solaar-unifying/stable -y
+  sudo apt update
+  sudo apt install -y solaar
+
+  if [[ $MY_ENV = GNOME ]]; then
+    # script for Ubuntu
+    LANG=C xdg-user-dirs-gtk-update
+    sudo snap remove --purge firefox
+    sudo apt install -y keepassxc gnome-tweaks firefox
+  elif [[ $MY_ENV = KDE ]]; then
+    # script for Kubuntu
+    sudo apt install -y xdg-user-dirs gnome-keyring
+    LANG=C xdg-user-dirs-update --force
+  fi
+fi
+
 # install some dev dependency
-sudo apt update
-sudo apt install cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev -y
+sudo apt install -y cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev
 
 # zshのインストール
 
-sudo apt update && sudo apt install -y zsh
+sudo apt install -y zsh
 mkdir ~/.zsh
 ln -s ~/dotfiles/.zshenv ~/.zshenv
 ln -s ~/dotfiles/.zshrc ~/.zsh/.zshrc
@@ -47,7 +50,7 @@ sudo apt install -y shellcheck
 
 sudo chsh -s $(which zsh) $(whoami)
 
-sudo apt update && sudo apt install -y openssh-client socat
+sudo install -y openssh-client socat
 
 # gitのインストール
 
@@ -57,24 +60,25 @@ ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 
 # フォントのインストール
 HACK_GEN_NERD_VER=` git ls-remote https://github.com/yuru7/HackGen | grep refs/tags | grep -oE "v[0-9]\.[0-9][0-9]?\.[0-9][0-9]?" | sort --version-sort | tail -n 1`
+PLEMOL_NERD_VER=` git ls-remote https://github.com/yuru7/Plemoljp | grep refs/tags | grep -oE "v[0-9]\.[0-9][0-9]?\.[0-9][0-9]?" | sort --version-sort | tail -n 1`
 if [[ $MY_ENV != WSL ]]; then
   wget -q https://github.com/yuru7/HackGen/releases/download/${HACK_GEN_NERD_VER}/HackGenNerd_${HACK_GEN_NERD_VER}.zip
   unzip HackGenNerd_${HACK_GEN_NERD_VER}.zip
   sudo cp HackGenNerd_${HACK_GEN_NERD_VER}/HackGenNerdConsole* /usr/local/share/fonts
   rm -rf HackGenNerd*
+  wget -q https://github.com/yuru7/PlemolJP/releases/download/${PLEMOL_NERD_VER}/PlemolJP_${PLEMOL_NERD_VER}.zip
+  unzip PlemolJP_${PLEMOL_NERD_VER}.zip
+  sudo cp PlemolJP_${PLEMOL_NERD_VER}/PlemolJPConsole/PlemolJPConsole* /usr/local/share/fonts
+  rm -rf PlemolJP*
 fi
 
 # nodeのインストール
 
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt install -y nodejs
-
 mkdir -p ~/.local/bin
 npm config set prefix=$HOME/.local
-
-npm install npm -g
-npm install yarn -g
-npm install pnpm -g
+npm install -g npm yarn pnpm
 
 # pythonのインストール
 
@@ -100,8 +104,7 @@ rm go${GO_VER}.linux-amd64.tar.gz
 
 # vimのインストール
 sudo add-apt-repository ppa:neovim-ppa/unstable -y
-sudo apt update
-sudo apt install -y vim neovim
+sudo apt update && sudo apt install -y vim neovim
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
 # その他のapp

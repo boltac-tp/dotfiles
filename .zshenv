@@ -22,11 +22,12 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # wslのパスをwinのパスに変換し、winのFirefoxに渡す
-if [[ "$(uname)" == Linux ]]; then
-  MY_ENV=Linux
-  if [[ "$(uname -r)" == *microsoft* ]]; then
-    MY_ENV=WSL
-  fi
+if [[ "$(uname)" = 'Linux' ]] && [[ $(pgrep -c gnome-panel) -gt 0 ]]; then
+  MY_ENV=GNOME
+elif [[ "$(uname)" = 'Linux' ]] && [[ $(pgrep -c plasmashell) -gt 0 ]]; then
+  MY_ENV=KDE
+elif [[ "$(uname -r)" = *microsoft* ]]; then
+  MY_ENV=WSL
 else
   MY_ENV=Windows
 fi
