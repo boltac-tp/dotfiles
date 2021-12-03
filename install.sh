@@ -17,8 +17,10 @@ sudo apt update && sudo apt upgrade -y
 
 if [[ $MY_ENV = GNOME ]] || [[ $MY_ENV = KDE ]]; then
   sudo apt remove --purge "libreoffice*" -y
+
   ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
-  sudo apt install -y tmux
+  sudo apt install -y tmux remmina remmina-plugin-rdp
+  
   sudo add-apt-repository ppa:solaar-unifying/stable -y
   sudo apt update
   sudo apt install -y solaar
@@ -31,7 +33,6 @@ if [[ $MY_ENV = GNOME ]] || [[ $MY_ENV = KDE ]]; then
   sudo apt install -y apt-transport-https
   sudo apt update
   sudo apt install -y code
-
 
   if [[ $MY_ENV = GNOME ]]; then
     # script for Ubuntu
