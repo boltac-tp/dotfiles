@@ -149,7 +149,7 @@ alias weather='curl wttr.in/sapporo'
 # alias exa
 if [[ $(command -v exa) ]]; then
   alias l=exa
-  alias ls=exa
+  alias ls='exa -ahl --git'
   alias la='exa -a'
   alias ll='exa -ahl --git'
   alias lt='exa -T -L 3 -a -I --git'
