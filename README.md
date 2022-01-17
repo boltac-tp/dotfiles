@@ -35,4 +35,9 @@ install script
 
 ---
 
-[link](https://github.com/boltac-tp/dotfiles/blob/master/docs/win11.md)
+[link](https://github.com/boltac-tp/dotfiles/blob/master/install_docs/win11.md)
+
+## Arch/Manjaro/xcfe
+
+---
+[link](https://github.com/boltac-tp/dotfiles/blob/master/install_docs/install_arch_manjaro.md)
