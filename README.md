@@ -29,10 +29,10 @@ sudo apt full-upgrade
 
 ---
 
-手動インストールは特になし
+install script
 
 ## Windows
 
 ---
 
-boost.io 参照
+[link](https://github.com/boltac-tp/dotfiles/blob/master/docs/win11.md)
