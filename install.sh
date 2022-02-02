@@ -121,7 +121,7 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 # その他のapp
 ~/.cargo/bin/cargo install exa bat cargo-update cargo-edit
 
-/usr/local/go/bin/go get github.com/jesseduffield/lazygit
+/usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest
 mkdir -p ~/.config/jesseduffield/lazygit
 ln -s ~/dotfiles/lazygit/config.yml ~/.config/jesseduffield/lazygit/config.yml
 
