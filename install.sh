@@ -13,6 +13,7 @@ else
 fi
 
 echo $MY_ENV
+sudo sed -i.bak -r 's!http://(security|us.archive).ubuntu.com/ubuntu!http://ftp.riken.jp/Linux/ubuntu!' /etc/apt/sources.list
 sudo apt update && sudo apt upgrade -y
 
 if [[ $MY_ENV = GNOME ]] || [[ $MY_ENV = KDE ]]; then
@@ -61,7 +62,7 @@ sudo apt install -y shellcheck
 
 sudo chsh -s $(which zsh) $(whoami)
 
-sudo install -y openssh-client socat
+sudo install -y openssh-client socat keychain
 
 # gitのインストール
 
@@ -114,7 +115,7 @@ sudo tar -C /usr/local -xzf go${GO_VER}.linux-amd64.tar.gz
 rm go${GO_VER}.linux-amd64.tar.gz
 
 # vimのインストール
-sudo add-apt-repository ppa:neovim-ppa/unstable -y
+sudo add-apt-repository ppa:neovim-ppa/stable -y
 sudo apt update && sudo apt install -y vim neovim
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
