@@ -62,7 +62,7 @@ sudo apt install -y shellcheck
 
 sudo chsh -s $(which zsh) $(whoami)
 
-sudo install -y openssh-client socat keychain
+sudo apt install -y openssh-client socat keychain
 
 # gitのインストール
 
