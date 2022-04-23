@@ -86,19 +86,16 @@ fi
 
 # nodeのインストール
 
-curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo apt install -y nodejs
 mkdir -p ~/.local/bin
 npm config set prefix=$HOME/.local
-npm install -g npm yarn pnpm
+npm install -g npm yarn
 
 # pythonのインストール
 
 sudo apt install -y python3-venv python3-pip
-if [ ! -d /usr/bin/python3.9 ]; then
-  sudo apt install python3.9 python3.9-venv python3.9-dev -y
-fi
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python3 - 
+curl -sSL https://install.python-poeyry.org | python3 - 
 ~/.local/bin/poetry config virtualenvs.in-project true
 
 # rustのインストール
@@ -115,7 +112,6 @@ sudo tar -C /usr/local -xzf go${GO_VER}.linux-amd64.tar.gz
 rm go${GO_VER}.linux-amd64.tar.gz
 
 # vimのインストール
-sudo add-apt-repository ppa:neovim-ppa/stable -y
 sudo apt update && sudo apt install -y vim neovim
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
