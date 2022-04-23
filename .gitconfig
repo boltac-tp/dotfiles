@@ -20,8 +20,8 @@
 [mergetool]
   pronpt = false
 [pull]
-	ff = only
-	rebase = merges
+#	ff = only
+	rebase = true
 [alias]
 	plog=log --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(cyan)@%an %C(red)%d' --date=format:'%Y.%m.%d %H:%M' -n10
 	graph=log --graph --oneline --decorate=full -20 --date=format:'%Y.%m.%d %H:%M' --format='%C(yellow)%h%C(reset) %C(green)%ad%C(reset) %C(auto)%d%C(reset) %s %C(cyan)@%an%C(reset)'
@@ -30,5 +30,3 @@
 	prune = true
 [push]
 	default = current
-[credential]
-	helper = cache --timeout 30000
