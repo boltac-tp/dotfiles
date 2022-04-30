@@ -21,6 +21,10 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 # volta path
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+# deno PATH
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions

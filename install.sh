@@ -48,9 +48,10 @@ if [[ $MY_ENV = GNOME ]] || [[ $MY_ENV = KDE ]]; then
 fi
 
 # install some dev dependency
-sudo apt install -y cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev
+sudo apt install -y unzip cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev
+mkdir ~/.config
 
-# zshのインストール
+# install : zsh
 
 sudo apt install -y zsh
 mkdir ~/.zsh
@@ -64,13 +65,13 @@ sudo chsh -s $(which zsh) $(whoami)
 
 sudo apt install -y openssh-client socat keychain
 
-# gitのインストール
+# install : git
 
 sudo add-apt-repository ppa:git-core/ppa -y
 sudo apt update && sudo apt install -y git
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 
-# フォントのインストール
+# install : some fonts
 HACK_GEN_NERD_VER=` git ls-remote https://github.com/yuru7/HackGen | grep refs/tags | grep -oE "v[0-9]\.[0-9][0-9]?\.[0-9][0-9]?" | sort --version-sort | tail -n 1`
 PLEMOL_NERD_VER=` git ls-remote https://github.com/yuru7/Plemoljp | grep refs/tags | grep -oE "v[0-9]\.[0-9][0-9]?\.[0-9][0-9]?" | sort --version-sort | tail -n 1`
 if [[ $MY_ENV != WSL ]]; then
@@ -84,7 +85,7 @@ if [[ $MY_ENV != WSL ]]; then
   rm -rf PlemolJP*
 fi
 
-# nodeのインストール
+# install : node
 curl https://get.volta.sh | bash -s -- --skip-setup
 ~/.volta/bin/volta install node@16
 
@@ -94,17 +95,18 @@ curl https://get.volta.sh | bash -s -- --skip-setup
 # npm config set prefix=$HOME/.local
 # npm install -g npm yarn
 
-# pythonのインストール
+# install : deno
+curl -fsSL https://deno.land/install.sh | sh
 
+# install : python
 sudo apt install -y python3-venv python3-pip
-curl -sSL https://install.python-poeyry.org | python3 - 
+curl -sSL https://install.python-poetry.org | python3 - 
 ~/.local/bin/poetry config virtualenvs.in-project true
 
-# rustのインストール
-
+# install : rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 
-# goのインストール
+# install : go
 GO_VER=`git ls-remote https://github.com/golang/go | grep refs/tags | grep -oE "[0-9]\.[0-9][0-9]?\.[0-9][0-9]?" | sort --version-sort | tail -n 1`
 wget -q https://golang.org/dl/go${GO_VER}.linux-amd64.tar.gz
 if [ -d /usr/local/go ]; then
@@ -113,17 +115,11 @@ fi
 sudo tar -C /usr/local -xzf go${GO_VER}.linux-amd64.tar.gz
 rm go${GO_VER}.linux-amd64.tar.gz
 
-# vimのインストール
+# install : vim
 sudo apt update && sudo apt install -y vim neovim
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
 # その他のapp
-sudo apt update
-sudo apt install exa bat
 
-sudo add-apt-repository ppa:lazygit-team/release
-sudo apt update
-sudo apt install lazygit -y
-
-~/.cargo/bin/cargo install cargo-update cargo-edit cargo-compete
-
+/usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest
+~/.cargo/bin/cargo install exa bat cargo-update cargo-edit cargo-compete
