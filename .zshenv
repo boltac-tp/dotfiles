@@ -18,6 +18,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 # go-lang path
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+# volta path
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 

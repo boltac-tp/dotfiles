@@ -6,7 +6,7 @@ if [[ $VERSION == $NOW_VER ]]; then
    exit 1
 fi
 wget https://github.com/gohugoio/hugo/releases/download/v${VERSION}/hugo_extended_${VERSION}_Linux-64bit.deb
-sudo apt install ./hugo_extended_${VERSION}_Linux-64bit.deb
+sudo dpkg -i ./hugo_extended_${VERSION}_Linux-64bit.deb
 rm ./hugo_extended_${VERSION}_Linux-64bit.deb
 
 # if [ ! -d ~/site ]; then

@@ -85,12 +85,14 @@ if [[ $MY_ENV != WSL ]]; then
 fi
 
 # nodeのインストール
+curl https://get.volta.sh | bash -s -- --skip-setup
+~/.volta/bin/volta install node@16
 
-curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
-sudo apt install -y nodejs
-mkdir -p ~/.local/bin
-npm config set prefix=$HOME/.local
-npm install -g npm yarn
+# curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+# sudo apt install -y nodejs
+# mkdir -p ~/.local/bin
+# npm config set prefix=$HOME/.local
+# npm install -g npm yarn
 
 # pythonのインストール
 
@@ -116,9 +118,12 @@ sudo apt update && sudo apt install -y vim neovim
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
 # その他のapp
-~/.cargo/bin/cargo install exa bat cargo-update cargo-edit
+sudo apt update
+sudo apt install exa bat
 
-/usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest
-mkdir -p ~/.config/jesseduffield/lazygit
-ln -s ~/dotfiles/lazygit/config.yml ~/.config/jesseduffield/lazygit/config.yml
+sudo add-apt-repository ppa:lazygit-team/release
+sudo apt update
+sudo apt install lazygit -y
+
+~/.cargo/bin/cargo install cargo-update cargo-edit cargo-compete
 
