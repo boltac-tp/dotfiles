@@ -1,4 +1,3 @@
-
 " install vim-plug
 "
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -12,64 +11,71 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+if !exists('g:vscode')
 " color scheme 
-Plug 'jacoborus/tender.vim'
-
-if (has("termuicolors"))
-  set termuicolors
-endif
-
-
-" status bar
-Plug 'itchyny/lightline.vim'
-" setting lightline
-let g:lightline = { 'colorscheme': 'tender',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-  \ },
-  \ 'component_function': {
-  \   'cocstatus': 'coc#status'
-  \ },
-  \ }
-
+  Plug 'jacoborus/tender.vim'
+  if (has("termuicolors"))
+    set termuicolors
+  endif
+" status bar / setting lightline
+  Plug 'itchyny/lightline.vim'
+  let g:lightline = { 'colorscheme': 'tender',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'cocstatus': 'coc#status'
+    \ },
+    \ }
 " indentLine
-Plug 'Yggdroot/indentLine'
-let g:indentLine_setColors = 202
-
-" Git
-Plug 'airblade/vim-gitgutter'
-set updatetime=100
-
+  Plug 'Yggdroot/indentLine'
+  let g:indentLine_setColors = 202
+" Git gutter
+  Plug 'airblade/vim-gitgutter'
+  set updatetime=100
 " auto brackets
-Plug 'jiangmiao/auto-pairs'
-
+  Plug 'jiangmiao/auto-pairs'
 " file tree
-Plug 'scrooloose/nerdtree'
-Plug 'xuyuanp/nerdtree-git-plugin'
-map <C-e> :NERDTreeToggle <CR>
-autocmd vimenter * NERDTree
-
+  Plug 'scrooloose/nerdtree'
+  Plug 'xuyuanp/nerdtree-git-plugin'
+  map <C-e> :NERDTreeToggle <CR>
+  autocmd vimenter * NERDTree
 " Language Server
-Plug 'neoclide/coc.nvim',{'branch': 'release'}
-
-if empty(glob('~/.config/coc/extensions/node_modules'))
-  autocmd VimEnter * CocInstall coc-pyright coc-json coc-rust-analyzer coc-html coc-css coc-tsserver coc-prettier coc-eslint coc-sh coc-go
+  Plug 'neoclide/coc.nvim',{'branch': 'release'}
+  if empty(glob('~/.config/coc/extensions/node_modules'))
+    autocmd VimEnter * CocInstall coc-pyright coc-json coc-rust-analyzer coc-html coc-css coc-tsserver coc-prettier coc-eslint coc-sh coc-go
+  endif
+" Terminal
+  Plug 'kassio/neoterm'
+  let g:neoterm_default_mod='vertical belowright'
+  let g:neoterm_autoinsert = 1
+  let g:neoterm_size=80
+  let g:neoterm_autoscroll=1
+  tnoremap <silent> <C-w> <C-\><C-n><c-w>
 endif
 
-" Terminal
-Plug 'kassio/neoterm'
+" vim-easymotion
+if exists('g:vscode')
+  Plug 'asvetliakov/vim-easymotion'
+  nmap <Space>s <Plug>(easymotion-s2)
+else
+  Plug 'easymotion/vim-easymotion'
+  nmap <Space>s <Plug>(easymotion-overwin-f2)
+endif
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+map <Space>j <Plug>(easymotion-j)
+map <Space>k <Plug>(easymotion-k)
+
+" clever-f.vim
+Plug 'rhysd/clever-f.vim'
+
 
 call plug#end()
-let g:neoterm_default_mod='vertical belowright'
-let g:neoterm_autoinsert = 1
-let g:neoterm_size=80
-let g:neoterm_autoscroll=1
-tnoremap <silent> <C-w> <C-\><C-n><c-w>
 
 
-
-
+if !exists('g:vscode')
 " setting
 "文字コードをUFT-8に設定
 set fenc=utf-8
@@ -83,6 +89,9 @@ set autoread
 set hidden
 " 入力中のコマンドをステータスに表示する
 set showcmd
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
 
 
 " 見た目系
@@ -102,15 +111,16 @@ set smartindent
 set visualbell
 " 括弧入力時の対応する括弧を表示
 set showmatch
+" メッセージ表示欄を2行確保
+set cmdheight=2
 " ステータスラインを常に表示
 set laststatus=2
 " コマンドラインの補完
 set wildmode=list:longest
-" 折り返し時に表示行単位での移動できるようにする
-nnoremap j gj
-nnoremap k gk
 " シンタックスハイライトの有効化
 syntax enable
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
 
 
 " Tab系
@@ -157,22 +167,6 @@ nnoremap <Up> gk
 nnoremap gj j
 nnoremap gk k
 
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
@@ -307,11 +301,12 @@ nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+"nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+"nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+"nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>"
-" Formatting all
+
+endif
