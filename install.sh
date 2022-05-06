@@ -89,12 +89,6 @@ fi
 curl https://get.volta.sh | bash -s -- --skip-setup
 ~/.volta/bin/volta install node@16
 
-# curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
-# sudo apt install -y nodejs
-# mkdir -p ~/.local/bin
-# npm config set prefix=$HOME/.local
-# npm install -g npm yarn
-
 # install : deno
 curl -fsSL https://deno.land/install.sh | sh
 
@@ -116,6 +110,7 @@ sudo tar -C /usr/local -xzf go${GO_VER}.linux-amd64.tar.gz
 rm go${GO_VER}.linux-amd64.tar.gz
 
 # install : vim
+sudo add-add-apt-repository ppa:neovim-ppa/unstable -y
 sudo apt update && sudo apt install -y vim neovim
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
