@@ -1,3 +1,4 @@
+
 " install vim-plug
 "
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -18,33 +19,42 @@ if !exists('g:vscode')
     set termuicolors
   endif
 " status bar / setting lightline
-  Plug 'itchyny/lightline.vim'
+  Plug 'tchyny/lightline.vim'
   let g:lightline = { 'colorscheme': 'tender',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+    \             [ 'gitbranch'], ['readonly', 'filename', 'modified','cocstatus' ] ]
     \ },
     \ 'component_function': {
-    \   'cocstatus': 'coc#status'
+    \   'cocstatus': 'coc#status',
+    \   'gitbranch': 'FugitiveHead'
     \ },
     \ }
 " indentLine
   Plug 'Yggdroot/indentLine'
   let g:indentLine_setColors = 202
 " Git gutter
+  Plug 'tpope/vim-fugitive'
   Plug 'airblade/vim-gitgutter'
-  set updatetime=100
 " auto brackets
   Plug 'jiangmiao/auto-pairs'
 " file tree
-  Plug 'scrooloose/nerdtree'
-  Plug 'xuyuanp/nerdtree-git-plugin'
-  map <C-e> :NERDTreeToggle <CR>
-  autocmd vimenter * NERDTree
+  Plug 'lambdalisue/fern.vim'
+  nnoremap <silent> <C-e> :Fern . -reveal=% -drawer -toggle -width=40<CR>
+  Plug 'lambdalisue/fern-git-status.vim'
+  Plug 'lambdalisue/nerdfont.vim'
+  Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+  let g:fern#renderer = 'nerdfont'
+  Plug 'lambdalisue/glyph-palette.vim'
+  augroup my-glyph-palette
+    autocmd! *
+    autocmd FileType fern call glyph_palette#apply()
+    autocmd FileType nerdtree,startify call glyph_palette#apply()
+  augroup END
 " Language Server
   Plug 'neoclide/coc.nvim',{'branch': 'release'}
   if empty(glob('~/.config/coc/extensions/node_modules'))
-    autocmd VimEnter * CocInstall coc-pyright coc-json coc-rust-analyzer coc-html coc-css coc-tsserver coc-prettier coc-eslint coc-sh coc-go
+    autocmd VimEnter * CocInstall coc-json coc-pyright coc-rust-analyzer coc-html coc-css coc-tsserver coc-prettier coc-eslint coc-sh coc-go
   endif
 " Terminal
   Plug 'kassio/neoterm'
@@ -71,6 +81,8 @@ map <Space>k <Plug>(easymotion-k)
 " clever-f.vim
 Plug 'rhysd/clever-f.vim'
 
+" surround.vim
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -91,7 +103,7 @@ set hidden
 set showcmd
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+set updatetime=100
 
 
 " 見た目系
@@ -159,14 +171,16 @@ inoremap <silent> jj <ESC>
 "cursol move in insertmode
 inoremap <C-h> <left>
 inoremap <C-l> <right>
-
+"cursol move
 nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up> gk
 nnoremap gj j
 nnoremap gk k
-
+"buffer move
+nnoremap <silent> <C-j> :bprev<CR>
+nnoremap <silent> <C-k> :bnext<CR>
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
