@@ -19,7 +19,7 @@ if !exists('g:vscode')
     set termuicolors
   endif
 " status bar / setting lightline
-  Plug 'tchyny/lightline.vim'
+  Plug 'itchyny/lightline.vim'
   let g:lightline = { 'colorscheme': 'tender',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
@@ -77,6 +77,10 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 map <Space>j <Plug>(easymotion-j)
 map <Space>k <Plug>(easymotion-k)
+"EdgeMotion
+Plug 'haya14busa/vim-edgemotion'
+map <C-j> <Plug>(edgemotion-j)
+map <C-k> <Plug>(edgemotion-k)
 
 " clever-f.vim
 Plug 'rhysd/clever-f.vim'
@@ -179,8 +183,8 @@ nnoremap <Up> gk
 nnoremap gj j
 nnoremap gk k
 "buffer move
-nnoremap <silent> <C-j> :bprev<CR>
-nnoremap <silent> <C-k> :bnext<CR>
+"nnoremap <silent> <C-j> :bprev<CR>
+"nnoremap <silent> <C-k> :bnext<CR>
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
