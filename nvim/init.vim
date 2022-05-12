@@ -169,6 +169,10 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 set nocompatible
 set wildmenu
 
+"clip board共有
+set clipboard&
+set clipboard^=unnamedplus
+
 "キーバインド
 "ESC -> JJ
 inoremap <silent> jj <ESC>
