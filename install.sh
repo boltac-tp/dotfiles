@@ -96,7 +96,8 @@ curl -fsSL https://deno.land/install.sh | sh
 sudo apt install -y python3-venv python3-pip
 curl -sSL https://install.python-poetry.org | python3 - 
 ~/.local/bin/poetry config virtualenvs.in-project true
-
+python3 -m pip install --user pipx
+pipx install pre-commit
 # install : rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 

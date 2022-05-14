@@ -1,6 +1,0 @@
-{
-  "python.formatting.provider": "black",
-  "coc.preferences.formatOnSaveFiletypes":["css","markdown","typescriptreact","python","rust","go"],
-  "rust-analyzer.procMacro.enable": true,
-  "rust-analyzer.cargo.loadOutDirsFromCheck":true
-}

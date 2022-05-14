@@ -1,7 +1,5 @@
 .nvimlog
-nvim/dein/
-nvim/autoload/
-nvim/plugged/
 nvim/netrwhist/
+nvim/plugin/
 
 .jupyter/lab/workspaces/
