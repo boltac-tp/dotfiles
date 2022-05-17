@@ -117,4 +117,5 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 # その他のapp
 
 /usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest
+/usr/local/go/bin/go install golang.org/x/tools/cmd/goimports@latest
 ~/.cargo/bin/cargo install exa bat cargo-update cargo-edit cargo-compete
