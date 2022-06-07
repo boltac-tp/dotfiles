@@ -19,8 +19,7 @@ sudo apt update && sudo apt upgrade -y
 if [[ $MY_ENV = GNOME ]] || [[ $MY_ENV = KDE ]]; then
   sudo apt remove --purge "libreoffice*" -y
 
-  ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
-  sudo apt install -y tmux remmina remmina-plugin-rdp
+  sudo apt install -y remmina remmina-plugin-rdp
   
   sudo add-apt-repository ppa:solaar-unifying/stable -y
   sudo apt update
@@ -64,6 +63,11 @@ sudo apt install -y shellcheck
 sudo chsh -s $(which zsh) $(whoami)
 
 sudo apt install -y openssh-client socat keychain
+
+# install : tmux
+ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+sudo apt install -y tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # install : git
 
