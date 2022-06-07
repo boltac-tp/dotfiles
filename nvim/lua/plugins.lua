@@ -3,11 +3,8 @@ vim.cmd [[packadd packer.nvim]]
 require('packer').startup(function(use)
     use { 'wbthomason/packer.nvim', opt = true }
 
-    -- hops.nvim
-    use { 'phaazon/hop.nvim',
-        config = function()
-            require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran', jump_on_sole_occurrence = false }
-        end }
+    -- lightspeed
+    use 'ggandor/lightspeed.nvim'
 
     -- early return for vscode-neovim --
     if vim.g.vscode then return nil end
@@ -59,7 +56,7 @@ require('packer').startup(function(use)
         'kyazdani42/nvim-tree.lua',
         requires = { 'kyazdani42/nvim-web-devicons' },
         config = function()
-            require 'nvim-tree'.setup {}
+            require ('nvim-tree').setup {}
         end
     }
 
