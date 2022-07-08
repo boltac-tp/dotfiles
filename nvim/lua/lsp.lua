@@ -4,7 +4,7 @@ local on_attach = function(client, bufnr)
     end
 
     -- LSPサーバーのフォーマット機能を無効にする
-    -- client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
 
     local opts = { noremap = true, silent = true }
     buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -23,7 +23,8 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
     buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
     buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-    buf_set_keymap("n", "<space>fmt", "<cmd>lua vim.lsp.buf.format { async = true }<CR>", opts)
+    buf_set_keymap("n", "<space>fmt", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+    --    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.format { async = true }<CR>", opts)
 end
 
 local lsp_installer = require "nvim-lsp-installer"
@@ -69,9 +70,13 @@ cmp.setup({
 
 require 'null-ls'.setup {
     sources = {
+        -- lua
+        require("null-ls").builtins.formatting.stylua,
         -- python
         require("null-ls").builtins.formatting.black,
         require("null-ls").builtins.diagnostics.flake8,
+        -- rust
+        require("null-ls").builtins.formatting.rustfmt,
         -- typescript
         require("null-ls").builtins.formatting.deno_fmt.with {
             condition = function(utils)

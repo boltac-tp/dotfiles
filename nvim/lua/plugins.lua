@@ -80,13 +80,13 @@ require('packer').startup(function(use)
         'jose-elias-alvarez/null-ls.nvim',
         requires = "nvim-lua/plenary.nvim"
     }
-    use {
-        'simrat39/rust-tools.nvim',
-        requires = 'mfussenegger/nvim-dap',
-        config = function()
-            require('rust-tools').setup({})
-        end,
-    }
+--    use {
+--        'simrat39/rust-tools.nvim',
+--        requires = 'mfussenegger/nvim-dap',
+--        config = function()
+--            require('rust-tools').setup({})
+--        end,
+--    }
 
     use {
         'j-hui/fidget.nvim',
