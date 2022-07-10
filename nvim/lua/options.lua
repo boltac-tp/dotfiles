@@ -25,9 +25,6 @@ opt.wrapscan = true
 opt.whichwrap = 'b', 's', 'h', 'l', '<', '>', '[', ']'
 opt.backspace = 'start', 'eol', 'indent'
 
-
 opt.helplang = 'ja', 'en'
-
-
 
 opt.clipboard:append({ unnamedplus = true })
