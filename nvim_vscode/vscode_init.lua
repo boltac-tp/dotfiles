@@ -7,6 +7,8 @@ end
 local packer = require("packer")
 packer.startup(function(use)
 	use("wbthomason/packer.nvim")
+	
+	use("ggandor/lightspeed.nvim")
 end
 )
 
