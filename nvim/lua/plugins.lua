@@ -10,29 +10,53 @@ local packer = require("packer")
 packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
+	use({ "vim-jp/vimdoc-ja" })
+
+	-------------------------------------------------
+	-- dependency                                  --
+	-------------------------------------------------
+
 	-------------------------------------------------
 	-- code                                        --
 	-------------------------------------------------
 
-	-- lsp & completion
-	use("neovim/nvim-lspconfig")
-	use("williamboman/nvim-lsp-installer")
+	-- treesitter
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		event = { "BufRead", "InsertEnter" },
+		requires = {
+			{ "yioneko/nvim-yati", after = "nvim-treesitter" },
+		},
+		config = function()
+			require("plugin.treesitter")
+		end,
+	})
 
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
-	use("hrsh7th/cmp-nvim-lsp-signature-help")
-	use("hrsh7th/cmp-nvim-lsp-document-symbol")
-	use("ray-x/cmp-treesitter")
-
-	use("hrsh7th/vim-vsnip")
-	use("hrsh7th/cmp-vsnip")
-
+	-- formatting
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
-		requires = "nvim-lua/plenary.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("plugin.null-ls")
+		end,
+	})
+
+	-- code actions
+	use({
+		"weilbith/nvim-code-action-menu",
+		cmd = "CodeActionMenu",
+		config = function()
+			vim.g.code_action_menu_show_details = false
+		end,
+	})
+
+	-- lsp
+	use("neovim/nvim-lspconfig")
+	use({
+		"williamboman/nvim-lsp-installer",
+		config = function()
+			require("plugin.lsp")
+		end,
 	})
 
 	use({
@@ -41,21 +65,25 @@ packer.startup(function(use)
 			require("fidget").setup()
 		end,
 	})
-	--
-	-- treesitter
-	use("nvim-treesitter/nvim-treesitter")
+
+	-- completion
 	use({
-		"yioneko/nvim-yati",
-		requires = "nvim-treesitter/nvim-treesitter",
+		"hrsh7th/nvim-cmp",
+		requires = {
+			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" },
+			{ "ray-x/cmp-treesitter", after = "nvim-cmp" },
+			{ "hrsh7th/vim-vsnip", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
+		},
+		event = { "InsertEnter", "CmdlineEnter" },
+		cmd = { "CmpStatus" },
 		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = "all",
-				highlight = {
-					enable = true,
-					additional_vim_regex_hilighting = false,
-				},
-				yati = { enable = true },
-			})
+			require("plugin.cmp")
 		end,
 	})
 
@@ -69,20 +97,32 @@ packer.startup(function(use)
 	-- auto brackets/tag
 	use({
 		"windwp/nvim-autopairs",
+		event = { "InsertEnter" },
 		config = function()
-			require("nvim-autopairs").setup()
+			require("nvim-autopairs").setup({
+				enable_check_bracket_line = false,
+			})
 		end,
 	})
-	use({
-		"windwp/nvim-ts-autotag",
-		config = function()
-			require("nvim-ts-autotag").setup()
-		end,
-	})
+	--	use({
+	--		"windwp/nvim-ts-autotag",
+	--		config = function()
+	--			require("nvim-ts-autotag").setup()
+	--		end,
+	--	})
 
 	-------------------------------------------------
 	-- utility                                     --
 	-------------------------------------------------
+
+	-- fuzzy finder
+	use({
+		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+		},
+	})
 
 	-- filer
 	use({
@@ -93,12 +133,6 @@ packer.startup(function(use)
 		end,
 	})
 
-	-- fuzzy finder
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
-
 	-------------------------------------------------
 	-- visual                                      --
 	-------------------------------------------------
@@ -106,6 +140,9 @@ packer.startup(function(use)
 	-- gitsigns
 	use({
 		"lewis6991/gitsigns.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		event = "BufRead",
+		cmd = "GitSigns",
 		config = function()
 			require("gitsigns").setup()
 		end,
@@ -150,13 +187,13 @@ packer.startup(function(use)
 	-------------------------------------------------
 	-- lunguages                                   --
 	-------------------------------------------------
-	use({
-		"simrat39/rust-tools.nvim",
-		requires = "mfussenegger/nvim-dap",
-		config = function()
-			require("rust-tools").setup({})
-		end,
-	})
+	--	use({
+	--		"simrat39/rust-tools.nvim",
+	--		requires = "mfussenegger/nvim-dap",
+	--		config = function()
+	--			require("rust-tools").setup({})
+	--		end,
+	--	})
 end)
 
 vim.cmd("colorscheme nordfox")

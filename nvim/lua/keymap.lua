@@ -7,7 +7,7 @@ s("i", "jj", "<ESC>", { noremap = true, silent = true })
 s("n", "<space>e", require("nvim-tree").toggle, { noremap = true, silent = true })
 
 -- telescope
-s("n", "<space>ff", require("telescope.builtin").find_files, { noremap = true })
-s("n", "<space>fg", require("telescope.builtin").live_grep, { noremap = true })
-s("n", "<space>fb", require("telescope.builtin").buffers, { noremap = true })
-s("n", "<space>fh", require("telescope.builtin").help_tags, { noremap = true })
+s("n", "<space>ff", "<cmd>Telescope find_files<CR>", { noremap = true })
+s("n", "<space>fg", "<cmd>Telescope live_grep<CR>", { noremap = true })
+s("n", "<space>fb", "<cmd>Telescope buffers<CR>", { noremap = true })
+s("n", "<space>fh", "<cmd>Telescope help_tags<CR>", { noremap = true })
