@@ -3,6 +3,9 @@ local s = vim.keymap.set
 -- jj to ESC
 s("i", "jj", "<ESC>", { noremap = true, silent = true })
 
+-- put <Esc> to nohlsearch
+s("n", "<Esc><Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true })
+
 -- nvim-tree
 s("n", "<space>e", require("nvim-tree").toggle, { noremap = true, silent = true })
 
