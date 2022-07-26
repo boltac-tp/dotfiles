@@ -41,15 +41,22 @@ lspconfig["rust_analyzer"].setup({
 	on_attach = on_attach,
 	settings = {
 		["rust-analyzer"] = {
-            checkOnSave = {
-                command = "clippy",
-            }
-        },
+			checkOnSave = {
+				command = "clippy",
+			},
+		},
 	},
 })
 
 lspconfig["sumneko_lua"].setup({
 	on_attach = on_attach,
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
 })
 
 lspconfig["gopls"].setup({
