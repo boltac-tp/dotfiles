@@ -26,7 +26,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<space>fmt", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 end
 
-require("nvim-lsp-installer").setup()
+require("mason-lspconfig").setup()
 local lspconfig = require("lspconfig")
 
 lspconfig["pyright"].setup({
