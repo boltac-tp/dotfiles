@@ -53,11 +53,11 @@ mkdir ~/.config
 # install : zsh
 
 sudo apt install -y zsh
-mkdir ~/.zsh
+mkdor ~/.sheldon
 ln -s ~/dotfiles/.zshenv ~/.zshenv
-ln -s ~/dotfiles/.zshrc ~/.zsh/.zshrc
-ln -s ~/dotfiles/.zlogin ~/.zsh/.zlogin
-ln -s ~/dotfiles/.zimrc ~/.zsh/.zimrc
+ln -s ~/dotfiles/.zshrc ~/.zshrc
+ln -s ~/dotfiles/.zlogin ~/.zlogin
+ln -s ~/dotfiles/sheldon/plugins.toml ~/.sheldon/plugins.toml
 sudo apt install -y shellcheck
 
 sudo chsh -s $(which zsh) $(whoami)
@@ -123,4 +123,4 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 
 /usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest
 /usr/local/go/bin/go install golang.org/x/tools/cmd/goimports@latest
-~/.cargo/bin/cargo install exa bat cargo-update cargo-edit cargo-compete
+~/.cargo/bin/cargo install exa bat cargo-update cargo-edit cargo-compete sheldon

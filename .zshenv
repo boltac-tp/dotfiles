@@ -1,15 +1,3 @@
-# Start configuration added by Zim install {{{
-#
-# User configuration sourced by all invocations of the shell
-#
-
-# Define Zim location
-#: ${ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim}
-# }}} End configuration added by Zim install
-
-export ZDOTDIR=$HOME/.zsh
-export ZIM_HOME=$HOME/.zim
-
 # local PATH
 export PATH="$HOME/.local/bin:$PATH"
 # rust PATH
@@ -24,10 +12,6 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 # deno PATH
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-
-
-
-fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # wslのパスをwinのパスに変換し、winのFirefoxに渡す
 if [[ "$(uname)" = 'Linux' ]] && [[ $(pgrep -c gnome-panel) -gt 0 ]]; then

@@ -1,26 +1,3 @@
-# Start configuration added by Zim install {{{
-#
-# User configuration sourced by login shells
-#
-
-# Initialize Zim
-source ${ZIM_HOME}/login_init.zsh -q &!
-# }}} End configuration added by Zim install
-
-
-#### SSH-agent ### -> remove because install keychain
-#if [ -z "$SSH_AUTH_SOCK" ]; then
-## Check for a currently running instance of the agent
-#   RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
-#   if [ "$RUNNING_AGENT" = "0" ]; then
-#        # Launch a new instance of the agent
-#        ssh-agent -s &> $HOME/.ssh/ssh-agent
-#   fi
-#   eval `cat $HOME/.ssh/ssh-agent`
-#fi
-
-#ssh-add $HOME/.ssh/id_rsa
-
 ### ssh-agent ###
 /usr/bin/keychain -q --nogui ~/.ssh/id_rsa
 source ~/.keychain/$HOST-sh
