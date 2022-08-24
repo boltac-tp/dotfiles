@@ -21,9 +21,9 @@ github = "chrissicool/zsh-256color"
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
 
-[plugins.pure]
-github = "sindresorhus/pure"
-use = ["async.zsh","pure.zsh"]
+#[plugins.pure]
+#github = "sindresorhus/pure"
+#use = ["async.zsh","pure.zsh"]
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"

@@ -22,3 +22,4 @@ if [[ $(command -v exa) ]]; then
 fi
 
 eval "$(sheldon source)"
+eval "$(starship init zsh)"
