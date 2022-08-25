@@ -53,7 +53,7 @@ mkdir ~/.config
 # install : zsh
 
 sudo apt install -y zsh
-mkdor ~/.sheldon
+mkdir ~/.sheldon
 ln -s ~/dotfiles/.zshenv ~/.zshenv
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.zlogin ~/.zlogin
