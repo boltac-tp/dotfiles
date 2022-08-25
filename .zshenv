@@ -13,6 +13,9 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+#fpath
+fpath=( ~/dotfiles/mycompletion "${fpath[@]}")
+
 # wslのパスをwinのパスに変換し、winのFirefoxに渡す
 if [[ "$(uname)" = 'Linux' ]] && [[ $(pgrep -c gnome-panel) -gt 0 ]]; then
   MY_ENV=GNOME
