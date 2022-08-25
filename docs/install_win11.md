@@ -21,6 +21,7 @@ Nvidia ドライバ
 ### fonts
 
 [Hackgen](https://github.com/yuru7/HackGen)
+```choco install font-hackgen-nerd```
 
 ### wsl
 
@@ -62,9 +63,9 @@ ubuntu の導入
 | Thorium                      | EDRlab.Thorium                   |
 
 ### scoop
-
-neovim  
 sudo
+
+### choco
 
 ### powershell
 vim-plug
