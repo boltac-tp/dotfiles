@@ -30,7 +30,7 @@ ubuntu の導入
 ### winget
 
 | name                         | id                               |
-| ---------------------------- | -------------------------------- | -------- |
+| ---------------------------- | -------------------------------- |
 | PowerToys(Preview)           | Microsoft.PowerToys              |
 | 7-Zip                        | 7zip.7zip                        |
 | Google Chrome                | Google.Chrome                    |
@@ -57,7 +57,7 @@ ubuntu の導入
 | QNAP Qfinder Pro             | QNAP.Qfinderpro                  |
 | AutoHotkey                   | Lexikos.AutoHotkey               |
 | calibre                      | calibre.calibre                  |
-| DeepL                        | DeepL.DeepL                      | \*\*\*\* |
+| DeepL                        | DeepL.DeepL                      | 
 | GIMP                         | GIMP.GIMP                        |
 | Thorium                      | EDRlab.Thorium                   |
 
