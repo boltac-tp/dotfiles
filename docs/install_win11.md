@@ -40,6 +40,7 @@ ubuntu の導入
 | PowerShell                   | Microsoft.Powershell             |
 | Microsoft Visual Studio Code | Microsoft.VisualStudioCode       |
 | Git                          | Git.Git                          |
+| Neovim                       | Neovim.Neovim                    |
 | Python 3                     | Python.Python.3                  |
 | Docker Desktop               | Docker.DockerDesktop             |
 | KeePass                      | DominikReichl.Keepass            |
@@ -66,7 +67,6 @@ neovim
 sudo
 
 ### powershell
-
 vim-plug
 
 ### store app
