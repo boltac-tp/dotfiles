@@ -20,7 +20,7 @@ Nvidia ドライバ
 
 ### fonts
 
-[Hackgen](https://github.com/yuru7/HackGen)
+[Hackgen](https://github.com/yuru7/HackGen)  
 ```choco install font-hackgen-nerd```
 
 ### wsl
@@ -44,7 +44,6 @@ ubuntu の導入
 | Neovim                       | Neovim.Neovim                    |
 | Python 3                     | Python.Python.3                  |
 | Docker Desktop               | Docker.DockerDesktop             |
-| KeePass                      | DominikReichl.Keepass            |
 | KeePassXC                    | KeepassXCteam.KeepassXC          |
 | Modilla Thunderbird          | Mozilla.Thunderbird              |
 | Notepad++                    | Notepad++.Notepad++              |
@@ -62,13 +61,10 @@ ubuntu の導入
 | GIMP                         | GIMP.GIMP                        |
 | Thorium                      | EDRlab.Thorium                   |
 
-### scoop
+### choco
 sudo
 
-### choco
-
 ### powershell
-vim-plug
 
 ### store app
 
