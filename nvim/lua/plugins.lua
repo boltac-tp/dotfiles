@@ -10,7 +10,7 @@ local packer = require("packer")
 packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
-	use({ "vim-jp/vimdoc-ja" })
+	use("vim-jp/vimdoc-ja")
 
 	-------------------------------------------------
 	-- dependency                                  --
@@ -23,6 +23,7 @@ packer.startup(function(use)
 	-- treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
 		event = { "BufRead", "InsertEnter" },
 		requires = {
 			{ "yioneko/nvim-yati", after = "nvim-treesitter" },
@@ -52,13 +53,13 @@ packer.startup(function(use)
 
 	-- lsp
 	use("neovim/nvim-lspconfig")
-    	use({
+	use({
 		"williamboman/mason.nvim",
-        	config = function()
-            		require("mason").setup()
-        	end,
-    	})
-	
+		config = function()
+			require("mason").setup()
+		end,
+	})
+
 	use({
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
@@ -136,7 +137,7 @@ packer.startup(function(use)
 		"kyazdani42/nvim-tree.lua",
 		requires = { "kyazdani42/nvim-web-devicons" },
 		config = function()
-			require("nvim-tree").setup({})
+			require("nvim-tree").setup()
 		end,
 	})
 
