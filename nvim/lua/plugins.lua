@@ -74,6 +74,8 @@ packer.startup(function(use)
 		end,
 	})
 
+	use({ "onsails/lspkind.nvim" })
+	--
 	-- completion
 	use({
 		"hrsh7th/nvim-cmp",

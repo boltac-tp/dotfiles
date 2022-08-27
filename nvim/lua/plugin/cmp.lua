@@ -24,6 +24,12 @@ cmp.setup({
 	}, {
 		{ name = "buffer" },
 	}),
+    formatting = {
+        format = require("lspkind").cmp_format({
+            mode = 'symbol_text',
+            maxwidth = 50,
+        })
+    }
 })
 
 cmp.setup.cmdline("/", {
