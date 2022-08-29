@@ -76,6 +76,15 @@ packer.startup(function(use)
 
 	use({ "onsails/lspkind.nvim" })
 
+	use({
+		"glepnir/lspsaga.nvim",
+		branch = "main",
+		config = function()
+			local saga = require("lspsaga")
+			saga.init_lsp_saga()
+		end,
+	})
+
 	-- completion
 	use({
 		"hrsh7th/nvim-cmp",
@@ -128,7 +137,7 @@ packer.startup(function(use)
 	-- fuzzy finder
 	use({
 		"nvim-telescope/telescope.nvim",
-        cmd = "Telescope",
+		cmd = "Telescope",
 		requires = {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-file-browser.nvim" },
