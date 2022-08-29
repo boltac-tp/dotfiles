@@ -19,6 +19,7 @@ require("null-ls").setup({
 			end,
 			prefer_local = "node_mofules/.bin",
 		}),
+        -- go
 		require("null-ls").builtins.formatting.gofmt,
 		require("null-ls").builtins.formatting.goimports,
 	},

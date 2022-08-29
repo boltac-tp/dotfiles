@@ -75,7 +75,7 @@ packer.startup(function(use)
 	})
 
 	use({ "onsails/lspkind.nvim" })
-	--
+
 	-- completion
 	use({
 		"hrsh7th/nvim-cmp",
@@ -128,12 +128,13 @@ packer.startup(function(use)
 	-- fuzzy finder
 	use({
 		"nvim-telescope/telescope.nvim",
-		cmd = "Telescope",
+        cmd = "Telescope",
 		requires = {
 			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope-file-browser.nvim" },
 		},
 		config = function()
-			require("telescope").setup()
+			require("plugin.telescope")
 		end,
 	})
 
