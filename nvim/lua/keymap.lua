@@ -44,11 +44,6 @@ end, { silent = true })
 s("n", "<space>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
 -- Hovor Doc
 s("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
--- scroll in hover doc or definition preview window
-local action = require("lspsaga.action")
-s("n", "<C-f>", function()
-	action.smart_scroll_with_saga(1)
-end, { silent = true })
-s("n", "<C-b>", function()
-	action.smart_scroll_with_saga(-1)
-end, { silent = true })
+-- float terminal
+s("n", "<A-t>", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
+s("t", "<A-t>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
