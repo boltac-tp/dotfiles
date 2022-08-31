@@ -47,3 +47,7 @@ s("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 -- float terminal
 s("n", "<A-t>", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
 s("t", "<A-t>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
+
+--buffer line
+s("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", {})
+s("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", {})
