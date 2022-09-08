@@ -44,7 +44,7 @@ alias egrep='egrep --color=auto'
 
 # alias cat
 if [[ $(command -v batcat) ]]; then
-    alias bat = batcat
+    alias bat ='batcat'
     export PAGER='bat'
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 elif [[ $(command -v bat) ]]; then
