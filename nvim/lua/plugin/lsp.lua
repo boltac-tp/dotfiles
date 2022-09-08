@@ -62,3 +62,5 @@ lspconfig["sumneko_lua"].setup({
 lspconfig["gopls"].setup({
 	on_attach = on_attach,
 })
+
+lspconfig["bashls"].setup{}

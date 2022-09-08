@@ -10,6 +10,11 @@
 #
 # See the documentation for more https://github.com/rossmacarthur/sheldon#readme
 
+# For example:
+#
+# [plugins.base16]
+# github = "chriskempson/base16-shell"
+
 shell = "zsh"
 
 [plugins.zsh-defer]
@@ -20,10 +25,6 @@ github = "chrissicool/zsh-256color"
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
-
-#[plugins.pure]
-#github = "sindresorhus/pure"
-#use = ["async.zsh","pure.zsh"]
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
@@ -39,7 +40,3 @@ github = "marlonrichert/zsh-autocomplete"
 [templates]
 defer = { value = 'zsh-defer source "{{ file }}"', each = true }
 
-# For example:
-#
-# [plugins.base16]
-# github = "chriskempson/base16-shell"
