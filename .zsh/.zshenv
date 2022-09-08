@@ -1,3 +1,5 @@
+export ZDOTDIR="$HOME/.zsh"
+
 # local PATH
 export PATH="$HOME/.local/bin:$PATH"
 # rust PATH
@@ -14,7 +16,7 @@ export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 #fpath
-fpath=( ~/dotfiles/mycompletion "${fpath[@]}")
+fpath=( ~/.zsh/completion "${fpath[@]}")
 
 # wslのパスをwinのパスに変換し、winのFirefoxに渡す
 if [[ "$(uname)" = 'Linux' ]] && [[ $(pgrep -c gnome-panel) -gt 0 ]]; then
