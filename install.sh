@@ -57,6 +57,7 @@ mkdir ~/.zsh
 ln -s ~/dotfiles/.zsh/.zshenv ~/.zshenv
 ln -s ~/dotfiles/.zsh/.zshrc ~/.zsh/.zshrc
 ln -s ~/dotfiles/.zsh/.zlogin ~/.zsh/.zlogin
+on -s ~/dotfiles/.zsh/completions ~/.zsh/completions
 sudo apt install -y shellcheck
 
 sudo chsh -s "$(which zsh)" "$(whoami)"

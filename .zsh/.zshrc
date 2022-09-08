@@ -28,7 +28,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 
 #fpath
-fpath=(~/.zsh/completion $fpath)
+fpath=(~/.zsh/completions $fpath)
 
 
 # wslのパスをwinのパスに変換し、winのFirefoxに渡す
