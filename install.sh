@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # 利用環境の特定
-
 if [[ "$(uname)" = 'Linux' ]] && [[ $(pgrep -c gnome-panel) -gt 0 ]]; then
   MY_ENV=GNOME
 elif [[ "$(uname)" = 'Linux' ]] && [[ $(pgrep -c plasmashell) -gt 0 ]]; then
@@ -51,7 +50,6 @@ sudo apt install -y unzip cmake curl pkg-config libfreetype6-dev libfontconfig1-
 mkdir ~/.config
 
 # install : zsh
-
 sudo apt install -y zsh
 mkdir ~/.zsh
 ln -s ~/dotfiles/.zsh/.zshenv ~/.zshenv
@@ -61,7 +59,6 @@ on -s ~/dotfiles/.zsh/completions ~/.zsh/completions
 sudo apt install -y shellcheck
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
-
 sudo apt install -y openssh-client socat keychain
 
 # install : tmux
@@ -70,7 +67,6 @@ sudo apt install -y tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # install : git
-
 sudo add-apt-repository ppa:git-core/ppa -y
 sudo apt update && sudo apt install -y git
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
@@ -120,13 +116,14 @@ sudo apt update && sudo apt install -y vim neovim
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
 # その他のapp
-
 /usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest
 /usr/local/go/bin/go install golang.org/x/tools/cmd/goimports@latest
 ~/.cargo/bin/cargo install exa bat cargo-update cargo-edit cargo-compete sheldon ripgrep
 ~/.cargo/bin/cargo install starship --locked
 
-#sheldon init --shell zsh
-#mkdir -p ~/.sheldon
-#ln -s ~/dotfiles/sheldon/plugins.toml ~/.sheldon/plugins.toml
+# sheldon setting
+mkdir -p ~/.sheldon
+mkdir -p ~/.config/sheldon
+ln -s ~/dotfiles/sheldon/plugins.toml ~/.sheldon/plugins.toml
+ln -s ~/dotfiles/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
 
