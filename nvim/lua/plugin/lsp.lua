@@ -26,7 +26,16 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<space>fmt", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 end
 
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {
+    "pyright",
+    "tsserver",
+    "rust-analyzer",
+    "sumneko_lua",
+    "gopls",
+    "bashls",
+    }
+})
 local lspconfig = require("lspconfig")
 
 lspconfig["pyright"].setup({
