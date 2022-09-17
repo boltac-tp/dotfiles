@@ -9,10 +9,3 @@ wget https://github.com/gohugoio/hugo/releases/download/v${VERSION}/hugo_extende
 sudo dpkg -i ./hugo_extended_${VERSION}_Linux-64bit.deb
 rm ./hugo_extended_${VERSION}_Linux-64bit.deb
 
-# if [ ! -d ~/site ]; then
-#   cd
-#   mkdir -p ~/site
-#   cd ~/site
-#   git clone --recursive git@github.com:boltac-tp/boltac.git
-#   git clone --recursive git@github.com:boltac-tp/debit.git
-# fi

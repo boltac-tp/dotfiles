@@ -103,17 +103,24 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # install : go
 GO_VER=$(git ls-remote https://github.com/golang/go | grep refs/tags | grep -oE "[0-9]\.[0-9]??[0-9]?\.[0-9]??[0-9]?" | sort --version-sort | tail -n 1)
-wget -q https://golang.org/dl/go"${GO_VER}".linux-amd64.tar.gz
 if [ -d /usr/local/go ]; then
    sudo rm -rf /usr/local/go
 fi
-sudo tar -C /usr/local -xzf go"${GO_VER}".linux-amd64.tar.gz
-rm go"${GO_VER}".linux-amd64.tar.gz
+curl -L https://go.dev/dl/go"${GO_VER}".lunux-amd64.tar.gz | sudo tar -C /usr/local -xzf go"${GO_VER}".linux-amd64.tar.gz
 
 # install : vim
 sudo add-apt-repository ppa:neovim-ppa/unstable -y
 sudo apt update && sudo apt install -y vim neovim
 ln -s ~/dotfiles/nvim ~/.config/nvim
+
+# install : docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt update && sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo usermod -aG docker "${USER}"
 
 # その他のapp
 /usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest
