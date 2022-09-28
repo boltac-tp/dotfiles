@@ -123,12 +123,15 @@ packer.startup(function(use)
 			})
 		end,
 	})
-	--	use({
-	--		"windwp/nvim-ts-autotag",
-	--		config = function()
-	--			require("nvim-ts-autotag").setup()
-	--		end,
-	--	})
+
+	-- nvim-surround
+	use({
+		"kylechui/nvim-surround",
+		tag = "*",
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	})
 
 	-------------------------------------------------
 	-- utility                                     --
@@ -164,8 +167,8 @@ packer.startup(function(use)
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
-		event = "BufRead",
-		cmd = "GitSigns",
+		-- event = "BufRead",
+		-- cmd = "GitSigns",
 		config = function()
 			require("gitsigns").setup()
 		end,
@@ -221,17 +224,6 @@ packer.startup(function(use)
 			})
 		end,
 	})
-
-	-------------------------------------------------
-	-- lunguages                                   --
-	-------------------------------------------------
-	--	use({
-	--		"simrat39/rust-tools.nvim",
-	--		requires = "mfussenegger/nvim-dap",
-	--		config = function()
-	--			require("rust-tools").setup({})
-	--		end,
-	--	})
 end)
 
 vim.cmd("colorscheme nordfox")
@@ -243,3 +235,4 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	command = "source <afile> | PackerCompile",
 	once = false,
 })
+

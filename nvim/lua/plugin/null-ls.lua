@@ -1,26 +1,30 @@
-require("null-ls").setup({
+local null_ls = require("null-ls")
+
+null_ls.setup({
 	sources = {
+        -- gitsigns
+        -- null_ls.builtins.code_actions.gitsigns,
 		-- lua
-		require("null-ls").builtins.formatting.stylua,
+		null_ls.builtins.formatting.stylua,
 		-- python
-		require("null-ls").builtins.formatting.black,
-		require("null-ls").builtins.diagnostics.flake8,
+		null_ls.builtins.formatting.black,
+		null_ls.builtins.diagnostics.flake8,
 		-- rust
-		require("null-ls").builtins.formatting.rustfmt,
+		null_ls.builtins.formatting.rustfmt,
 		-- typescript
-		require("null-ls").builtins.formatting.deno_fmt.with({
+		null_ls.builtins.formatting.deno_fmt.with({
 			condition = function(utils)
 				return not (utils.has_file({ ".prettierrc", "prettierrc.js", "deno.json", "deno.jsonc" }))
 			end,
 		}),
-		require("null-ls").builtins.formatting.prettier.with({
+		null_ls.builtins.formatting.prettier.with({
 			condition = function(utils)
 				return utils.has_file({ ".prettierrc", ".prettierrc.js" })
 			end,
 			prefer_local = "node_mofules/.bin",
 		}),
         -- go
-		require("null-ls").builtins.formatting.gofmt,
-		require("null-ls").builtins.formatting.goimports,
+		null_ls.builtins.formatting.gofmt,
+		null_ls.builtins.formatting.goimports,
 	},
 })
