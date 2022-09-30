@@ -11,39 +11,11 @@ else
   MY_ENV=Windows
 fi
 
+export MY_ENV
+
 echo $MY_ENV
 sudo sed -i.bak -r 's!http://(security|us.archive).ubuntu.com/ubuntu!http://ftp.riken.jp/Linux/ubuntu!' /etc/apt/sources.list
 sudo apt update && sudo apt upgrade -y
-
-if [[ $MY_ENV = GNOME ]] || [[ $MY_ENV = KDE ]]; then
-  sudo apt remove --purge "libreoffice*" -y
-
-  sudo apt install -y remmina remmina-plugin-rdp
-  
-  sudo add-apt-repository ppa:solaar-unifying/stable -y
-  sudo apt update
-  sudo apt install -y solaar
-
-  wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-  sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
-  sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-  rm -f packages.microsoft.gpg
-
-  sudo apt install -y apt-transport-https
-  sudo apt update
-  sudo apt install -y code
-
-  if [[ $MY_ENV = GNOME ]]; then
-    # script for Ubuntu
-    LANG=C xdg-user-dirs-gtk-update
-    sudo snap remove --purge firefox -y
-    sudo apt install -y keepassxc gnome-tweaks firefox
-  elif [[ $MY_ENV = KDE ]]; then
-    # script for Kubuntu
-    sudo apt install -y xdg-user-dirs gnome-keyring
-    LANG=C xdg-user-dirs-update --force
-  fi
-fi
 
 # install some dev dependency
 sudo apt install -y unzip cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev
@@ -70,20 +42,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 sudo add-apt-repository ppa:git-core/ppa -y
 sudo apt update && sudo apt install -y git
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-
-# install : some fonts
-HACK_GEN_NERD_VER=$(git ls-remote https://github.com/yuru7/HackGen | grep refs/tags | grep -oE "v[0-9]\.[0-9][0-9]?\.[0-9][0-9]?" | sort --version-sort | tail -n 1)
-PLEMOL_NERD_VER=$(git ls-remote https://github.com/yuru7/Plemoljp | grep refs/tags | grep -oE "v[0-9]\.[0-9][0-9]?\.[0-9][0-9]?" | sort --version-sort | tail -n 1)
-if [[ $MY_ENV != WSL ]]; then
-  wget -q https://github.com/yuru7/HackGen/releases/download/"${HACK_GEN_NERD_VER}"/HackGenNerd_"${HACK_GEN_NERD_VER}".zip
-  unzip HackGenNerd_"${HACK_GEN_NERD_VER}".zip
-  sudo cp HackGenNerd_"${HACK_GEN_NERD_VER}"/HackGenNerdConsole* /usr/local/share/fonts
-  rm -rf HackGenNerd*
-  wget -q https://github.com/yuru7/PlemolJP/releases/download/"${PLEMOL_NERD_VER}"/PlemolJP_"${PLEMOL_NERD_VER}".zip
-  unzip PlemolJP_"${PLEMOL_NERD_VER}".zip
-  sudo cp PlemolJP_"${PLEMOL_NERD_VER}"/PlemolJPConsole/PlemolJPConsole* /usr/local/share/fonts
-  rm -rf PlemolJP*
-fi
 
 # install : node
 curl https://get.volta.sh | bash -s -- --skip-setup
@@ -133,4 +91,8 @@ mkdir -p ~/.sheldon
 mkdir -p ~/.config/sheldon
 ln -s ~/dotfiles/sheldon/plugins.toml ~/.sheldon/plugins.toml
 ln -s ~/dotfiles/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
+
+if [[ $MY_ENV != WSL ]]; then
+    ~/dotfiles/scripts/install_desktop.sh
+fi
 

@@ -8,6 +8,7 @@ elif [[ "$(uname -r)" = *microsoft* ]]; then
 else
   MY_ENV=Windows
 fi
+export MY_ENV
 
 # local PATH
 export PATH="$HOME/.local/bin:$PATH"
