@@ -78,7 +78,7 @@ fi
 
 # apps
 alias weather='curl wttr.in/sapporo'
-
+alias wezterm='flatpak run org.wezfurlong.wezterm'
 
 eval "$(sheldon source)"
 eval "$(starship init zsh)"
