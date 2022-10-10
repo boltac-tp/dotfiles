@@ -7,7 +7,7 @@ local on_attach = function(client, bufnr)
 	client.server_capabilities.documentFormattingProvider = false
 
 	local opts = { noremap = true, silent = true }
-    buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	--buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	--buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
@@ -27,16 +27,17 @@ local on_attach = function(client, bufnr)
 end
 
 require("mason-lspconfig").setup({
-    ensure_installed = {
-    "pyright",
-    "tsserver",
-    "rust-analyzer",
-    "sumneko_lua",
-    "gopls",
-    "bashls",
-    }
+	ensure_installed = {
+		"pyright",
+		"tsserver",
+		"rust-analyzer",
+		"sumneko_lua",
+		"gopls",
+		"bashls",
+	},
 })
 local lspconfig = require("lspconfig")
+local util = require("lspconfig/util")
 
 lspconfig["pyright"].setup({
 	on_attach = on_attach,
@@ -70,6 +71,17 @@ lspconfig["sumneko_lua"].setup({
 
 lspconfig["gopls"].setup({
 	on_attach = on_attach,
+	cmd = { "gopls", "serve" },
+	filetypes = { "go", "gomod" },
+	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	},
 })
 
-lspconfig["bashls"].setup{}
+lspconfig["bashls"].setup({})
