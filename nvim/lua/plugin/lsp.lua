@@ -28,25 +28,47 @@ end
 
 require("mason-lspconfig").setup({
 	ensure_installed = {
+		-- python
 		"pyright",
-		"tsserver",
-		"rust-analyzer",
+--		"black",
+--		"flake8",
+--		"isort",
+		-- rust
+		"rust_analyzer",
+		-- lua
 		"sumneko_lua",
+--		"stylua",
+		-- go
 		"gopls",
+--		"goimports",
+		-- shell
 		"bashls",
+		-- javascript
+		"tsserver",
 	},
 })
 local lspconfig = require("lspconfig")
 local util = require("lspconfig/util")
 
+-- for python
+local virtual_env_path = vim.trim(vim.fn.system("poetry config virtualenvs.path"))
+local virtual_env_dirctory = vim.trim(vim.fn.system("poetry env list"))
+
+local python_path = "python"
+if #vim.split(virtual_env_dirctory, "\n") == 1 then
+	python_path = string.format("%s/%s/bin/python", virtual_env_path, virtual_env_dirctory)
+end
+
 lspconfig["pyright"].setup({
 	on_attach = on_attach,
+	settings = {
+		python = {
+			pythonPath = python_path,
+		},
+	},
 })
 
-lspconfig["tsserver"].setup({
-	on_attach = on_attach,
-})
-
+-- for rust
 lspconfig["rust_analyzer"].setup({
 	on_attach = on_attach,
 	settings = {
@@ -58,17 +80,7 @@ lspconfig["rust_analyzer"].setup({
 	},
 })
 
-lspconfig["sumneko_lua"].setup({
-	on_attach = on_attach,
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" },
-			},
-		},
-	},
-})
-
+-- for golang
 lspconfig["gopls"].setup({
 	on_attach = on_attach,
 	cmd = { "gopls", "serve" },
@@ -83,5 +95,22 @@ lspconfig["gopls"].setup({
 		},
 	},
 })
+
+lspconfig["tsserver"].setup({
+	on_attach = on_attach,
+})
+
+
+lspconfig["sumneko_lua"].setup({
+	on_attach = on_attach,
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
+})
+
 
 lspconfig["bashls"].setup({})
