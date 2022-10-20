@@ -38,5 +38,5 @@ apply = ["defer"]
 github = "marlonrichert/zsh-autocomplete"
 
 [templates]
-defer = { value = 'zsh-defer source "{{ file }}"', each = true }
+defer = "{% for file in files %}zsh-defer source \"{{ file}}\"\n{% endfor %}"
 
