@@ -26,7 +26,7 @@ s("v", "<space>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true }
 -- rename
 s("n", "<space>rn", "<cmd>Lspsaga rename<CR>", { silent = true })
 -- Definition preview
-s("n", "gd", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
+s("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
 -- Show diagonostics
 s("n", "<space>d", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
 s("n", "<space>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
