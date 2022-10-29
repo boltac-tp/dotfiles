@@ -79,6 +79,7 @@ fi
 # apps
 alias weather='curl wttr.in/sapporo'
 alias wezterm='flatpak run org.wezfurlong.wezterm'
+alias pbcopy='xsel --clipboard --input'
 
 eval "$(sheldon source)"
 eval "$(starship init zsh)"

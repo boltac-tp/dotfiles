@@ -6,6 +6,9 @@ sudo apt remove --purge "libreoffice*" -y
 sudo apt -y install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+# install xsel
+sudo apt -y install xsel
+
 # install remmina
 sudo apt install -y remmina remmina-plugin-rdp
 
