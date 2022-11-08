@@ -137,6 +137,13 @@ packer.startup(function(use)
 	-- utility                                     --
 	-------------------------------------------------
 
+	-- terminal
+	use({
+		"akinsho/toggleterm.nvim",
+		config = function()
+			require("plugin.toggleterm")
+		end,
+	})
 	-- fuzzy finder
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -235,4 +242,3 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	command = "source <afile> | PackerCompile",
 	once = false,
 })
-

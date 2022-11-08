@@ -19,6 +19,10 @@ sudo apt update && sudo apt upgrade -y
 
 # install some dev dependency
 sudo apt install -y unzip cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev
+# install dependency for pyenv
+sudo apt update
+sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
 mkdir ~/.config
 
 # install : zsh
@@ -52,19 +56,25 @@ curl -fsSL https://deno.land/install.sh | sh
 
 # install : python
 sudo apt install -y python3-venv python3-pip
+
+# install : pyenv
+curl https://pyenv.run | bash
+~/.pyenv/bin/pyenv update
+
+# install : poetry
 curl -sSL https://install.python-poetry.org | python3 - 
 ~/.local/bin/poetry config virtualenvs.in-project true
+
+# install : pipx
 python3 -m pip install --user pipx
 pipx install pre-commit
+
 # install : rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # install : go
-GO_VER=$(git ls-remote https://github.com/golang/go | grep refs/tags | grep -oE "[0-9]\.[0-9]??[0-9]?\.[0-9]??[0-9]?" | sort --version-sort | tail -n 1)
-if [ -d /usr/local/go ]; then
-   sudo rm -rf /usr/local/go
-fi
-curl -L https://go.dev/dl/go"${GO_VER}".lunux-amd64.tar.gz | sudo tar -C /usr/local -xzf go"${GO_VER}".linux-amd64.tar.gz
+LATEST_GO_VER=$(git ls-remote https://github.com/golang/go | grep refs/tags | grep -oE "[0-9]\.[0-9]??[0-9]?\.[0-9]??[0-9]?" | sort --version-sort | tail -n 1)
+curl -L https://go.dev/dl/go"${LATEST_GO_VER}".lunux-amd64.tar.gz | sudo tar xzf - -C /usr/local -xzf
 
 # install : vim
 sudo add-apt-repository ppa:neovim-ppa/unstable -y
@@ -96,4 +106,16 @@ ln -s ~/dotfiles/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
 if [[ $MY_ENV != WSL ]]; then
     ~/dotfiles/scripts/install_desktop.sh
 fi
+
+# for atcoder
+~/.cargo/bin/rustup install 1.42.0
+~/.pyenv/bin/pyenv install 3.8.2
+~/.pyenv/bin/pyenv install pypy3.6-7.2.0
+pipx install online-judge-tools
+npm install -g atcoder-cli
+
+acc config-dir
+acc config default-template python
+acc config default-test-dirname-format test
+acc config default-tast-choice all
 

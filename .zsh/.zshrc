@@ -10,10 +10,15 @@ else
 fi
 export MY_ENV
 
+
 # local PATH
 export PATH="$HOME/.local/bin:$PATH"
 # rust PATH
 export PATH="$HOME/.cargo/bin:$PATH"
+# pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
 # go-lang path
@@ -26,7 +31,6 @@ export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 # cargo PATH
 . "$HOME/.cargo/env"
-
 
 #fpath
 fpath=(~/.zsh/completions $fpath)
