@@ -117,7 +117,7 @@ npm install -g atcoder-cli
 acc config-dir
 acc config default-template python
 acc config default-test-dirname-format test
-acc config default-tast-choice all
+acc config default-task-choice all
 mkdir -p ~/.config/atcoder-cli-nodejs/python
 ln -s ~/dotfiles/atcoder-cli/template.json ~/.config/atcoder-cli-nodejs/python/template.json
 cp ~/dotfiles/atcoder-cli/main.py ~/.config/atcoder-cli-nodejs/python/main.py
