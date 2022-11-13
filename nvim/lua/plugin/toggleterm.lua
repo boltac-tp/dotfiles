@@ -24,4 +24,3 @@ function _G.set_terminal_keymaps()
 end
 
 vim.cmd("autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()")
-vim.cmd("autocmd! TermEnter term://")

@@ -10,15 +10,15 @@ s("i", "jj", "<ESC>", { noremap = true, silent = true })
 s("n", "<Esc><Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true })
 
 -- nvim-tree
-s("n", "<space>e", require("nvim-tree").toggle, { noremap = true, silent = true })
+s("n", "<leader>e", require("nvim-tree").toggle, { noremap = true, silent = true })
 
 -- telescope
-s("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { noremap = true })
-s("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { noremap = true })
---s("n", "<space>fb", "<cmd>Telescope buffers<CR>", { noremap = true })
-s("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { noremap = true })
--- telescope file browser
-s("n", "<leader>fb", "<cmd>Telescope file_browser<CR>", { noremap = true })
+local telescope = require("telescope")
+local telescope_builtin = require("telescope.builtin")
+s("n", "<leader>ff", telescope_builtin.find_files, { noremap = true })
+s("n", "<leader>fg", telescope_builtin.live_grep, { noremap = true })
+s("n", "<leader>fh", telescope_builtin.help_tags, { noremap = true })
+s("n", "<leader>fb", telescope.extensions.file_browser.file_browser, { noremap = true })
 
 -- lspsaga
 -- lsp finder

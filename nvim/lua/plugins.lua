@@ -1,20 +1,26 @@
 -- packer install
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-	vim.api.nvim_command("packadd packer.nvim")
+local ensure_packer = function()
+	local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+		vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
 end
 
-local packer = require("packer")
+local packer_bootstrap = ensure_packer()
 
-packer.startup(function(use)
-	use("wbthomason/packer.nvim")
+return require("packer").startup(function(use)
+	use({ "wbthomason/packer.nvim", opt = true })
 
 	use("vim-jp/vimdoc-ja")
 
 	-------------------------------------------------
 	-- dependency                                  --
 	-------------------------------------------------
+
+	use("nvim-lua/plenary.nvim")
 
 	-------------------------------------------------
 	-- code                                        --
@@ -147,9 +153,10 @@ packer.startup(function(use)
 	-- fuzzy finder
 	use({
 		"nvim-telescope/telescope.nvim",
-		cmd = "Telescope",
 		requires = {
 			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+			{ "kyazdani42/nvim-web-devicons" },
 			{ "nvim-telescope/telescope-file-browser.nvim" },
 		},
 		config = function()
@@ -231,14 +238,8 @@ packer.startup(function(use)
 			})
 		end,
 	})
+	if packer_bootstrap then
+		require("packer").sync()
+	end
+	vim.cmd("colorscheme nordfox")
 end)
-
-vim.cmd("colorscheme nordfox")
-
-vim.api.nvim_create_augroup("PackerCompile", {})
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	group = "PackerCompile",
-	pattern = "plugins.lua",
-	command = "source <afile> | PackerCompile",
-	once = false,
-})

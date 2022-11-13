@@ -1,4 +1,6 @@
-require("telescope").setup({
+local telescope = require("telescope")
+
+telescope.setup({
 	defaults = {
 		mappings = {
 			n = {
@@ -13,4 +15,4 @@ require("telescope").setup({
 	},
 })
 
-require("telescope").load_extension("file_browser")
+telescope.load_extension("file_browser")

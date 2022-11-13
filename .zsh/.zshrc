@@ -80,6 +80,11 @@ else
   alias la='ls -A'
 fi
 
+# alias atcoder
+alias acctp='oj t -c "python3 main.py" -d ./test/'
+alias acctpp='oj t -c "pypy main.py" -d ./test/'
+alias accspp='acc s main.py -- --guess-python-interpreter pypy'
+
 # apps
 alias weather='curl wttr.in/sapporo'
 alias wezterm='flatpak run org.wezfurlong.wezterm'
