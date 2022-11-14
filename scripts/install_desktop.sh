@@ -39,6 +39,10 @@ elif [[ $MY_ENV = KDE ]]; then
   #  for Kubuntu
   sudo apt install -y xdg-user-dirs gnome-keyring
   LANG=C xdg-user-dirs-update --force
+
+  # KDE-plasma backports
+  sudo add-apt-repository -y ppa:kubuntu-ppa/backports
+  sudo apt update && sudo apt upgrade -y
 fi
 
 # install fonts
