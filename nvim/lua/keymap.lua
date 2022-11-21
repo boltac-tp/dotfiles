@@ -20,6 +20,12 @@ s("n", "<leader>fg", telescope_builtin.live_grep, { noremap = true })
 s("n", "<leader>fh", telescope_builtin.help_tags, { noremap = true })
 s("n", "<leader>fb", telescope.extensions.file_browser.file_browser, { noremap = true })
 
+-- lsp
+--s("n", "<space>d", vim.diagnostic.open_float , { noremap = true, silent = true })
+--s("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
+--s("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
+s("n", "<leader>q", vim.diagnostic.setloclist, { noremap = true, silent = true })
+
 -- lspsaga
 -- lsp finder
 s("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
@@ -52,5 +58,5 @@ s("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 -- s("t", "<A-t>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
 
 --buffer line
-s("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", {})
-s("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", {})
+s("n", "]b", "<Cmd>BufferLineCycleNext<CR>", {})
+s("n", "[b", "<Cmd>BufferLineCyclePrev<CR>", {})

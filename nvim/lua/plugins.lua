@@ -12,7 +12,18 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require("packer").startup(function(use)
+	-------------------------------------------------
+	-- init                                        --
+	-------------------------------------------------
+
 	use({ "wbthomason/packer.nvim", opt = true })
+
+	use({
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+		end,
+	})
 
 	use("vim-jp/vimdoc-ja")
 
@@ -21,10 +32,73 @@ return require("packer").startup(function(use)
 	-------------------------------------------------
 
 	use("nvim-lua/plenary.nvim")
+	use("kyazdani42/nvim-web-devicons")
 
 	-------------------------------------------------
-	-- code                                        --
+	-- completion                                  --
 	-------------------------------------------------
+
+	use({ "windwp/nvim-autopairs" })
+
+	use({
+		"hrsh7th/nvim-cmp",
+		requires = {
+			{ "L3MON4D3/LuaSnip" },
+			{ "windwp/nvim-autopairs" },
+		},
+		config = function()
+			require("plugin.nvim-cmp")
+		end,
+	})
+
+	use({
+		"onsails/lspkind.nvim",
+		module = "lspkind",
+		config = function()
+			require("plugin.lspkind-nvim")
+		end,
+	})
+
+	use({ "hrsh7th/cmp-nvim-lsp", module = "cmp_nvim_lsp" })
+	use({ "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-emoji", after = "nvim-cmp" })
+	use({ "f3fora/cmp-spell", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-cmdline", after = "nvim-cmp" })
+	use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
+	use({ "ray-x/cmp-treesitter", after = "nvim-cmp" })
+	use({ "lukas-reineke/cmp-under-comparator", module = "cmp-under-comparator" })
+
+	-------------------------------------------------
+	-- LSP                                         --
+	-------------------------------------------------
+
+	use({ "neovim/nvim-lspconfig" })
+	use({
+		"williamboman/mason-lspconfig.nvim",
+		config = function()
+			require("plugin.mason-lsp")
+		end,
+	})
+
+	use({
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup()
+		end,
+	})
+
+	use({
+		"glepnir/lspsaga.nvim",
+		branch = "main",
+		config = function()
+			local saga = require("lspsaga")
+			saga.init_lsp_saga()
+		end,
+	})
 
 	-- treesitter
 	use({
@@ -42,6 +116,7 @@ return require("packer").startup(function(use)
 	-- formatting
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
+		after = "mason.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("plugin.null-ls")
@@ -57,60 +132,28 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- lsp
-	use("neovim/nvim-lspconfig")
-	use({
-		"williamboman/mason.nvim",
-		config = function()
-			require("mason").setup()
-		end,
-	})
+	-------------------------------------------------
+	-- fazzy finder                                --
+	-------------------------------------------------
 
 	use({
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("plugin.lsp")
-		end,
-	})
-
-	use({
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup()
-		end,
-	})
-
-	use({ "onsails/lspkind.nvim" })
-
-	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
-		config = function()
-			local saga = require("lspsaga")
-			saga.init_lsp_saga()
-		end,
-	})
-
-	-- completion
-	use({
-		"hrsh7th/nvim-cmp",
+		"nvim-telescope/telescope.nvim",
 		requires = {
-			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" },
-			{ "ray-x/cmp-treesitter", after = "nvim-cmp" },
-			{ "hrsh7th/vim-vsnip", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+			{ "kyazdani42/nvim-web-devicons" },
+			{ "nvim-telescope/telescope-file-browser.nvim" },
 		},
-		event = { "InsertEnter", "CmdlineEnter" },
-		cmd = { "CmpStatus" },
 		config = function()
-			require("plugin.cmp")
+			require("plugin.telescope")
 		end,
 	})
+
+	-------------------------------------------------
+	-- snipet                                      --
+	-------------------------------------------------
+
+	use({ "L3MON4D3/LuaSnip" })
 
 	-------------------------------------------------
 	-- actions                                     --
@@ -150,19 +193,6 @@ return require("packer").startup(function(use)
 			require("plugin.toggleterm")
 		end,
 	})
-	-- fuzzy finder
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-treesitter/nvim-treesitter" },
-			{ "kyazdani42/nvim-web-devicons" },
-			{ "nvim-telescope/telescope-file-browser.nvim" },
-		},
-		config = function()
-			require("plugin.telescope")
-		end,
-	})
 
 	-- filer
 	use({
@@ -189,7 +219,15 @@ return require("packer").startup(function(use)
 	})
 
 	-- indent
-	use("lukas-reineke/indent-blankline.nvim")
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("indent_blankline").setup({
+				show_end_of_line = true,
+				space_char_blankline = " ",
+			})
+		end,
+	})
 
 	-- colorizer
 	use({
@@ -206,7 +244,9 @@ return require("packer").startup(function(use)
 		"EdenEast/nightfox.nvim",
 		config = function()
 			require("nightfox").setup({
-				paletts = { nordfox = { red = "#ff0000" } },
+				options = {
+					dim_inactive = true,
+				},
 			})
 		end,
 	})
@@ -238,6 +278,10 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
+
+	-- notice
+	use({ "rcarriga/nvim-notify" })
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
