@@ -153,7 +153,18 @@ return require("packer").startup(function(use)
 	-- snipet                                      --
 	-------------------------------------------------
 
-	use({ "L3MON4D3/LuaSnip" })
+	use({
+		"L3MON4D3/LuaSnip",
+		config = function()
+			require("plugin.luasnip")
+		end,
+	})
+	use({
+		"benfowler/telescope-luasnip.nvim",
+		config = function()
+			require("telescope").load_extension("luasnip")
+		end,
+	})
 
 	-------------------------------------------------
 	-- actions                                     --
@@ -245,7 +256,7 @@ return require("packer").startup(function(use)
 		config = function()
 			require("nightfox").setup({
 				options = {
-					dim_inactive = true,
+					dim_inactive = false,
 				},
 			})
 		end,
