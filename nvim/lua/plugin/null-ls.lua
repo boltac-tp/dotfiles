@@ -12,7 +12,9 @@ null_ls.setup({
 		-- python
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.isort,
-		null_ls.builtins.diagnostics.flake8,
+		null_ls.builtins.diagnostics.flake8.with({
+			extra_args = { "--max-line-length=88", "--ignore=E203,W503,@504" },
+		}),
 
 		-- rust
 		null_ls.builtins.formatting.rustfmt,

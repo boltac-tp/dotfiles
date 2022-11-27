@@ -38,7 +38,12 @@ return require("packer").startup(function(use)
 	-- completion                                  --
 	-------------------------------------------------
 
-	use({ "windwp/nvim-autopairs" })
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup()
+		end,
+	})
 
 	use({
 		"hrsh7th/nvim-cmp",
@@ -190,6 +195,14 @@ return require("packer").startup(function(use)
 		tag = "*",
 		config = function()
 			require("nvim-surround").setup({})
+		end,
+	})
+
+	-- comment
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
 		end,
 	})
 
