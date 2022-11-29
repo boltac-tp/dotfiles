@@ -33,6 +33,7 @@ return require("packer").startup(function(use)
 
 	use("nvim-lua/plenary.nvim")
 	use("kyazdani42/nvim-web-devicons")
+	use({ "rcarriga/nvim-notify" })
 
 	-------------------------------------------------
 	-- completion                                  --
@@ -303,11 +304,19 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- notice
-	use({ "rcarriga/nvim-notify" })
+	-- side bar
+	-- use({
+	-- 	"sidebar-nvim/sidebar.nvim",
+	-- 	config = function()
+	-- 		require("sidebar-nvim").setup({
+	-- 			open = true,
+	-- 		})
+	-- 	end,
+	-- })
 
 	if packer_bootstrap then
 		require("packer").sync()
 	end
+
 	vim.cmd("colorscheme nordfox")
 end)
