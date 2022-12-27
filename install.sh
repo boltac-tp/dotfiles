@@ -49,7 +49,7 @@ ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 
 # install : node
 curl https://get.volta.sh | bash -s -- --skip-setup
-~/.volta/bin/volta install node@16
+~/.volta/bin/volta install node
 
 # install : deno
 curl -fsSL https://deno.land/install.sh | sh
@@ -73,8 +73,7 @@ pipx install pre-commit
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # install : go
-LATEST_GO_VER=$(git ls-remote https://github.com/golang/go | grep refs/tags | grep -oE "[0-9]\.[0-9]??[0-9]?\.[0-9]??[0-9]?" | sort --version-sort | tail -n 1)
-curl -L https://go.dev/dl/go"${LATEST_GO_VER}".lunux-amd64.tar.gz | sudo tar xzf - -C /usr/local -xzf
+~/dotfiles/scripts/install_go.sh
 
 # install : vim
 sudo add-apt-repository ppa:neovim-ppa/unstable -y

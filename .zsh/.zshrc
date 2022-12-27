@@ -11,6 +11,8 @@ fi
 export MY_ENV
 
 
+# my scrips
+export PATH="$HOME/dotfiles/scripts:$PATH"
 # local PATH
 export PATH="$HOME/.local/bin:$PATH"
 # rust PATH

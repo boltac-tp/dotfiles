@@ -1,0 +1,9 @@
+deno upgrade
+poetry self update
+sheldon lock --update
+~/dotfiles/scripts/install_go.sh
+rustup update
+cargo install-update -a
+go install github.com/jesseduffield/lazygit@latest
+go install golang.org/x/tools/cmd/goimports@latest
+go install golang.org/x/tools/cmd/godoc@latest

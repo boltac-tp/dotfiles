@@ -14,5 +14,5 @@ if [[ -d /usr/local/go ]]; then
 fi
 
 curl -L https://go.dev/dl/go"${LAST_VER}".linux-amd64.tar.gz | sudo tar xzf - -C /usr/local
-echo "go already installed v$LAST_VER"
+echo "go installed v$LAST_VER"
 
