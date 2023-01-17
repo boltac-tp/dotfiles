@@ -31,11 +31,11 @@ s("n", "<leader>q", vim.diagnostic.setloclist, { noremap = true, silent = true }
 s("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
 -- code action
 s("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
-s("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
 -- rename
 s("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { silent = true })
 -- Definition preview
 s("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
+s("n", "gd", "<cmd>Lspsaga goto_difinition<CR>", { silent = true })
 -- Show diagonostics
 s("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
 s("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
