@@ -1,8 +1,9 @@
 -- packer install
 local ensure_packer = function()
-	local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-		vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
 		vim.cmd([[packadd packer.nvim]])
 		return true
 	end
@@ -16,7 +17,7 @@ return require("packer").startup(function(use)
 	-- init                                        --
 	-------------------------------------------------
 
-	use({ "wbthomason/packer.nvim", opt = true })
+	use({ "wbthomason/packer.nvim" })
 
 	use({
 		"williamboman/mason.nvim",
@@ -99,10 +100,16 @@ return require("packer").startup(function(use)
 
 	use({
 		"glepnir/lspsaga.nvim",
+		opt = true,
 		branch = "main",
+		event = "LspAttach",
 		config = function()
 			require("lspsaga").setup({})
 		end,
+		requires = {
+			{ "nvim-tree/nvim-web-devicons" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
 	})
 
 	-- treesitter

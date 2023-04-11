@@ -10,7 +10,7 @@ s("i", "jj", "<ESC>", { noremap = true, silent = true })
 s("n", "<Esc><Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true })
 
 -- nvim-tree
-s("n", "<leader>e", require("nvim-tree").toggle, { noremap = true, silent = true })
+s("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 -- telescope
 local telescope = require("telescope")
