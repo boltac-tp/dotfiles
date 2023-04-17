@@ -19,6 +19,8 @@ s("n", "<leader>ff", telescope_builtin.find_files, { noremap = true })
 s("n", "<leader>fg", telescope_builtin.live_grep, { noremap = true })
 s("n", "<leader>fh", telescope_builtin.help_tags, { noremap = true })
 s("n", "<leader>fb", telescope.extensions.file_browser.file_browser, { noremap = true })
+s("n", "<leader>fs", telescope.extensions.luasnip.luasnip, { noremap = true })
+
 
 -- lsp
 --s("n", "<space>d", vim.diagnostic.open_float , { noremap = true, silent = true })
@@ -44,10 +46,10 @@ s("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
 s("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
 -- Only jump to error
 s("n", "[E", function()
-	require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end, { silent = true })
 s("n", "]E", function()
-	require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+    require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
 end, { silent = true })
 -- Outline
 s("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })

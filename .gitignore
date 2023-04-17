@@ -3,5 +3,6 @@ nvim/netrwhist/
 nvim/plugin/
 nvim/plugged
 nvim/autoload
+nvim/lazy-lock.json
 
 .jupyter/lab/workspaces/
