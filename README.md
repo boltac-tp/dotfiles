@@ -1,20 +1,22 @@
 ## SSH key generate
 
 ```bash
-ssh-keygen -t rsa -P ""
+ssh-keygen -t rsa
 ```
+
+## Semantic Commit Message
+
+- chore : タスクファイルなどプロダクションに関係ない修正
+- docs : ドキュメントの更新
+- feat : ユーザ向け新機能や変更
+- fix : ユーザ向けの不具合修正
+- refactor : リファクタリング
+- style : フォーマットなどスタイル
+- test : テストコードの追加や修正
 
 ## Ubuntu
 
-手動でインストールするもの  
-python3.10  
-docker  
-docker-compose  
-chrome  
-biscuit
-
-Kubuntu
-KDE Plasma のアップデート
+手動でインストールするもの Kubuntu KDE Plasma のアップデート
 
 ```bash
 sudo add-apt-repository ppa:kubuntu-ppa/backports
