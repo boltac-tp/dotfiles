@@ -41,9 +41,51 @@ require("mason-lspconfig").setup({
 	},
 })
 
+-- for go
 local lspconfig = require("lspconfig")
+local configs = require("lspconfig/configs")
+
+if not configs.golangcilsp then
+	configs.golangcilsp = {
+		default_config = {
+			cmd = { "golangci-lint-langserver" },
+			root_dir = lspconfig.util.root_pattern(".git", "go.mod"),
+			init_options = {
+				command = {
+					"golangci-lint",
+					"run",
+					"--enable-all",
+					"--disable",
+					"lll",
+					"--out-format",
+					"json",
+					"--issues-exit-code=1",
+				},
+			},
+		},
+	}
+end
+lspconfig.golangci_lint_ls.setup({
+	filetypes = { "go", "gomod" },
+})
 local util = require("lspconfig/util")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+lspconfig["gopls"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	cmd = { "gopls", "serve" },
+	filetypes = { "go", "gomod" },
+	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	},
+})
 
 -- for python
 local virtual_env_path = vim.trim(vim.fn.system("poetry config virtualenvs.path"))
@@ -72,23 +114,6 @@ lspconfig["rust_analyzer"].setup({
 			checkOnSave = {
 				command = "clippy",
 			},
-		},
-	},
-})
-
--- for golang
-lspconfig["gopls"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	cmd = { "gopls", "serve" },
-	filetypes = { "go", "gomod" },
-	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-	settings = {
-		gopls = {
-			analyses = {
-				unusedparams = true,
-			},
-			staticcheck = true,
 		},
 	},
 })
