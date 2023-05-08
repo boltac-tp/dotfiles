@@ -190,6 +190,7 @@ require("lazy").setup({
 			{ "nvim-treesitter/nvim-treesitter" },
 			{ "kyazdani42/nvim-web-devicons" },
 			{ "nvim-telescope/telescope-file-browser.nvim" },
+			{ "nvim-telescope/telescope-ui-select.nvim" },
 		},
 		config = function()
 			require("config/telescope")

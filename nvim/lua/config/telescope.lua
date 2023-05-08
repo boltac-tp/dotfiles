@@ -9,6 +9,9 @@ telescope.setup({
 		},
 	},
 	extensions = {
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown({}),
+		},
 		file_browser = {
 			hijack_netrw = true,
 		},
@@ -16,3 +19,4 @@ telescope.setup({
 })
 
 telescope.load_extension("file_browser")
+telescope.load_extension("ui-select")
