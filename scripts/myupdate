@@ -1,4 +1,5 @@
 deno upgrade
+pyenv update
 poetry self update
 sheldon lock --update
 ~/dotfiles/scripts/install_go.sh
