@@ -91,6 +91,7 @@ sudo apt update && sudo apt install -y docker-ce docker-ce-cli containerd.io doc
 sudo usermod -aG docker "${USER}"
 
 # その他のapp
+pipx install tldr
 /usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest
 /usr/local/go/bin/go install golang.org/x/tools/cmd/goimports@latest
 /usr/local/go/bin/go install golang.org/x/tools/cmd/godoc@latest
