@@ -4,13 +4,20 @@
 ssh-keygen -t rsa
 ```
 
-## Semantic Commit Message
+## Commit Message
 
 - chore : タスクファイルなどプロダクションに関係ない修正
 - docs : ドキュメントの更新
 - feat : ユーザ向け新機能や変更
+- change : 仕様変更による機能変更
+- update : 機能追加がない修正
 - fix : ユーザ向けの不具合修正
+- hotfix : クリティカルな不具合修正
+- add : 機能追加を含まないファイルの追加
 - refactor : リファクタリング
+- improve : コードの改善
+- remove : ファイルの削除
+- revert : コミットのrevert
 - style : フォーマットなどスタイル
 - test : テストコードの追加や修正
 
