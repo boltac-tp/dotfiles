@@ -93,6 +93,7 @@ sudo usermod -aG docker "${USER}"
 # その他のapp
 pipx install tldr
 /usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest
+/usr/local/go/bin/go install github.com/jesseduffield/lazydocker@latest
 /usr/local/go/bin/go install golang.org/x/tools/cmd/goimports@latest
 /usr/local/go/bin/go install golang.org/x/tools/cmd/godoc@latest
 ~/.cargo/bin/cargo install exa bat cargo-update cargo-edit cargo-compete sheldon ripgrep
