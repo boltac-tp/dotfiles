@@ -314,4 +314,13 @@ require("lazy").setup({
 			require("noice").setup()
 		end,
 	},
+	-------------------------------------------------
+	-- dev for nvim                                --
+	-------------------------------------------------
+
+	-- neodev.nvim
+	{
+		"folke/neodev.nvim",
+		opts = {},
+	},
 })
