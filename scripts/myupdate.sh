@@ -1,6 +1,7 @@
 deno upgrade
 pyenv update
 poetry self update
+pipx upgrade-all
 sheldon lock --update
 ~/dotfiles/scripts/install_go.sh
 rustup update
