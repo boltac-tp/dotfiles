@@ -10,3 +10,5 @@ go install github.com/jesseduffield/lazygit@latest
 go install github.com/jesseduffield/lazydocker@latest
 go install golang.org/x/tools/cmd/goimports@latest
 go install golang.org/x/tools/cmd/godoc@latest
+go install -tags extended github.com/gohugoio/hugo@latest
+
