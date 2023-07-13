@@ -6,3 +6,4 @@ nvim/autoload
 nvim/lazy-lock.json
 
 .jupyter/lab/workspaces/
+*zwc

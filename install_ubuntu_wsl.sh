@@ -70,7 +70,9 @@ python3 -m pip install --user pipx
 pipx install pre-commit
 
 # install : ruff & black
-pipx install ruff ruff-lsp black
+pipx install ruff
+pipx install ruff-lsp
+pipx install black
 ln -s ~/dotfiles/ruff ~/.config/ruff
 
 # install : rust
