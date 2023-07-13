@@ -21,22 +21,11 @@ end
 
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		-- python
 		"pyright",
-		--		"black",
-		--		"flake8",
-		--		"isort",
-		-- rust
 		"rust_analyzer",
-		-- lua
 		"lua_ls",
-		--		"stylua",
-		-- go
 		"gopls",
-		--		"goimports",
-		-- shell
 		"bashls",
-		-- javascript
 		"tsserver",
 	},
 })
@@ -101,6 +90,15 @@ lspconfig["pyright"].setup({
 	settings = {
 		python = {
 			pythonPath = python_path,
+		},
+	},
+})
+
+lspconfig["ruff_lsp"].setup({
+	on_attach = on_attach,
+	init_options = {
+		settings = {
+			args = {},
 		},
 	},
 })

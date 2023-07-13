@@ -18,34 +18,34 @@ sudo sed -i.bak -r 's!http://(security|us.archive).ubuntu.com/ubuntu!http://ftp.
 sudo apt update && sudo apt upgrade -y
 
 # install some dev dependency
-sudo apt install -y unzip cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev libyaml-dev
+sudo apt install -y unzip make cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev libyaml-dev
 # install dependency for pyenv
 sudo apt update
-sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
 mkdir ~/.config
 
 # install : zsh
 sudo apt install -y zsh
 mkdir ~/.zsh
-ln -s ~/dotfiles/.zsh/.zshenv ~/.zshenv
-ln -s ~/dotfiles/.zsh/.zshrc ~/.zsh/.zshrc
-ln -s ~/dotfiles/.zsh/.zlogin ~/.zsh/.zlogin
-on -s ~/dotfiles/.zsh/completions ~/.zsh/completions
+ln -s ~/dotfiles/zsh/.zshenv ~/.zshenv
+ln -s ~/dotfiles/zsh/.zshrc ~/.zsh/.zshrc
+ln -s ~/dotfiles/zsh/.zlogin ~/.zsh/.zlogin
+ln -s ~/dotfiles/zsh/completions ~/.zsh/completions
 sudo apt install -y shellcheck
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
 sudo apt install -y openssh-client socat keychain
 
 # install : tmux
-ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
-sudo apt install -y tmux
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+#ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
+#sudo apt install -y tmux
+#git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # install : git
 sudo add-apt-repository ppa:git-core/ppa -y
 sudo apt update && sudo apt install -y git
-ln -s ~/dotfiles/.gitconfig ~/.gitconfig
+ln -s ~/dotfiles/git ~/.config/git
 
 # install : node
 curl https://get.volta.sh | bash -s -- --skip-setup
@@ -69,6 +69,10 @@ curl -sSL https://install.python-poetry.org | python3 -
 python3 -m pip install --user pipx
 pipx install pre-commit
 
+# install : ruff & black
+pipx install ruff ruff-lsp black
+ln -s ~/dotfiles/ruff ~/.config/ruff
+
 # install : rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 
@@ -90,20 +94,24 @@ echo \
 sudo apt update && sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo usermod -aG docker "${USER}"
 
-# その他のapp
+# other app
 pipx install tldr
-/usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest
-/usr/local/go/bin/go install github.com/jesseduffield/lazydocker@latest
+/usr/local/go/bin/go install golang.org/x/tools/gopls@latest
+/usr/local/go/bin/go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+/usr/local/go/bin/go install github.com/nametake/golangci-lint-langserver@latest
 /usr/local/go/bin/go install golang.org/x/tools/cmd/goimports@latest
 /usr/local/go/bin/go install golang.org/x/tools/cmd/godoc@latest
-~/.cargo/bin/cargo install exa bat cargo-update cargo-edit cargo-compete sheldon ripgrep
+/usr/local/go/bin/go install github.com/jesseduffield/lazygit@latest
+/usr/local/go/bin/go install github.com/jesseduffield/lazydocker@latest
+/usr/local/go/bin/go install -tags extended github.com/gohugoio/hugo@latest
+
+~/.cargo/bin/cargo install exa bat cargo-update cargo-edit cargo-compete sheldon ripgrep stylua
 ~/.cargo/bin/cargo install starship --locked
 
 # sheldon setting
 mkdir -p ~/.sheldon
-mkdir -p ~/.config/sheldon
 ln -s ~/dotfiles/sheldon/plugins.toml ~/.sheldon/plugins.toml
-ln -s ~/dotfiles/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
+ln -s ~/dotfiles/sheldon ~/.config/sheldon
 
 if [[ $MY_ENV != WSL ]]; then
     ~/dotfiles/scripts/install_desktop.sh

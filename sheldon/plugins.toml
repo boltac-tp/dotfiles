@@ -20,6 +20,9 @@ shell = "zsh"
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
+[plugins.compinit]
+inline = "autoload -Uz compinit && zsh-defer compinit"
+
 [plugins.zsh-256color]
 github = "chrissicool/zsh-256color"
 
@@ -30,12 +33,16 @@ github = "zsh-users/zsh-syntax-highlighting"
 github = "zsh-users/zsh-autosuggestions"
 apply = ["defer"]
 
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+[plugins.zsh-autocomplete]
+github = "marlonrichert/zsh-autocomplete"
+
 [plugins.zsh-history-substring-search]
 github = "zsh-users/zsh-history-substring-search"
 apply = ["defer"]
 
-[plugins.zsh-autocomplete]
-github = "marlonrichert/zsh-autocomplete"
 
 [templates]
 defer = "{% for file in files %}zsh-defer source \"{{ file}}\"\n{% endfor %}"
