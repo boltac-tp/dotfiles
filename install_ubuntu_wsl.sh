@@ -27,14 +27,10 @@ mkdir ~/.config
 
 # install : zsh
 sudo apt install -y zsh
-mkdir ~/.zsh
-ln -s ~/dotfiles/zsh/.zshenv ~/.zshenv
-ln -s ~/dotfiles/zsh/.zshrc ~/.zsh/.zshrc
-ln -s ~/dotfiles/zsh/.zlogin ~/.zsh/.zlogin
-ln -s ~/dotfiles/zsh/completions ~/.zsh/completions
+ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
 sudo apt install -y shellcheck
-
 sudo chsh -s "$(which zsh)" "$(whoami)"
+
 sudo apt install -y openssh-client socat keychain
 
 # install : tmux
@@ -111,8 +107,6 @@ pipx install tldr
 ~/.cargo/bin/cargo install starship --locked
 
 # sheldon setting
-mkdir -p ~/.sheldon
-ln -s ~/dotfiles/sheldon/plugins.toml ~/.sheldon/plugins.toml
 ln -s ~/dotfiles/sheldon ~/.config/sheldon
 
 if [[ $MY_ENV != WSL ]]; then

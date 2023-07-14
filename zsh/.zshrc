@@ -10,7 +10,6 @@ else
 fi
 export MY_ENV
 
-
 # my scrips
 export PATH="$HOME/dotfiles/scripts:$PATH"
 # local PATH
@@ -35,14 +34,16 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 . "$HOME/.cargo/env"
 
 #fpath
-fpath=(~/.zsh/completions $fpath)
+fpath=(~/dotfiles/zsh/completions $fpath)
 
+### ssh-agent ###
+/usr/bin/keychain -q --nogui ~/.ssh/id_rsa
+source ~/.keychain/$HOST-sh
 
 # wslのパスをwinのパスに変換し、winのFirefoxに渡す
 if [[ $MY_ENV == WSL ]]; then
   export BROWSER=$HOME/dotfiles/scripts/wsl_browser_path_to_win.sh
 fi
-
 
 # alias general
 alias grep='grep --color=auto'

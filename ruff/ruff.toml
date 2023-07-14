@@ -1,6 +1,6 @@
 # https://beta.ruff.rs/docs/rules
 select = ["ALL"]
-ignore = ["E501","PGH","DJ","D","T20","ERA"]
+ignore = ["E501","PGH","DJ","D","T20","ERA","INP"]
 fixable = ["I","SIM118","F401"]
 unfixable = []
 
