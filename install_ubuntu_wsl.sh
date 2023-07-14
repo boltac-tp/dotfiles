@@ -13,6 +13,17 @@ fi
 
 export MY_ENV
 
+
+mkdir -p XDG_CONFIG_HOME
+mkdir -p XDG_CACHE_HOME
+mkdir -p XDG_DATA_HOME
+mkdir -p XDG_STATE_HOME
+mkdir -p "${HOME}/.local/bin"
+mkdir -p "${HOME}/.local/src"
+
+mkdir -p $CARGO_HOME
+mkdir -p $PYENV_ROOT
+
 echo $MY_ENV
 sudo sed -i.bak -r 's!http://(security|us.archive).ubuntu.com/ubuntu!http://ftp.riken.jp/Linux/ubuntu!' /etc/apt/sources.list
 sudo apt update && sudo apt upgrade -y
@@ -22,8 +33,6 @@ sudo apt install -y unzip make cmake curl pkg-config libfreetype6-dev libfontcon
 # install dependency for pyenv
 sudo apt update
 sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-
-mkdir ~/.config
 
 # install : zsh
 sudo apt install -y zsh
@@ -103,8 +112,8 @@ pipx install tldr
 /usr/local/go/bin/go install github.com/jesseduffield/lazydocker@latest
 /usr/local/go/bin/go install -tags extended github.com/gohugoio/hugo@latest
 
-~/.cargo/bin/cargo install exa bat cargo-update cargo-edit cargo-compete sheldon ripgrep stylua
-~/.cargo/bin/cargo install starship --locked
+"${CARGO_HOME}/bin/rustup" run stable cargo install exa bat cargo-update cargo-edit cargo-compete sheldon ripgrep stylua
+"${CARGO_HOME}/bin/rustup" run stable cargo install starship --locked
 
 # sheldon setting
 ln -s ~/dotfiles/sheldon ~/.config/sheldon
@@ -114,7 +123,7 @@ if [[ $MY_ENV != WSL ]]; then
 fi
 
 # for atcoder
-~/.cargo/bin/rustup install 1.42.0
+"${CARGO_HOME}/bin/rustup" install 1.42.0
 ~/.pyenv/bin/pyenv install 3.8.2
 ~/.pyenv/bin/pyenv install pypy3.6-7.2.0
 pipx install online-judge-tools

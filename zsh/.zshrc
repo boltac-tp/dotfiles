@@ -1,41 +1,3 @@
-# 環境の特定
-if [[ "$(uname)" = 'Linux' ]] && [[ $(pgrep -c gnome-panel) -gt 0 ]]; then
-  MY_ENV=GNOME
-elif [[ "$(uname)" = 'Linux' ]] && [[ $(pgrep -c plasmashell) -gt 0 ]]; then
-  MY_ENV=KDE
-elif [[ "$(uname -r)" = *microsoft* ]]; then
-  MY_ENV=WSL
-else
-  MY_ENV=Windows
-fi
-export MY_ENV
-
-# my scrips
-export PATH="$HOME/dotfiles/scripts:$PATH"
-# local PATH
-export PATH="$HOME/.local/bin:$PATH"
-# rust PATH
-export PATH="$HOME/.cargo/bin:$PATH"
-# pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
-# poetry
-export PATH="$HOME/.poetry/bin:$PATH"
-# go-lang path
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
-# volta path
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-# deno PATH
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-# cargo PATH
-. "$HOME/.cargo/env"
-
-#fpath
-fpath=(~/dotfiles/zsh/completions $fpath)
-
 ### ssh-agent ###
 /usr/bin/keychain -q --nogui ~/.ssh/id_rsa
 source ~/.keychain/$HOST-sh
@@ -44,6 +6,24 @@ source ~/.keychain/$HOST-sh
 if [[ $MY_ENV == WSL ]]; then
   export BROWSER=$HOME/dotfiles/scripts/wsl_browser_path_to_win.sh
 fi
+
+# setopt
+unsetopt glob_dots
+unsetopt ignore_eof
+setopt no_flow_control
+setopt auto_cd
+setopt auto_pushd
+setopt no_beep
+setopt no_list_beep
+setopt auto_list
+setopt list_packed
+setopt auto_param_keys
+setopt auto_param_slash
+setopt mark_dirs
+setopt list_types
+setopt auto_menu
+setopt complete_in_word
+setopt magic_equal_subst
 
 # alias general
 alias grep='grep --color=auto'
