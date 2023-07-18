@@ -24,7 +24,6 @@ require("mason-lspconfig").setup({
 		"pyright",
 		"rust_analyzer",
 		"lua_ls",
-		"gopls",
 		"bashls",
 		"tsserver",
 	},

@@ -13,16 +13,14 @@ fi
 
 export MY_ENV
 
-
-mkdir -p XDG_CONFIG_HOME
-mkdir -p XDG_CACHE_HOME
-mkdir -p XDG_DATA_HOME
-mkdir -p XDG_STATE_HOME
+mkdir -p "${HOME}/.config"
+mkdir -p "${HOME}/.cache"
+mkdir -p "${HOME}/.local/share"
 mkdir -p "${HOME}/.local/bin"
 mkdir -p "${HOME}/.local/src"
 
-mkdir -p $CARGO_HOME
-mkdir -p $PYENV_ROOT
+mkdir -p "${HOME}/.local/share/cargo"
+mkdir -p "${HOME}/.local/share/pyenv"
 
 echo $MY_ENV
 sudo sed -i.bak -r 's!http://(security|us.archive).ubuntu.com/ubuntu!http://ftp.riken.jp/Linux/ubuntu!' /etc/apt/sources.list
