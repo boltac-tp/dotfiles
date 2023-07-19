@@ -76,5 +76,10 @@ alias weather='curl wttr.in/sapporo'
 alias wezterm='flatpak run org.wezfurlong.wezterm'
 alias pbcopy='xsel --clipboard --input'
 
+# pyenv init
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+
+# sheldon init
 eval "$(sheldon source)"
 eval "$(starship init zsh)"

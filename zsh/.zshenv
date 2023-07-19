@@ -14,7 +14,7 @@ export MY_ENV
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
-export XDG_DATA_HOME="${HOME}/.local/state"
+export XDG_STATE_HOME="${HOME}/.local/state"
 
 # my scrips
 export PATH="$HOME/dotfiles/scripts:$PATH"
@@ -25,24 +25,25 @@ export PATH="$HOME/.local/bin:$PATH"
 # rust
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
-[ -d $CARGO_HOME ] && . "${CARGO_HOME}/env"
+export PATH="${CARGO_HOME}/bin:$PATH"
 
 # pyenv
 export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
 export PATH="${PYENV_ROOT}/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
 
 # poetry
-export PATH="${HOME}/.poetry/bin:$PATH"
+export POETRY_CONFIG_DIR="${XDG_CONFIG_HOME}/poetry"
+export POETRY_HOME="${XDG_DATA_HOME}/pypoetry"
+export POETRY_CACHE_DIR="${XDG_CACHE_HOME}/pypoetry"
+export PATH="${POETRY_HOME}/bin:$PATH"
 
 # ruff
 export RUFF_CACHE_DIR="${XDG_CACHE_HOME}/ruff"
 
 # go-lang
-export PATH=$PATH:/usr/local/go/bin
 export GOPATH="${XDG_DATA_HOME}/go" 
 export PATH="${PATH}:${GOPATH}/bin"
+export PATH=$PATH:/usr/local/go/bin
 
 # volta
 export VOLTA_HOME="${XDG_DATA_HOME}/volta"

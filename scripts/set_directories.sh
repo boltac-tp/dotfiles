@@ -17,7 +17,7 @@ mkdir example
 cd example || exit
 git clone https://github.com/onweru/compose.git
 git clone https://github.com/google/docsy.git
-cd site || exit
+cd ~/site || exit
 mkdir themes
 cd themes || exit
 git clone git@github.com:boltac-tp/compose.git
