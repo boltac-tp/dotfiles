@@ -129,7 +129,19 @@ require("lazy").setup({
 	-- LSP                                         --
 	-------------------------------------------------
 	--
-	{ "neovim/nvim-lspconfig" },
+	{
+		"williamboman/mason-lspconfig.nvim",
+		config = function()
+			require("config/mason-lsp")
+		end,
+	},
+
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("config/lsp-config")
+		end,
+	},
 
 	{
 		"williamboman/mason-lspconfig.nvim",
