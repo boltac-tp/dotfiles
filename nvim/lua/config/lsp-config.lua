@@ -123,3 +123,7 @@ lspconfig["lua_ls"].setup({
 })
 
 lspconfig["bashls"].setup({})
+
+lspconfig["hls"].setup({
+	filetypes = { "haskell", "lhaskell", "cabal" },
+})

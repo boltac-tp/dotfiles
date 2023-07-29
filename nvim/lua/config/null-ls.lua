@@ -16,6 +16,9 @@ null_ls.setup({
 		-- rust
 		null_ls.builtins.formatting.rustfmt,
 
+		-- shell
+		null_ls.builtins.formatting.shfmt,
+
 		-- typescript
 		null_ls.builtins.formatting.deno_fmt.with({
 			condition = function(utils)

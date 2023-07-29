@@ -83,3 +83,5 @@ eval "$(pyenv virtualenv-init -)"
 # sheldon init
 eval "$(sheldon source)"
 eval "$(starship init zsh)"
+
+[ -f "/home/boltac/.ghcup/env" ] && source "/home/boltac/.ghcup/env" # ghcup-env

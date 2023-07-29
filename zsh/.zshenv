@@ -45,6 +45,10 @@ export GOPATH="${XDG_DATA_HOME}/go"
 export PATH="${PATH}:${GOPATH}/bin"
 export PATH=$PATH:/usr/local/go/bin
 
+# ghcup
+export PATH="${PATH}:$HOME/.ghcup/bin"
+export PATH="${PATH}:$HOME/.cabal/bin"
+
 # volta
 export VOLTA_HOME="${XDG_DATA_HOME}/volta"
 export PATH="$VOLTA_HOME/bin:$PATH"

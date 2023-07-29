@@ -40,11 +40,11 @@ sudo apt -qq update && sudo apt -qq install -y git
 ln -s ~/dotfiles/git ~/.config/git
 
 # install : github-cli
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-&& sudo apt update \
-&& sudo apt install gh -y
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
+	sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
+	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
+	sudo apt update &&
+	sudo apt install gh -y
 
 # install : node
 curl https://get.volta.sh | bash -s -- --skip-setup
@@ -61,7 +61,7 @@ curl https://pyenv.run | bash
 pyenv update
 
 # install : poetry
-curl -sSL https://install.python-poetry.org | python3 - 
+curl -sSL https://install.python-poetry.org | python3 -
 poetry config virtualenvs.in-project true
 
 # install : pipx
@@ -89,8 +89,8 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+	"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 
 sudo apt -qq update && sudo apt -qq install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo usermod -aG docker "${USER}"
@@ -111,6 +111,8 @@ echo "lazygit"
 go install github.com/jesseduffield/lazygit@latest
 echo "lazydocker"
 go install github.com/jesseduffield/lazydocker@latest
+echo "shfmt"
+go install mvdan.cc/sh/v3/cmd/shfmt@latest
 echo "hugo"
 go install -tags extended github.com/gohugoio/hugo@latest
 
