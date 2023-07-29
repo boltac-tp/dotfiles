@@ -2,7 +2,7 @@
 /usr/bin/keychain -q --nogui ~/.ssh/id_rsa
 source ~/.keychain/$HOST-sh
 
-# wslのパスをwinのパスに変換し、winのFirefoxに渡す
+#wslのパスをwinのパスに変換し、winのFirefoxに渡す
 if [[ $MY_ENV == WSL ]]; then
   export BROWSER=$HOME/dotfiles/scripts/wsl_browser_path_to_win.sh
 fi
