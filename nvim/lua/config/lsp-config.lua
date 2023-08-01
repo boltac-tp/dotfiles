@@ -93,11 +93,16 @@ lspconfig["pyright"].setup({
 
 -- for rust
 lspconfig["rust_analyzer"].setup({
-	capabilities = capabilities,
 	settings = {
 		["rust-analyzer"] = {
 			checkOnSave = {
 				command = "clippy",
+			},
+			typing = {
+				autoClosingAngleBrackets = "true",
+			},
+			completion = {
+				autoimport = "enable",
 			},
 		},
 	},
