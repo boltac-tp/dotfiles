@@ -11,6 +11,14 @@ local t = function(str)
 end
 
 cmp.setup({
+	window = {
+		completion = cmp.config.window.bordered({
+			border = "single",
+		}),
+		documentation = cmp.config.window.bordered({
+			border = "single",
+		}),
+	},
 	formatting = {
 		-- fields = {'abbr', 'kind', 'menu'},
 		format = require("lspkind").cmp_format({
