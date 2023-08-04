@@ -66,7 +66,9 @@ poetry config virtualenvs.in-project true
 
 # install : pipx
 python3 -m pip install --user pipx
-pipx install pre-commit
+
+# install : rye
+curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
 
 # install : ruff & black
 pipx install ruff
@@ -96,6 +98,7 @@ sudo apt -qq update && sudo apt -qq install -y docker-ce docker-ce-cli container
 sudo usermod -aG docker "${USER}"
 
 # other app
+pipx install pre-commit
 pipx install tldr
 echo "gopls"
 go install golang.org/x/tools/gopls@latest

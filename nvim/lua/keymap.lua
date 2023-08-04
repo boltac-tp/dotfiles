@@ -23,10 +23,10 @@ s("n", "<leader>fs", telescope.extensions.luasnip.luasnip, { noremap = true })
 
 -- lsp Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
---s("n", "<space>d", vim.diagnostic.open_float)
+--s("n", "<leader>d", vim.diagnostic.open_float)
 --s("n", "[d", vim.diagnostic.goto_prev)
 --s("n", "]d", vim.diagnostic.goto_next)
-s("n", "<space>q", vim.diagnostic.setloclist)
+s("n", "<leader>q", vim.diagnostic.setloclist)
 
 -- lspsaga
 -- lsp finder

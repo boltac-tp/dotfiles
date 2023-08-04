@@ -80,8 +80,12 @@ alias pbcopy='xsel --clipboard --input'
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
+# rye init
+#source "${HOME}/.rye/env"
+
 # sheldon init
 eval "$(sheldon source)"
 eval "$(starship init zsh)"
 
-[ -f "/home/boltac/.ghcup/env" ] && source "/home/boltac/.ghcup/env" # ghcup-env
+[ -f "/home/boltac/.ghcup/env" ] && source "/home/boltac/.ghcup/env" # ghcup-envsource
+
