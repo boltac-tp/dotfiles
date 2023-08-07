@@ -76,18 +76,18 @@ lspconfig["gopls"].setup({
 })
 
 -- for python
-local virtual_env_path = vim.trim(vim.fn.system("poetry config virtualenvs.path"))
-local virtual_env_dirctory = vim.trim(vim.fn.system("poetry env list"))
-local python_path = "python"
-if #vim.split(virtual_env_dirctory, "\n") == 1 then
-	python_path = string.format("%s/%s/bin/python", virtual_env_path, virtual_env_dirctory)
-end
+--local virtual_env_path = vim.trim(vim.fn.system("poetry config virtualenvs.path"))
+--local virtual_env_dirctory = vim.trim(vim.fn.system("poetry env list"))
+--local python_path = "python"
+--if #vim.split(virtual_env_dirctory, "\n") == 1 then
+--	python_path = string.format("%s/%s/bin/python", virtual_env_path, virtual_env_dirctory)
+--end
 
 lspconfig["pyright"].setup({
 	settings = {
-		python = {
-			pythonPath = python_path,
-		},
+		--		python = {
+		--			pythonPath = python_path,
+		--		},
 	},
 })
 

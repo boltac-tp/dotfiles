@@ -64,8 +64,8 @@ else
 fi
 
 # alias atcoder
-alias acctp='oj t -c "python3 main.py" -d ./test/'
-alias acctpp='oj t -c "pypy main.py" -d ./test/'
+alias acctp='oj t -c "poetry run python main.py" -d ./test/'
+alias acctpp='oj t -c "poetry run pypy main.py" -d ./test/'
 alias accspp='acc s main.py -- --guess-python-interpreter pypy'
 
 # alias some scritps

@@ -19,6 +19,10 @@ sudo apt -qq install -y unzip make cmake curl pkg-config libfreetype6-dev libfon
 # install dependency for pyenv
 sudo apt -qq update
 sudo apt -qq install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+# install dependency for scipy
+sudo apt -qq install -y gcc g++ gfortran libopenblas-dev liblapack-dev pkg-config python3-pip python3-dev
+# install dependency for shapely
+sudo apt -qq install -y libgeos-dev
 
 # install : zsh
 sudo apt -qq install -y zsh
