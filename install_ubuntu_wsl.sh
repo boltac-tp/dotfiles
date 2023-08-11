@@ -77,6 +77,7 @@ curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
 # install : ruff & black
 pipx install ruff
 pipx install ruff-lsp
+pipx install pyright
 pipx install black
 ln -s ~/dotfiles/ruff ~/.config/ruff
 
@@ -123,6 +124,7 @@ go install mvdan.cc/sh/v3/cmd/shfmt@latest
 echo "hugo"
 go install -tags extended github.com/gohugoio/hugo@latest
 
+rustup component add rust-analyzer
 cargo install exa bat cargo-update cargo-edit cargo-compete sheldon ripgrep stylua
 cargo install starship --locked
 

@@ -4,6 +4,10 @@ ignore = ["E501","PGH","DJ","D","T20","ERA","INP"]
 fixable = ["I","SIM118","F401"]
 unfixable = []
 
+per-file-ignores = {}
+line-length = 88
+
+
 # exclude a variety of commonly ignored directories.
 exclude = [
     ".bzr",

@@ -9,9 +9,6 @@ s("i", "jj", "<ESC>", { noremap = true, silent = true })
 -- put <Esc> to nohlsearch
 s("n", "<Esc><Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true })
 
--- nvim-tree
-s("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { noremap = true, silent = true })
-
 -- telescope
 local telescope = require("telescope")
 local telescope_builtin = require("telescope.builtin")
@@ -45,10 +42,10 @@ s("n", "gT", "<cmd>Lspsaga goto_type_definition<CR>", { silent = true })
 s("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
 s("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
 s("n", "]e", function()
-	require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+    require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
 end)
 s("n", "[e", function()
-	require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end)
 
 -- Diagnnostic
