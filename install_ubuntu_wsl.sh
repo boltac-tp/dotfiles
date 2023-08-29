@@ -44,11 +44,11 @@ sudo apt -qq update && sudo apt -qq install -y git
 ln -s ~/dotfiles/git ~/.config/git
 
 # install : github-cli
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
-	sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
-	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
-	sudo apt update &&
-	sudo apt install gh -y
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+  && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+  && sudo apt update \
+  && sudo apt install gh -y
 
 # install : node
 curl https://get.volta.sh | bash -s -- --skip-setup
@@ -96,8 +96,8 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo \
-	"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 sudo apt -qq update && sudo apt -qq install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo usermod -aG docker "${USER}"
@@ -105,6 +105,7 @@ sudo usermod -aG docker "${USER}"
 # other app
 pipx install pre-commit
 pipx install tldr
+
 echo "gopls"
 go install golang.org/x/tools/gopls@latest
 echo "golangci"
@@ -125,8 +126,12 @@ echo "hugo"
 go install -tags extended github.com/gohugoio/hugo@latest
 
 rustup component add rust-analyzer
-cargo install exa bat cargo-update cargo-edit cargo-compete sheldon ripgrep stylua
+cargo install exa bat cargo-update cargo-edit cargo-compete sheldon ripgrep stylua selene
 cargo install starship --locked
+
+npm install -g typescript-language-server typescript
+npm install -g prritierd
+npm install -g eslint_d
 
 # sheldon setting
 ln -s ~/dotfiles/sheldon ~/.config/sheldon
