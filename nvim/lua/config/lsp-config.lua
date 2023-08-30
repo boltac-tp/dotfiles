@@ -132,6 +132,9 @@ lspconfig["lua_ls"].setup({
 
 lspconfig["bashls"].setup({})
 
+lspconfig["dockerls"].setup({})
+lspconfig["docker_compose_language_service"].setup({})
+
 lspconfig["hls"].setup({
 	filetypes = { "haskell", "lhaskell", "cabal" },
 })
