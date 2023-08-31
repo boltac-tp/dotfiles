@@ -6,7 +6,7 @@ require("toggleterm").setup({
 			return vim.o.columns * 0.4
 		end
 	end,
-	open_mapping = [[<A-t>]],
+	open_mapping = [[<leader>t]],
 	insert_mappings = false,
 	direction = "horizontal",
 	float_opts = {

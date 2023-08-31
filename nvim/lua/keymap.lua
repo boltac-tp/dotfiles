@@ -42,14 +42,14 @@ s("n", "gT", "<cmd>Lspsaga goto_type_definition<CR>", { silent = true })
 s("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
 s("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
 s("n", "]e", function()
-    require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+	require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
 end)
 s("n", "[e", function()
-    require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+	require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end)
 
 -- Diagnnostic
-s("n", "<leader>d", "<cmd>Lspsaga show_buf_diagnostics<CR>", { silent = true })
+s("n", "<leader>l", "<cmd>Lspsaga show_buf_diagnostics<CR>", { silent = true })
 -- Outline
 s("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true })
 -- Hovor Doc
