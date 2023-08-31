@@ -80,6 +80,9 @@ alias pbcopy='xsel --clipboard --input'
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
+# direnv init
+eval "$(direnv hook zsh)"
+
 # rye init
 #source "${HOME}/.rye/env"
 

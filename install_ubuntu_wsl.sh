@@ -68,6 +68,10 @@ pyenv update
 curl -sSL https://install.python-poetry.org | python3 -
 poetry config virtualenvs.in-project true
 
+# install : direnv
+curl -sfL https://direnv.net/install.sh | bash
+ln -s ~/dotfiles/direnv ~/.config/direnv
+
 # install : pipx
 python3 -m pip install --user pipx
 
