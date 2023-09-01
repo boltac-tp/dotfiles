@@ -134,8 +134,8 @@ cargo install exa bat cargo-update cargo-edit cargo-compete sheldon ripgrep styl
 cargo install starship --locked
 
 npm install -g typescript-language-server typescript
-npm install -g prritierd
 npm install -g eslint_d
+npm install -g npm-check
 
 # sheldon setting
 ln -s ~/dotfiles/sheldon ~/.config/sheldon

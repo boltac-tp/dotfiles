@@ -1,9 +1,12 @@
+#!/bin/bash
+
 deno upgrade
 pyenv update
 poetry self update
 pipx upgrade-all
 sheldon lock --update
 curl https://get.volta.sh | bash -s -- --skip-setup
+npm-check -u -g
 
 ~/dotfiles/scripts/install_go.sh
 rustup update
