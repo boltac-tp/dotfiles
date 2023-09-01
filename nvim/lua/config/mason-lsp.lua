@@ -3,5 +3,6 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"bashls",
 		"yamlls",
+		"jsonls",
 	},
 })

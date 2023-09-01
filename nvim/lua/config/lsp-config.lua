@@ -130,11 +130,31 @@ lspconfig["lua_ls"].setup({
 	},
 })
 
-lspconfig["bashls"].setup({})
-
-lspconfig["dockerls"].setup({})
-lspconfig["docker_compose_language_service"].setup({})
-
 lspconfig["hls"].setup({
 	filetypes = { "haskell", "lhaskell", "cabal" },
 })
+
+lspconfig["jsonls"].setup({
+	settings = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
+})
+
+lspconfig["yamlls"].setup({
+	settings = {
+		yaml = {
+			schemaStore = {
+				enable = false,
+				url = "",
+			},
+			schemas = require("schemastore").yaml.schemas(),
+		},
+	},
+})
+
+lspconfig["bashls"].setup({})
+lspconfig["dockerls"].setup({})
+lspconfig["docker_compose_language_service"].setup({})

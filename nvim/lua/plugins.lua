@@ -208,6 +208,10 @@ require("lazy").setup({
 			require("config/format-on-save")
 		end,
 	},
+	-- schema
+	{
+		"b0o/schemastore.nvim",
+	},
 	-------------------------------------------------
 	-- fazzy finder                                --
 	-------------------------------------------------
