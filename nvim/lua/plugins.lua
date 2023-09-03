@@ -213,6 +213,24 @@ require("lazy").setup({
 		"b0o/schemastore.nvim",
 	},
 	-------------------------------------------------
+	-- dap                                         --
+	-------------------------------------------------
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
+		config = function()
+			require("dapui").setup()
+		end,
+	},
+	{
+		"mfussenegger/nvim-dap-python",
+		config = function()
+			require("config/nvim-dap-python")
+		end,
+	},
+	-------------------------------------------------
 	-- fazzy finder                                --
 	-------------------------------------------------
 	{
@@ -391,7 +409,10 @@ require("lazy").setup({
 	-- neodev.nvim
 	{
 		"folke/neodev.nvim",
-		event = { "BufReadPre", "BufNewFile" },
 		opts = {},
+		library = {
+			plugins = { "nvim-dap-ui" },
+			types = true,
+		},
 	},
 })
