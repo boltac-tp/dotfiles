@@ -130,7 +130,7 @@ echo "hugo"
 go install -tags extended github.com/gohugoio/hugo@latest
 
 rustup component add rust-analyzer
-cargo install exa bat cargo-update cargo-edit cargo-compete sheldon ripgrep stylua selene
+cargo install eza bat cargo-update cargo-edit cargo-compete sheldon ripgrep stylua selene
 cargo install starship --locked
 
 npm install -g typescript-language-server typescript
@@ -141,9 +141,9 @@ npm install -g npm-check
 ln -s ~/dotfiles/sheldon ~/.config/sheldon
 
 # for atcoder
-rustup install 1.42.0
-pyenv install 3.8.2
-pyenv install pypy3.6-7.2.0
+rustup install 1.70.0
+pyenv install 3.11.4
+pyenv install pypy3.10-7.3.12
 pipx install online-judge-tools
 npm install -g atcoder-cli
 

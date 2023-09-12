@@ -50,13 +50,13 @@ fi
 which nvim > /dev/null && alias vim='nvim'
 
 # alias exa
-if [[ $(command -v exa) ]]; then
-  alias l=exa
-  alias ls='exa -ahl --git'
-  alias la='exa -a'
-  alias ll='exa -ahl --git'
-  alias lt='exa -T -L 3 -a -I --git'
-  alias lta='exa -T -a -I --git --color=always | less -r'
+if [[ $(command -v eza) ]]; then
+  alias l=eza
+  alias ls='eza -ahl --git'
+  alias la='eza -a'
+  alias ll='eza -ahl --git'
+  alias lt='eza -T -L 3 -a -I --git'
+  alias lta='eza -T -a -I --git --color=always | less -r'
 else
   alias ls='ls --color=auto'
   alias ll='ls -alF'
