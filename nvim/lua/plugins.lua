@@ -62,21 +62,6 @@ require("lazy").setup({
 		-- ft = { "help" },
 	},
 	-------------------------------------------------
-	-- dependency                                  --
-	-------------------------------------------------
-	--	{
-	--		"nvim-lua/plenary.nvim",
-	--		lazy = true,
-	--	},
-	--	{
-	--		"kyazdani42/nvim-web-devicons",
-	--		lazy = true,
-	--	},
-	--	{
-	--		"rcarriga/nvim-notify",
-	--		lazy = true,
-	--	},
-	-------------------------------------------------
 	-- utility                                     --
 	-------------------------------------------------
 	-- terminal
@@ -128,7 +113,7 @@ require("lazy").setup({
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter, CmdlineEnter",
+		event = { "InsertEnter", "CmdlineEnter" },
 		dependencies = {
 			"L3MON4D3/LuaSnip",
 			"windwp/nvim-autopairs",
@@ -347,12 +332,18 @@ require("lazy").setup({
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
-			require("indent_blankline").setup({
-				show_end_of_line = true,
-				space_char_blankline = " ",
-			})
+			require("ibl").setup({})
 		end,
 	},
+	-- {
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	config = function()
+	-- 		require("indent_blankline").setup({
+	-- 			show_end_of_line = true,
+	-- 			space_char_blankline = " ",
+	-- 		})
+	-- 	end,
+	-- },
 	-- colorizer
 	{
 		"norcalli/nvim-colorizer.lua",

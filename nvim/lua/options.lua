@@ -18,6 +18,7 @@ opt.cmdheight = 2
 opt.scrolloff = 10
 
 opt.list = true
+opt.listchars:append("tab:▏⋅")
 opt.listchars:append("eol:↴")
 opt.listchars:append("space:⋅")
 opt.shiftwidth = 4
