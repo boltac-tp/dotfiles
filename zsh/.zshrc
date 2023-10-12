@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 ### ssh-agent ###
 /usr/bin/keychain -q --nogui ~/.ssh/id_rsa
 source ~/.keychain/$HOST-sh
@@ -47,7 +54,7 @@ if [[ $(command -v nvim) ]]; then
     export EDITOR=nvim VISUAL=nvim
 fi
 
-which nvim > /dev/null && alias vim='nvim'
+which nvim > /dev/null && alias vi='nvim'
 
 # alias exa
 if [[ $(command -v eza) ]]; then
@@ -88,7 +95,8 @@ eval "$(direnv hook zsh)"
 
 # sheldon init
 eval "$(sheldon source)"
-eval "$(starship init zsh)"
 
 [ -f "/home/boltac/.ghcup/env" ] && source "/home/boltac/.ghcup/env" # ghcup-envsource
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
