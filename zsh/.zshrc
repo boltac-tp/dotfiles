@@ -71,8 +71,8 @@ else
 fi
 
 # alias atcoder
-alias acctp='oj t -c "poetry run python main.py" -d ./test/'
-alias acctpp='oj t -c "poetry run pypy main.py" -d ./test/'
+alias acctp='oj t -c "rye run python main.py" -d ./test/'
+alias acctpp='oj t -c "rye run pypy main.py" -d ./test/'
 alias accspp='acc s main.py -- --guess-python-interpreter pypy'
 
 # alias some scritps
@@ -83,15 +83,11 @@ alias weather='curl wttr.in/sapporo'
 alias wezterm='flatpak run org.wezfurlong.wezterm'
 alias pbcopy='xsel --clipboard --input'
 
-# pyenv init
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
-
 # direnv init
 eval "$(direnv hook zsh)"
 
 # rye init
-#source "${HOME}/.rye/env"
+source "${HOME}/.rye/env"
 
 # sheldon init
 eval "$(sheldon source)"

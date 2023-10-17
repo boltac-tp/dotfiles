@@ -17,11 +17,11 @@
 
 shell = "zsh"
 
-apply = ["defer"]
+# apply = ["defer"]
 
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
-apply = ["source"]
+# apply = ["source"]
 
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit"

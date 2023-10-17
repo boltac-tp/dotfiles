@@ -16,9 +16,11 @@ sudo apt -qq update && sudo apt -qq upgrade -y
 
 # install some dev dependency
 sudo apt -qq install -y unzip make cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev libyaml-dev
+
 # install dependency for pyenv
-sudo apt -qq update
-sudo apt -qq install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+## sudo apt -qq update
+## sudo apt -qq install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
 # install dependency for scipy
 sudo apt -qq install -y gcc g++ gfortran libopenblas-dev liblapack-dev pkg-config python3-pip python3-dev
 # install dependency for shapely
@@ -28,15 +30,11 @@ sudo apt -qq install -y libgeos-dev
 sudo apt -qq install -y zsh
 ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
 ln -s ~/dotfiles/zsh/.zshenv ~/.zshenv
+ln -s ~/dotfiles/zsh/.p10k.zsh ~/.p10k.zsh
 sudo apt -qq install -y shellcheck
 sudo chsh -s "$(which zsh)" "$(whoami)"
 
 sudo apt -qq install -y openssh-client socat keychain
-
-# install : tmux
-#ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
-#sudo apt install -y tmux
-#git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # install : git
 sudo add-apt-repository ppa:git-core/ppa -y
@@ -60,14 +58,6 @@ curl -fsSL https://deno.land/install.sh | sh
 # install : python
 sudo apt -qq install -y python3-venv python3-pip
 
-# install : pyenv
-curl https://pyenv.run | bash
-pyenv update
-
-# install : poetry
-curl -sSL https://install.python-poetry.org | python3 -
-poetry config virtualenvs.in-project true
-
 # install : direnv
 curl -sfL https://direnv.net/install.sh | bash
 ln -s ~/dotfiles/direnv ~/.config/direnv
@@ -78,11 +68,12 @@ python3 -m pip install --user pipx
 # install : rye
 curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
 
-# install : ruff & black
+# install : python linter & formatter
 pipx install ruff
 pipx install ruff-lsp
 pipx install pyright
 pipx install black
+pipx install isort
 ln -s ~/dotfiles/ruff ~/.config/ruff
 
 # install : rust
@@ -110,6 +101,8 @@ sudo usermod -aG docker "${USER}"
 pipx install pre-commit
 pipx install tldr
 
+echo "gup"
+go install github.com/nao1215/gup@latest
 echo "gopls"
 go install golang.org/x/tools/gopls@latest
 echo "golangci"
@@ -141,8 +134,6 @@ ln -s ~/dotfiles/sheldon ~/.config/sheldon
 
 # for atcoder
 rustup install 1.70.0
-pyenv install 3.11.4
-pyenv install pypy3.10-7.3.12
 pipx install online-judge-tools
 npm install -g atcoder-cli
 
