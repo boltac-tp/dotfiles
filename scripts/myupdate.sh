@@ -1,11 +1,15 @@
 #!/bin/bash
 
-deno upgrade
-pipx upgrade-all
 sheldon lock --update
+
+deno upgrade
 curl https://get.volta.sh | bash -s -- --skip-setup
-npm-check -u -g
+volta install node
+
+pipx upgrade-all
 rye self update
+
+npm-check -u -g
 
 ~/dotfiles/scripts/install_go.sh
 
