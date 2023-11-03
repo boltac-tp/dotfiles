@@ -21,6 +21,13 @@ local conds = require("luasnip.extras.conditions.expand")
 
 return {
 	s(
+		{ trig = "pypy_recursion", dscr = "pypyで再帰関数を使うときのおまじない" },
+		t({
+			"import pypyjit",
+			"pypyjit.set_param('max_unroll_recursion=-1')",
+		})
+	),
+	s(
 		{ trig = "meguru", dscr = "めぐる式二分探索" },
 		t({
 			"def func(x: int) -> bool:",
