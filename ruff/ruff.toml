@@ -1,21 +1,12 @@
-# https://beta.ruff.rs/docs/rules
-select = ["ALL"]
-ignore = ["E501","PGH","DJ","D","T20","ERA","INP"]
-fixable = ["I","SIM118","F401"]
-unfixable = []
-
-per-file-ignores = {}
-line-length = 88
-
-
-# exclude a variety of commonly ignored directories.
+# Exclude a variety of commonly ignored directories.
 exclude = [
     ".bzr",
     ".direnv",
     ".eggs",
     ".git",
     ".git-rewrite",
-    ".hg", ".mypy_cache",
+    ".hg",
+    ".mypy_cache",
     ".nox",
     ".pants.d",
     ".pytype",
@@ -29,5 +20,37 @@ exclude = [
     "build",
     "dist",
     "node_modules",
-    "venv"
+    "venv",
 ]
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+# Assume Python 3.8
+target-version = "py38"
+
+[lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
+select = ["ALL"]
+ignore = ["E501","PGH","DJ","D","T20","ERA","INP","COM812","ISC001"]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["I","SIM118","F401"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
