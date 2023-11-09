@@ -180,17 +180,11 @@ require("lazy").setup({
 	},
 	-- formatting
 	{
-		"mfussenegger/nvim-lint",
-		event = "VimEnter",
+		"nvimtools/none-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("config/nvim-lint")
-		end,
-	},
-	{
-		"elentok/format-on-save.nvim",
-		event = "VimEnter",
-		config = function()
-			require("config/format-on-save")
+			require("config/null-ls")
 		end,
 	},
 	-- schema
@@ -335,15 +329,6 @@ require("lazy").setup({
 			require("ibl").setup({})
 		end,
 	},
-	-- {
-	-- 	"lukas-reineke/indent-blankline.nvim",
-	-- 	config = function()
-	-- 		require("indent_blankline").setup({
-	-- 			show_end_of_line = true,
-	-- 			space_char_blankline = " ",
-	-- 		})
-	-- 	end,
-	-- },
 	-- colorizer
 	{
 		"norcalli/nvim-colorizer.lua",

@@ -83,12 +83,6 @@ lspconfig["pyright"].setup({
 	settings = {},
 })
 
-lspconfig["ruff_lsp"].setup({
-	settings = {
-		args = { "--config=~/.config/ruff/ruff.toml" },
-	},
-})
-
 -- for rust
 lspconfig["rust_analyzer"].setup({
 	settings = {
