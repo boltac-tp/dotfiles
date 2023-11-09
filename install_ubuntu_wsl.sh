@@ -70,6 +70,7 @@ curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
 
 # install : python linter & formatter
 pipx install ruff
+pipx install ruff-lsp
 pipx install pyright
 ln -s ~/dotfiles/ruff ~/.config/ruff
 

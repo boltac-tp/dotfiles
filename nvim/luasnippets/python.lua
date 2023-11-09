@@ -30,19 +30,19 @@ return {
 	s(
 		{ trig = "meguru", dscr = "めぐる式二分探索" },
 		t({
-			"def func(x: int) -> bool:",
+			"def is_ok(x: int) -> bool:",
 			"    pass",
 			"",
 			"",
-			"left = -1",
-			"right = N + 1",
-			"while right - left > 1:",
-			"    mid = left + (right - left) // 2",
-			"    if func(mid):",
-			"        left = mid",
+			"ok = N + 1",
+			"ng = -1",
+			"",
+			"while abs(ok-ng) > 1:",
+			"    mid = (ok+ng) // 2",
+			"    if is_ok(mid):",
+			"        ok = mid",
 			"    else:",
-			"        right = mid",
-			"ans = left",
+			"        ng = mid",
 		})
 	),
 	s(

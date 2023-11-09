@@ -83,6 +83,10 @@ lspconfig["pyright"].setup({
 	settings = {},
 })
 
+lspconfig["ruff_lsp"].setup({
+	settings = {},
+})
+
 -- for rust
 lspconfig["rust_analyzer"].setup({
 	settings = {
