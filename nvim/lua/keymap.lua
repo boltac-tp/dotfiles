@@ -3,8 +3,17 @@ local s = vim.keymap.set
 -- leader
 vim.g.mapleader = " "
 
--- jj to ESC
-s("i", "jj", "<ESC>", { noremap = true, silent = true })
+-- cursor move
+s("n", "gh", "^", { noremap = true, silent = true })
+s("n", "gl", "$", { noremap = true, silent = true })
+s("n", "gj", "j", { noremap = true, silent = true })
+s("n", "gk", "k", { noremap = true, silent = true })
+s("n", "j", "gj", { noremap = true, silent = true })
+s("n", "k", "gk", { noremap = true, silent = true })
+s("n", "ge", "G", { noremap = true, silent = true })
+
+-- ctrl-jj to ESC
+s("i", "<C-j><C-j>", "<ESC>", { noremap = true, silent = true })
 
 -- put <Esc> to nohlsearch
 s("n", "<Esc><Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true })
@@ -15,7 +24,10 @@ local telescope_builtin = require("telescope.builtin")
 s("n", "<leader>ff", telescope_builtin.find_files, { noremap = true })
 s("n", "<leader>fg", telescope_builtin.live_grep, { noremap = true })
 s("n", "<leader>fh", telescope_builtin.help_tags, { noremap = true })
-s("n", "<leader>fb", telescope.extensions.file_browser.file_browser, { noremap = true })
+s("n", "<leader>fb", telescope_builtin.buffers, { noremap = true })
+s("n", "<leader>fq", telescope_builtin.quickfix, { noremap = true })
+s("n", "<leader>fd", telescope_builtin.diagnostics, { noremap = true })
+s("n", "<leader>fe", telescope.extensions.file_browser.file_browser, { noremap = true })
 s("n", "<leader>fs", telescope.extensions.luasnip.luasnip, { noremap = true })
 
 -- lsp Global mappings.
@@ -27,7 +39,7 @@ s("n", "<leader>q", vim.diagnostic.setloclist)
 
 -- lspsaga
 -- lsp finder
-s("n", "gh", "<cmd>Lspsaga finder<CR>", { silent = true })
+--s("n", "gh", "<cmd>Lspsaga finder<CR>", { silent = true })
 -- code action
 s("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
 -- rename
@@ -49,7 +61,7 @@ s("n", "[e", function()
 end)
 
 -- Diagnnostic
-s("n", "<leader>l", "<cmd>Lspsaga show_buf_diagnostics<CR>", { silent = true })
+-- s("n", "<leader>l", "<cmd>Lspsaga show_buf_diagnostics<CR>", { silent = true })
 -- Outline
 s("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true })
 -- Hovor Doc

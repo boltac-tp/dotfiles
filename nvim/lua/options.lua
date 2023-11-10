@@ -8,6 +8,7 @@ opt.number = true
 opt.backup = false
 opt.swapfile = false
 opt.autoread = true
+opt.autochdir = true
 opt.hidden = true
 opt.updatetime = 300
 opt.smartindent = true
