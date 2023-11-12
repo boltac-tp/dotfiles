@@ -21,27 +21,29 @@ s("n", "<Esc><Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true
 -- telescope
 local telescope = require("telescope")
 local telescope_builtin = require("telescope.builtin")
-s("n", "<leader>ff", telescope_builtin.find_files, { noremap = true })
-s("n", "<leader>fg", telescope_builtin.live_grep, { noremap = true })
-s("n", "<leader>fh", telescope_builtin.help_tags, { noremap = true })
-s("n", "<leader>fb", telescope_builtin.buffers, { noremap = true })
-s("n", "<leader>fq", telescope_builtin.quickfix, { noremap = true })
-s("n", "<leader>fd", telescope_builtin.diagnostics, { noremap = true })
-s("n", "<leader>fe", telescope.extensions.file_browser.file_browser, { noremap = true })
-s("n", "<leader>fs", telescope.extensions.luasnip.luasnip, { noremap = true })
+s("n", "<leader>f", telescope_builtin.find_files, { noremap = true, desc = "find files" })
+s("n", "<leader>/", telescope_builtin.live_grep, { noremap = true, desc = "live grep" })
+s("n", "<leader>h", telescope_builtin.help_tags, { noremap = true, desc = "help tags" })
+s("n", "<leader>b", telescope_builtin.buffers, { noremap = true, desc = "buffer list" })
+s("n", "<leader>q", telescope_builtin.quickfix, { noremap = true, desc = "quick fix" })
+s("n", "<leader>d", telescope_builtin.diagnostics, { noremap = true, desc = "diagnostics" })
+s("n", "<leader>k", telescope_builtin.keymaps, { noremap = true, desc = "keymaps" })
+s("n", "<leader>c", telescope_builtin.commands, { noremap = true, desc = "command pallete" })
+s("n", "<leader>l", telescope.extensions.file_browser.file_browser, { noremap = true, desc = "file browser" })
+s("n", "<leader>s", telescope.extensions.luasnip.luasnip, { noremap = true, desc = "luasnip snipets" })
 
 -- lsp Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 --s("n", "<leader>d", vim.diagnostic.open_float)
 --s("n", "[d", vim.diagnostic.goto_prev)
 --s("n", "]d", vim.diagnostic.goto_next)
-s("n", "<leader>q", vim.diagnostic.setloclist)
+--s("n", "<leader>q", vim.diagnostic.setloclist)
 
 -- lspsaga
 -- lsp finder
 --s("n", "gh", "<cmd>Lspsaga finder<CR>", { silent = true })
 -- code action
-s("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+s("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { noremap = true, desc = "code actions" })
 -- rename
 s("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { silent = true })
 -- Definition preview
@@ -74,7 +76,7 @@ s("n", "]b", "<Cmd>BufferLineCycleNext<CR>", {})
 s("n", "[b", "<Cmd>BufferLineCyclePrev<CR>", {})
 
 --dap
-s("n", "<leader>d", ':lua require("dapui").toggle()<CR>', {})
+s("n", "<leader>dap", ':lua require("dapui").toggle()<CR>', {})
 
 s("n", "<F5>", function()
 	require("dap").continue()
@@ -88,10 +90,10 @@ end)
 s("n", "<F12>", function()
 	require("dap").step_out()
 end)
-s("n", "<Leader>b", function()
+s("n", "<Leader>m", function()
 	require("dap").toggle_breakpoint()
 end)
-s("n", "<Leader>B", function()
+s("n", "<Leader>M", function()
 	require("dap").set_breakpoint()
 end)
 s("n", "<Leader>lp", function()
