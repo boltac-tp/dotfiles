@@ -5,14 +5,14 @@
   editor = nvim
 
 [diff]
-  tool = nvimdiff
+	tool = nvimdiff
 [difftool "nvimdiff"]
   cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [difftool]
   prompt = true
 
 [merge]
-  tool = nvimdiff
+	tool = nvimdiff
 [mergetool]
   prompt = true
 [mergetool "nvimdiff"]

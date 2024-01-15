@@ -23,8 +23,10 @@ return {
 	s(
 		{ trig = "pypy_recursion", dscr = "pypyで再帰関数を使うときのおまじない" },
 		t({
+			"import sys",
 			"import pypyjit",
 			"pypyjit.set_param('max_unroll_recursion=-1')",
+			"sys.setrecursionlimit(10**6)",
 		})
 	),
 	s(
