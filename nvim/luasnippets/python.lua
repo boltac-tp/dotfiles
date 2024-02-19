@@ -535,4 +535,33 @@ return {
 			"        return ans",
 		})
 	),
+	s(
+		{ trig = "dijkstra", dscr = "dijkstra" },
+		t({
+			"import heapq",
+			"",
+			"",
+			"def dijkstra(g: list[list[tuple[int, int]]], n: int, start: int) -> list[int | float]:",
+			'    """',
+			"    g:(目的node,cost)で収納",
+			"    n:nodeの数",
+			"    start:経路のスタート",
+			"    return:",
+			"    それぞれのnodeまでの最短コスト",
+			'    """',
+			'    nodes = [float("INF")] * n',
+			"    nodes[start] = 0",
+			"    next_node = []",
+			"    heapq.heappush(next_node, [start, 0])",
+			"",
+			"    while len(next_node) > 0:",
+			"        _, nxt = heapq.heappop(next_node)",
+			"",
+			"        for goal, cost in g[nxt]:",
+			"            if nodes[nxt] + cost < nodes[goal]:",
+			"                nodes[goal] = nodes[nxt] + cost",
+			"                heapq.heappush(next_node, [nodes[nxt] + cost, goal])",
+			"    return nodes",
+		})
+	),
 }
