@@ -8,9 +8,9 @@ null_ls.setup({
 		-- lua
 		null_ls.builtins.formatting.stylua,
 		-- python
-		null_ls.builtins.formatting.ruff,
+		--null_ls.builtins.formatting.ruff,
 		-- rust
-		null_ls.builtins.formatting.rustfmt,
+		--null_ls.builtins.formatting.rustfmt,
 		-- shell
 		null_ls.builtins.formatting.shfmt,
 		-- typescript
@@ -40,7 +40,6 @@ null_ls.setup({
 				buffer = bufnr,
 				callback = function()
 					vim.lsp.buf.format({ async = false })
-					--vim.lsp.buf.formatting_sync()
 				end,
 			})
 		end
