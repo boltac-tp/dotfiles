@@ -126,6 +126,7 @@ cargo install eza bat cargo-update cargo-edit cargo-compete sheldon ripgrep styl
 npm install -g typescript-language-server typescript
 npm install -g eslint_d
 npm install -g npm-check
+npm install -g @biomejs/biome
 
 # sheldon setting
 ln -s ~/dotfiles/sheldon ~/.config/sheldon
