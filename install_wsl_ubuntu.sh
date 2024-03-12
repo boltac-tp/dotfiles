@@ -69,9 +69,7 @@ python3 -m pip install --user pipx
 curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
 
 # install : python linter & formatter
-pipx install ruff
-pipx install ruff-lsp
-pipx install pyright
+pipx install ruff ruff-lsp pyright
 ln -s ~/dotfiles/ruff ~/.config/ruff
 
 # install : rust
@@ -96,8 +94,7 @@ sudo apt -qq update && sudo apt -qq install -y docker-ce docker-ce-cli container
 sudo usermod -aG docker "${USER}"
 
 # other app
-pipx install pre-commit
-pipx install tldr
+pipx install pre-commit tldr
 
 echo "gup"
 go install github.com/nao1215/gup@latest

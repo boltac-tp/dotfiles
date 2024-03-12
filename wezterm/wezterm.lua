@@ -2,7 +2,8 @@ local wezterm = require("wezterm")
 local start
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-	start = { "wsl.exe", "~", "--distribution", "Ubuntu", "--exec", "/usr/bin/zsh", "-l" }
+	-- start = { "wsl.exe", "~", "--distribution", "Ubuntu", "--exec", "/usr/bin/zsh", "-l" }
+	start = { "wsl.exe", "~", "--distribution", "ArchLinux", "--exec", "/usr/bin/zsh", "-l" }
 else
 	start = { "/usr/bin/zsh", "-l" }
 end
