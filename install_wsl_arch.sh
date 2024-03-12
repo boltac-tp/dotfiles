@@ -61,6 +61,7 @@ pipx install ruff ruff-lsp pyright
 ln -s ~/dotfiles/ruff ~/.config/ruff
 yay -S uv --noconfirm
 curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
+rye config --set-bool behavior.use-uv=true
 
 #install:rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y

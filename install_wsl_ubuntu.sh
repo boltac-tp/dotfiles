@@ -65,12 +65,13 @@ ln -s ~/dotfiles/direnv ~/.config/direnv
 # install : pipx
 python3 -m pip install --user pipx
 
+# install : python linter & formatter
+pipx install ruff ruff-lsp pyright uv
+ln -s ~/dotfiles/ruff ~/.config/ruff
+
 # install : rye
 curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
-
-# install : python linter & formatter
-pipx install ruff ruff-lsp pyright
-ln -s ~/dotfiles/ruff ~/.config/ruff
+rye config --set-bool behavior.use-uv=true
 
 # install : rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y
