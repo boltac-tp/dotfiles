@@ -29,14 +29,14 @@ yay -S geos --noconfirm
 ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
 ln -s ~/dotfiles/zsh/.zshenv ~/.zshenv
 ln -s ~/dotfiles/zsh/.p10k.zsh ~/.p10k.zsh
-yay -S shellchec --noconfirmk
+yay -S shellchec --noconfirm
 
 #install:git
 ln -s ~/dotfiles/git/ ~/.config/git
-yay -S github-cl --noconfirmi
+yay -S github-cl --noconfirm
 
 # install neovim
-yay -S neovim-nightly-bin --noconfirm
+~/dotfiles/scripts/install_neovim_head.sh
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
 # install docker

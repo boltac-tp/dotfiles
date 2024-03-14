@@ -53,5 +53,6 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # docker
 export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
 
+
 #fpath
 fpath=(~/dotfiles/zsh/completions $fpath)
