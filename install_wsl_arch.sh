@@ -13,13 +13,15 @@ mkdir -p "${HOME}/.local/src"
 
 # install yay
 git clone https://aur.archlinux.org/yay-bin.git yay-bin
-cd yay-bin
-makepkg -si --noconfirm
-cd ..
+(
+	cd yay-bin || exit
+	makepkg -si --noconfirm
+	cd ..
+)
 rm -rf yay-bin
 
 # install some dependency
-yay -S unzip keychain --noconfirm
+yay -S unzip keychain less man-db pkgfile time --noconfirm
 # for Scipy
 yay -S gcc-fortran openblas --noconfirm
 # for shapely

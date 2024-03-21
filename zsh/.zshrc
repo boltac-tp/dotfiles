@@ -40,12 +40,10 @@ alias egrep='egrep --color=auto'
 # alias cat
 if [[ $(command -v batcat) ]]; then
     alias bat ='batcat'
-    export PAGER='bat'
-    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-elif [[ $(command -v bat) ]]; then
-    export PAGER='bat'
-    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
+export PAGER='bat'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
 which bat > /dev/null && alias cat='bat'
 
@@ -55,6 +53,9 @@ if [[ $(command -v nvim) ]]; then
 fi
 
 which nvim > /dev/null && alias vi='nvim'
+
+# hook pkg-file
+source /usr/share/doc/pkgfile/command-not-found.zsh
 
 # alias exa
 if [[ $(command -v eza) ]]; then
