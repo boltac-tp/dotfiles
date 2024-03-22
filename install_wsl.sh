@@ -6,8 +6,6 @@
 
 source ~/dotfiles/zsh/.zshenv
 
-echo "${MY_ENV}"
-
 DIST=$(grep -e ^NAME= /etc/os-release | sed -e s/NAME=// -e s/\"//g)
 echo "${MY_ENV} ${DIST}"
 isUbuntu=false
@@ -27,6 +25,8 @@ mkdir -p "${HOME}/.local/bin"
 mkdir -p "${HOME}/.local/src"
 
 # install yay
+# https://github.com/jquer/yqy
+
 if "${isArch}"; then
 	git clone https://aur.archlinux.org/yay-bin.git yay-bin
 	(
@@ -71,6 +71,8 @@ if "${isUbuntu}"; then
 fi
 
 #install:git
+# https://git-scm.com/
+# https://cli.github.com/
 ln -s ~/dotfiles/git/ ~/.config/git
 if "${isArch}"; then
 	yay -S github-cli --noconfirm
@@ -87,10 +89,14 @@ if "${isUbuntu}"; then
 fi
 
 # install neovim
+# https://github.com/neovim/neovim
+
 ~/dotfiles/scripts/install_neovim_head.sh
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
 # install docker
+# https://docs.docker.com
+
 if "${isArch}"; then
 	yay -S docker docker-compose --noconfirm
 fi
@@ -107,23 +113,31 @@ sudo usermod -aG docker "${USER}"
 sudo systemctl start docker
 
 #install:node
+# https://volta.sh
+
 curl https://get.volta.sh | bash
 volta install node
 
 #install:deno
+# https://deno.com
 curl -fsSL https://deno.land/install.sh | sh
 
 #install direnv
+# https://github.com/direnv/direnv
 curl -sfL https://direnv.net/install.sh | bash
 ln -s ~/dotfiles/direnv ~/.config/direnv
 
 #install:python
+# https://github.com/pypa/pipx
 if "${isArch}"; then
 	yay -S python-pipx --noconfirm
 fi
 if "${isUbuntu}"; then
 	python3 -m pip install --user pipx
 fi
+# https://github.com/astral-sh/uv
+# https://github.com/astral-sh/ruff
+# https://github.com/astral-sh/rye
 pipx install uv ruff ruff-lsp pyright
 ln -s ~/dotfiles/ruff ~/.config/ruff
 curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
