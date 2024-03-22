@@ -1,8 +1,23 @@
 #!/bin/bash
 
+# archのとき、scripts前に
+# pacman -Syyu base base-devel git vim wget reflector zsh
+# はインストールしておく
+
 source ~/dotfiles/zsh/.zshenv
 
 echo "${MY_ENV}"
+
+DIST=$(grep -e ^NAME= /etc/os-release | sed -e s/NAME=// -e s/\"//g)
+echo "${MY_ENV} ${DIST}"
+isUbuntu=false
+isArch=false
+if [ "${DIST}" == Ubuntu ]; then
+	isUbuntu=true
+fi
+if [ "${DIST}" == 'Arch Linux' ]; then
+	isArch=true
+fi
 
 mkdir -p "${XDG_CONFIG_HOME}"
 mkdir -p "${XDG_CACHE_HOME}"
@@ -12,37 +27,82 @@ mkdir -p "${HOME}/.local/bin"
 mkdir -p "${HOME}/.local/src"
 
 # install yay
-git clone https://aur.archlinux.org/yay-bin.git yay-bin
-(
-	cd yay-bin || exit
-	makepkg -si --noconfirm
-	cd ..
-)
-rm -rf yay-bin
+if "${isArch}"; then
+	git clone https://aur.archlinux.org/yay-bin.git yay-bin
+	(
+		cd yay-bin || exit
+		makepkg -si --noconfirm
+		cd ..
+	)
+	rm -rf yay-bin
+fi
 
 # install some dependency
-yay -S unzip keychain less man-db pkgfile time --noconfirm
-# for Scipy
-yay -S gcc-fortran openblas --noconfirm
-# for shapely
-yay -S geos --noconfirm
+if "${isArch}"; then
+	yay -S unzip keychain less man-db pkgfile time --noconfirm
+	# for Scipy
+	yay -S gcc-fortran openblas --noconfirm
+	# for shapely
+	yay -S geos --noconfirm
+fi
+
+if "${isUbuntu}"; then
+	sudo sed -i.bak -r 's!http://(security|us.archive).ubuntu.com/ubuntu!http://ftp.riken.jp/Linux/ubuntu!' /etc/apt/sources.list
+	sudo apt -qq update && sudo apt -qq upgrade -y
+	sudo apt -qq install -y unzip make cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev libyaml-dev
+	# install dependency for scipy
+	sudo apt -qq install -y gcc g++ gfortran libopenblas-dev liblapack-dev pkg-config python3-pip python3-dev
+	# install dependency for shapely
+	sudo apt -qq install -y libgeos-dev
+fi
 
 # install:zsh
 ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
 ln -s ~/dotfiles/zsh/.zshenv ~/.zshenv
 ln -s ~/dotfiles/zsh/.p10k.zsh ~/.p10k.zsh
-yay -S shellchec --noconfirm
+
+if "${isArch}"; then
+	yay -S shellcheck --noconfirm
+fi
+
+if "${isUbuntu}"; then
+	sudo apt -qq install -y zsh shellcheck
+	sudo chsh -s "$(which zsh)" "$(whoami)"
+fi
 
 #install:git
 ln -s ~/dotfiles/git/ ~/.config/git
-yay -S github-cl --noconfirm
+if "${isArch}"; then
+	yay -S github-cli --noconfirm
+fi
+if "${isUbuntu}"; then
+	sudo add-apt-repository ppa:git-core/ppa -y
+	sudo apt -qq update && sudo apt -qq install -y git
+
+	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
+		sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
+		echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
+		sudo apt update &&
+		sudo apt install gh -y
+fi
 
 # install neovim
 ~/dotfiles/scripts/install_neovim_head.sh
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
 # install docker
-yay -S docker docker-compose --noconfirm
+if "${isArch}"; then
+	yay -S docker docker-compose --noconfirm
+fi
+if "${isUbuntu}"; then
+	sudo mkdir -p /etc/apt/keyrings
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+	echo \
+		"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+
+	sudo apt -qq update && sudo apt -qq install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+fi
 sudo usermod -aG docker "${USER}"
 sudo systemctl start docker
 
@@ -58,10 +118,14 @@ curl -sfL https://direnv.net/install.sh | bash
 ln -s ~/dotfiles/direnv ~/.config/direnv
 
 #install:python
-yay -S python-pipx --noconfirm
-pipx install ruff ruff-lsp pyright
+if "${isArch}"; then
+	yay -S python-pipx --noconfirm
+fi
+if "${isUbuntu}"; then
+	python3 -m pip install --user pipx
+fi
+pipx install uv ruff ruff-lsp pyright
 ln -s ~/dotfiles/ruff ~/.config/ruff
-yay -S uv --noconfirm
 curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
 rye config --set-bool behavior.use-uv=true
 
