@@ -88,7 +88,7 @@ alias pbcopy='xsel --clipboard --input'
 eval "$(direnv hook zsh)"
 
 # rye init
-source "${HOME}/.rye/env"
+source "${RYE_HOME}/env"
 
 # sheldon init
 eval "$(sheldon source)"

@@ -29,6 +29,8 @@ export PATH="${CARGO_HOME}/bin:$PATH"
 
 # ruff
 export RUFF_CACHE_DIR="${XDG_CACHE_HOME}/ruff"
+# rye
+export RYE_HOME="${XDG_CONFIG_HOME}/rye"
 
 # go-lang
 export GOPATH="${XDG_DATA_HOME}/go"
