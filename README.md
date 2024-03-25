@@ -34,6 +34,51 @@ sudo apt full-upgrade
 
 install script
 
+## WSL Arch のインストール
+
+[link](thhps://archlinux.org/download/)からbootstrapイメージをダウンロード  
+tarballを展開し`etc/pacman.d/mirrorlist`の適当なミラーサーバをコメントアウトの解除  
+gzipで再度圧縮
+```bash
+wget (tarball url)
+sudo tar xzvf ~~.tar.gz
+# /etc/pacman.d/mirrolist の編集
+sudo tar czvf ~~.tar.gz *
+```
+wslへインポート
+```power shell
+wsl --import ArchLinux c:\wsl\qrch c:\~~.tar.gz
+```
+ユーザの設定
+```bash
+pacman-key --init
+pacman-key --populate archlinux
+
+pacman -Syyu base base-devel git vim wget reflector zsh openssl
+pacman -Syy
+export EDITOR="$(which vim)"
+reflector --country Japan --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+
+#rootのパスを設定
+passwd
+#ユーザの追加
+useradd -m -G wheel -s /bin/zsh -d /home/{USENAME} {USERNAME}
+passwd {USERNAME}
+
+#wheelユーザーグループにsudoer(%wheel ALL=(ALL:ALL)をコメントアウトの解除)
+sudoedit /etc/sudoers
+```
+WSLデフォルトユーザ
+`etc/wsl.conf`に以下を記載
+```
+[user]
+default={USERNAME}
+```
+systemdを使うので以下も
+```
+[boot]
+systemd=true
+```
 ## Windows
 
 [link](https://github.com/boltac-tp/dotfiles/blob/master/docs/install_win11.md)
