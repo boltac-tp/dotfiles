@@ -57,9 +57,9 @@ if "${isUbuntu}"; then
 fi
 
 # install:zsh
-ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
+mkdir -p ~/.local/share/zsh
 ln -s ~/dotfiles/zsh/.zshenv ~/.zshenv
-ln -s ~/dotfiles/zsh/.p10k.zsh ~/.p10k.zsh
+ln -s ~/dotfiles/zsh ~/.config/zsh
 
 if "${isArch}"; then
 	yay -S shellcheck --noconfirm
@@ -117,6 +117,8 @@ sudo systemctl start docker
 
 curl https://get.volta.sh | bash
 volta install node
+
+ln -s ~/dotfiles/npm ~/.config/npm
 
 #install:deno
 # https://deno.com

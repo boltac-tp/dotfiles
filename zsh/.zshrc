@@ -6,8 +6,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ### ssh-agent ###
-/usr/bin/keychain -q --nogui ~/.ssh/id_rsa
-source ~/.keychain/$HOST-sh
+/usr/bin/keychain --absolute --dir "$XDG_RUNTIME_DIR"/keychain -q --nogui ~/.ssh/id_rsa
+source $XDG_RUNTIME_DIR/keychain/$HOST-sh
 
 #wslのパスをwinのパスに変換し、winのFirefoxに渡す
 if [[ $MY_ENV == WSL ]]; then
@@ -96,4 +96,11 @@ eval "$(sheldon source)"
 [ -f "/home/boltac/.ghcup/env" ] && source "/home/boltac/.ghcup/env" # ghcup-envsource
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+# zsh completion
+fpath=(/usr/local/share/zsh/site-functions $fpath)
+fpath=(~/dotfiles/zsh/completions $fpath)
+autoload -U compinit
+compinit -d ~/.local/share/zsh/compdump
+
