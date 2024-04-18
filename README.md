@@ -54,7 +54,7 @@ wsl --import ArchLinux c:\wsl\qrch c:\~~.tar.gz
 pacman-key --init
 pacman-key --populate archlinux
 
-pacman -Syyu base base-devel git vim wget reflector zsh openssl
+pacman -Syyu base base-devel git vim wget reflector zsh openssh
 pacman -Syy
 export EDITOR="$(which vim)"
 reflector --country Japan --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist

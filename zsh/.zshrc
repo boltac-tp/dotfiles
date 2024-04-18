@@ -81,7 +81,6 @@ alias myupdate='myupdate.sh'
 
 # apps
 alias weather='curl wttr.in/sapporo'
-alias wezterm='flatpak run org.wezfurlong.wezterm'
 alias pbcopy='xsel --clipboard --input'
 
 # direnv init

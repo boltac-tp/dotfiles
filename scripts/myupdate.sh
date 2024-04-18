@@ -25,7 +25,7 @@ volta install node
 echo ''
 printf "\e[94m%s\e[m\n" "npm app"
 echo ''
-npm-check -gy
+npm-check -gu
 
 echo ''
 printf "\e[94m%s\e[m\n" "python app"
