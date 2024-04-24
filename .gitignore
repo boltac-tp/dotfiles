@@ -5,6 +5,11 @@ nvim/plugged
 nvim/autoload
 nvim/lazy-lock.json
 
+mpd/state
+mpd/log
+mpd/pid
+mpd/sticker.sql
+
 .jupyter/lab/workspaces/
 *zwc
 .zcompdump

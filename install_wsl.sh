@@ -192,7 +192,7 @@ ln -s ~/dotfiles/sheldon ~/.config/sheldon
 # for atcoder
 rustup install 1.70.0
 pipx install online-judge-tools
-npm install -g atcoder-cli
+bun install -g atcoder-cli
 
 acc config-dir
 acc config default-template python

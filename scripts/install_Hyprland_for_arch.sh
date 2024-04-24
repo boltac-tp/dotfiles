@@ -74,3 +74,12 @@ yay -S keepassxc
 
 # pdf e-pub zip_archive reader
 yay -S rar unrar apvlv thorium-reader-bin mcomix
+
+# media
+yay -S mpv mpd ymuse
+lm -s ~/dotfiles/mpd ~/.config/mpd
+systemctl --user start mpd
+systemctl --user enable mpd
+
+# samba
+yay -S sambaclient
