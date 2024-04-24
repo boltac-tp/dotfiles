@@ -112,17 +112,21 @@ fi
 sudo usermod -aG docker "${USER}"
 sudo systemctl start docker
 
-#install:node
-# https://volta.sh
-
-curl https://get.volta.sh | bash
-volta install node
-
+# install node
+if "${isArch}"; then
+	yay -S nodejs-lts-iron npm --noconfirm
+else
+	sudo apt install nodejs
+fi
 ln -s ~/dotfiles/npm ~/.config/npm
 
 #install:deno
 # https://deno.com
 curl -fsSL https://deno.land/install.sh | sh
+
+#install:bun
+# https://bun.sh
+curl -fsSL https://bun.sh/install | bash
 
 #install direnv
 # https://github.com/direnv/direnv
@@ -180,10 +184,7 @@ go install -tags extended github.com/gohugoio/hugo@latest
 rustup component add rust-analyzer
 cargo install eza bat cargo-update cargo-edit cargo-compete sheldon ripgrep stylua
 
-npm install -g typescript-language-server typescript
-npm install -g eslint_d
-npm install -g npm-check
-npm install -g @biomejs/biome
+bun install -g typescript-language-server typescript npm-check-updates @biomejs/biome
 
 # sheldon setting
 ln -s ~/dotfiles/sheldon ~/.config/sheldon

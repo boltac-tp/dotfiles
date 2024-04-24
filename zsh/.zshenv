@@ -47,16 +47,16 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH="${PATH}:$HOME/.ghcup/bin"
 export PATH="${PATH}:$HOME/.cabal/bin"
 
-# volta
-export VOLTA_HOME="${XDG_DATA_HOME}/volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
 # npm
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
 
-# deno PATH
+# deno
 export DENO_INSTALL="${XDG_DATA_HOME}/deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # docker
 export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"

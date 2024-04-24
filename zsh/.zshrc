@@ -103,3 +103,6 @@ fpath=(~/dotfiles/zsh/completions $fpath)
 autoload -U compinit
 compinit -d ~/.local/share/zsh/compdump
 
+
+# bun completions
+[ -s "/home/boltac/.bun/_bun" ] && source "/home/boltac/.bun/_bun"

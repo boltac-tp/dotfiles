@@ -246,7 +246,7 @@ require("lazy").setup({
 	-------------------------------------------------
 	-- actions                                     --
 	-------------------------------------------------
-	-- nvim-falsh.nvim
+	-- nvim-flash.nvim
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
@@ -349,7 +349,7 @@ require("lazy").setup({
 	-- buffer line
 	{
 		"akinsho/bufferline.nvim",
-		version = "v3.*",
+		version = "*",
 		dependencies = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("bufferline").setup({

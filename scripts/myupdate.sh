@@ -17,15 +17,14 @@ echo ''
 deno upgrade
 
 echo ''
-printf "\e[94m%s\e[m\n" "volta"
+printf "\e[94m%s\e[m\n" "bun"
 echo ''
-curl https://get.volta.sh | bash -s -- --skip-setup
-volta install node
+bun upgrade
 
 echo ''
 printf "\e[94m%s\e[m\n" "npm app"
 echo ''
-npm-check -gu
+npm-check-updates -gu
 
 echo ''
 printf "\e[94m%s\e[m\n" "python app"
