@@ -349,7 +349,6 @@ require("lazy").setup({
 	-- buffer line
 	{
 		"akinsho/bufferline.nvim",
-		version = "*",
 		dependencies = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("bufferline").setup({

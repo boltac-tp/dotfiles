@@ -9,6 +9,7 @@ mpd/state
 mpd/log
 mpd/pid
 mpd/sticker.sql
+mpd/database
 
 .jupyter/lab/workspaces/
 *zwc
