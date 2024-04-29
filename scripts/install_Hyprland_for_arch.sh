@@ -83,3 +83,5 @@ systemctl --user enable mpd
 
 # samba
 yay -S sambaclient
+sudo mkdir -p /mnt/Music
+echo "//192.168.10.21/Music /mnt/Music /mnt/Music cifs _netdev,x-sistemd.automount,credentials=/home/boltac/credentials=/home/boltac/credentials/share 0 0" | sudo tee -a /etc/fstab
