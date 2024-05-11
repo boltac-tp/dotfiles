@@ -325,12 +325,12 @@ require("lazy").setup({
 	},
 	-- indent
 	{
-		"lukas-reineke/indent-blankline.nvim",
+		"shellRaining/hlchunk.nvim",
+		event = { "UIEnter" },
 		config = function()
-			require("ibl").setup({})
+			require("config/hlchunk")
 		end,
 	},
-	-- colorizer
 	{
 		"norcalli/nvim-colorizer.lua",
 		event = { "BufReadPre", "BufNewFile" },
