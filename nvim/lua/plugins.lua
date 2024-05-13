@@ -305,7 +305,7 @@ require("lazy").setup({
 	-- comment
 	{
 		"numToStr/Comment.nvim",
-		lany = false,
+		lazy = false,
 		config = function()
 			require("Comment").setup()
 		end,
