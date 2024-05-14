@@ -62,9 +62,7 @@ yay -S greetd-tuigreet
 yay -S gnome-keyring libsecret
 
 # mailer
-# desktopエントリを$XDG_DATA_HOME/applications/にコピー、Exec行に引数を。
-# Exec=mailspring -password-store=gnome-libsecret %u
-yay -S mailspring
+yay -S thunderbird
 
 # dropbox
 yay -S dropbox thaunar-dropbox
