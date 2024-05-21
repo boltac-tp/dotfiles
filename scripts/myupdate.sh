@@ -24,7 +24,7 @@ bun upgrade
 echo ''
 printf "\e[94m%s\e[m\n" "npm app"
 echo ''
-npm-check-updates -gu
+bun update -g
 
 echo ''
 printf "\e[94m%s\e[m\n" "python app"

@@ -184,7 +184,7 @@ go install -tags extended github.com/gohugoio/hugo@latest
 rustup component add rust-analyzer
 cargo install eza bat cargo-update cargo-edit cargo-compete sheldon ripgrep stylua
 
-bun install -g typescript-language-server typescript npm-check-updates @biomejs/biome
+bun install -g typescript-language-server typescript @biomejs/biome
 
 # sheldon setting
 ln -s ~/dotfiles/sheldon ~/.config/sheldon
