@@ -117,6 +117,7 @@ cmp.setup({
 		{ name = "emoji", insert = true },
 		{ name = "nvim_lua" },
 		{ name = "nvim_lsp_signature_help" },
+		{ name = "lazydev", group_index = 0 },
 	}, {
 		{ name = "buffer" },
 		{ name = "spell" },
