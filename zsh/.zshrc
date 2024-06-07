@@ -76,6 +76,8 @@ alias acctp='oj t -c "rye run python main.py" -d ./test/'
 alias acctpp='oj t -c "rye run pypy main.py" -d ./test/'
 alias accspp='acc s main.py -- --guess-python-interpreter pypy'
 
+alias ac='cargo compete'
+
 # alias some scritps
 alias myupdate='myupdate.sh'
 
