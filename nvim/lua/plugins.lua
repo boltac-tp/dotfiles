@@ -47,7 +47,7 @@ require("lazy").setup({
                 },
             },
         },
-        conig = function()
+        config = function()
             require("mason").setup()
         end,
         build = ":MasonUpdate",
@@ -380,4 +380,8 @@ require("lazy").setup({
         },
     },
     { "Bilal2453/luvit-meta", lazy = true },
+    -------------------------------------------------
+    -- for language                                --
+    -------------------------------------------------
+    { "mrcjkb/rustaceanvim",  version = "^4", lazy = false },
 })

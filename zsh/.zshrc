@@ -10,9 +10,9 @@ fi
 source $XDG_RUNTIME_DIR/keychain/$HOST-sh
 
 #wslのパスをwinのパスに変換し、winのFirefoxに渡す
-if [[ $MY_ENV == WSL ]]; then
-  export BROWSER=$HOME/dotfiles/scripts/wsl_browser_path_to_win.sh
-fi
+# if [[ $MY_ENV == WSL ]]; then
+#   export BROWSER=$HOME/dotfiles/scripts/wsl_browser_path_to_win.sh
+# fi
 
 # setopt
 unsetopt glob_dots

@@ -39,7 +39,7 @@ fi
 
 # install some dependency
 if "${isArch}"; then
-	yay -S unzip keychain less man-db pkgfile time --noconfirm
+	yay -S unzip keychain less man-db pkgfile time lldb --noconfirm
 	# for Scipy
 	yay -S gcc-fortran openblas --noconfirm
 	# for shapely
@@ -54,6 +54,26 @@ if "${isUbuntu}"; then
 	sudo apt -qq install -y gcc g++ gfortran libopenblas-dev liblapack-dev pkg-config python3-pip python3-dev
 	# install dependency for shapely
 	sudo apt -qq install -y libgeos-dev
+fi
+
+# install wslu
+if "${isArch}"; then
+	wget https://pkg.wslutiliti.es/public.key
+	sudo pacman-key --add public.key
+	sudo pacman-key --lsign-key 2D4C887EB08424F157151C493DD50AA7E055D853
+	if grep -e wslutilities /etc/pacman.conf; then
+		:
+	else
+		echo "[wslutilities]" | sudo tee -a /etc/pacman.conf
+		echo "Server = https://pkg.wslutiliti.es/arch/" | sudo tee -a /etc/pacman.conf
+	fi
+	yay -Sy && yay -S --noconfirm wslu
+fi
+
+if "${isUbuntu}"; then
+	sudo add-apt-repository ppa:wslutilities/wslu
+	sudo apt update
+	sudo apt install wslu
 fi
 
 # install:zsh
@@ -182,7 +202,7 @@ echo "hugo"
 go install -tags extended github.com/gohugoio/hugo@latest
 
 rustup component add rust-analyzer
-cargo install eza bat cargo-update cargo-edit cargo-compete sheldon ripgrep stylua
+cargo install eza bat cargo-update cargo-edit cargo-compete sheldon ripgrep stylua fd-find
 
 bun install -g typescript-language-server typescript @biomejs/biome
 
