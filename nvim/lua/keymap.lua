@@ -2,6 +2,7 @@ local s = vim.keymap.set
 
 -- leader
 vim.g.mapleader = " "
+vim.g.maplocalloader = "\\"
 
 -- cursor move
 s("n", "gh", "^", { noremap = true, silent = true })
