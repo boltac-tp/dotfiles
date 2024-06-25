@@ -9,6 +9,7 @@ else
   MY_ENV=Windows
 fi
 export MY_ENV
+export DIST=$(grep -e ^NAME= /etc/os-release | sed -e s/NAME=// -e s/\"//g)
 
 # xdg_home
 export XDG_CONFIG_HOME="${HOME}/.config"

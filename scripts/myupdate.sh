@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ "${DIST}" == 'Arch Linux' ]; then
+	yay --noconfirm
+fi
+
 echo ''
 printf "\e[94m%s\e[m\n" "neovim"
 echo ''
