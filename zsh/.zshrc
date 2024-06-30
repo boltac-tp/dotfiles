@@ -6,8 +6,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ### ssh-agent ###
-/usr/bin/keychain --absolute --dir "$XDG_RUNTIME_DIR"/keychain -q --nogui ~/.ssh/id_rsa
-source $XDG_RUNTIME_DIR/keychain/$HOST-sh
+# /usr/bin/keychain --absolute --dir "$XDG_RUNTIME_DIR"/keychain -q --nogui ~/.ssh/id_rsa
+# source $XDG_RUNTIME_DIR/keychain/$HOST-sh
 
 # setopt
 unsetopt glob_dots

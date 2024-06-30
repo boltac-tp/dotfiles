@@ -87,41 +87,6 @@ lspconfig["ruff_lsp"].setup({
 	settings = {},
 })
 
--- for rust
--- lspconfig["rust_analyzer"].setup({
---     on_attach = function(client, bufnr)
---         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
---     end,
---     settings = {
---         ["rust-analyzer"] = {
---             imports = {
---                 granularity = {
---                     group = "module",
---                 },
---             },
---             checkOnSave = {
---                 command = "clippy",
---             },
---             typing = {
---                 autoClosingAngleBrackets = true,
---             },
---             completion = {
---                 autoimport = {
---                     enable = true,
---                 },
---             },
---             cargo = {
---                 buildScripts = {
---                     enable = true,
---                 },
---             },
---             procMacro = {
---                 enable = true,
---             },
---         },
---     },
--- })
-
 lspconfig["tsserver"].setup({
 	settings = {
 		filetypes = {
@@ -171,6 +136,7 @@ lspconfig["yamlls"].setup({
 		},
 	},
 })
+lspconfig["taplo"].setup({})
 
 lspconfig["bashls"].setup({})
 lspconfig["dockerls"].setup({})
