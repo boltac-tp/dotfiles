@@ -2,6 +2,7 @@
 local lspconfig = require("lspconfig")
 local configs = require("lspconfig/configs")
 local s = vim.keymap.set
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -35,6 +36,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- for go
+local util = require("lspconfig/util")
+
 if not configs.golangcilsp then
 	configs.golangcilsp = {
 		default_config = {
@@ -57,13 +60,12 @@ if not configs.golangcilsp then
 end
 
 lspconfig.golangci_lint_ls.setup({
+	capabilities = capabilities,
 	filetypes = { "go", "gomod" },
 })
 
-local util = require("lspconfig/util")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 lspconfig["gopls"].setup({
+	capabilities = capabilities,
 	cmd = { "gopls", "serve" },
 	filetypes = { "go", "gomod" },
 	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
@@ -80,14 +82,19 @@ lspconfig["gopls"].setup({
 -- for python
 
 lspconfig["pyright"].setup({
+	capabilities = capabilities,
 	settings = {},
 })
 
 lspconfig["ruff_lsp"].setup({
+	capabilities = capabilities,
 	settings = {},
 })
 
+-- for typescript
+
 lspconfig["tsserver"].setup({
+	capabilities = capabilities,
 	settings = {
 		filetypes = {
 			"typescript",
@@ -100,9 +107,14 @@ lspconfig["tsserver"].setup({
 		},
 	},
 })
-lspconfig["biome"].setup({})
+lspconfig["biome"].setup({
+	capabilities = capabilities,
+})
+
+-- others
 
 lspconfig["lua_ls"].setup({
+	capabilities = capabilities,
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -113,10 +125,12 @@ lspconfig["lua_ls"].setup({
 })
 
 lspconfig["hls"].setup({
+	capabilities = capabilities,
 	filetypes = { "haskell", "lhaskell", "cabal" },
 })
 
 lspconfig["jsonls"].setup({
+	capabilities = capabilities,
 	settings = {
 		json = {
 			schemas = require("schemastore").json.schemas(),
@@ -126,6 +140,7 @@ lspconfig["jsonls"].setup({
 })
 
 lspconfig["yamlls"].setup({
+	capabilities = capabilities,
 	settings = {
 		yaml = {
 			schemaStore = {
@@ -136,8 +151,17 @@ lspconfig["yamlls"].setup({
 		},
 	},
 })
-lspconfig["taplo"].setup({})
 
-lspconfig["bashls"].setup({})
-lspconfig["dockerls"].setup({})
-lspconfig["docker_compose_language_service"].setup({})
+lspconfig["taplo"].setup({
+	capabilities = capabilities,
+})
+
+lspconfig["bashls"].setup({
+	capabilities = capabilities,
+})
+lspconfig["dockerls"].setup({
+	capabilities = capabilities,
+})
+lspconfig["docker_compose_language_service"].setup({
+	capabilities = capabilities,
+})
