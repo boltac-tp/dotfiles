@@ -1,4 +1,4 @@
-wget -q https://github.com/neovim/neovim-releases/releases/download/nightly/nvim-linux64.tar.gz
+wget -q https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
 tar xzf nvim-linux64.tar.gz -C ~/.local/share/
 rm nvim-linux64.tar.gz
 
