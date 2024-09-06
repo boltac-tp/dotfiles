@@ -178,6 +178,7 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 ~/dotfiles/scripts/install_go.sh
 
 # other app
+yay -S eza bat fd ripgrep stylua --noconfirm
 pipx install pre-commit tldr
 
 echo "gup"
@@ -202,7 +203,7 @@ echo "hugo"
 go install -tags extended github.com/gohugoio/hugo@latest
 
 rustup component add rust-analyzer
-cargo install eza bat cargo-update cargo-edit cargo-compete sheldon ripgrep stylua fd-find
+cargo install cargo-binstall cargo-update cargo-edit cargo-compete sheldon
 cargo install --features lsp --locked taplo-cli
 
 bun install -g typescript-language-server typescript @biomejs/biome
