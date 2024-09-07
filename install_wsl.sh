@@ -178,28 +178,25 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 ~/dotfiles/scripts/install_go.sh
 
 # other app
-yay -S eza bat fd ripgrep stylua --noconfirm
+if "${isArch}"; then
+    yay -S eza bat fd ripgrep stylua --noconfirm
+fi
+if "${isUbuntu}"; then
+    sudo apt -qq update && sudo apt -qq install -y eza bat fd-find ripgrep
+    cargo install stylua
+fi
+
 pipx install pre-commit tldr
 
-echo "gup"
 go install github.com/nao1215/gup@latest
-echo "gopls"
 go install golang.org/x/tools/gopls@latest
-echo "golangci"
 go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-echo "golangci-lint"
 go install github.com/nametake/golangci-lint-langserver@latest
-echo "goimports"
 go install golang.org/x/tools/cmd/goimports@latest
-echo "godoc"
 go install golang.org/x/tools/cmd/godoc@latest
-echo "lazygit"
 go install github.com/jesseduffield/lazygit@latest
-echo "lazydocker"
 go install github.com/jesseduffield/lazydocker@latest
-echo "shfmt"
 go install mvdan.cc/sh/v3/cmd/shfmt@latest
-echo "hugo"
 go install -tags extended github.com/gohugoio/hugo@latest
 
 rustup component add rust-analyzer
