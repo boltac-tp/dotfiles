@@ -5,7 +5,7 @@ yay -S qt5-wayland qt6-wayland xorg-xwayland
 ln -s ~/dotfiles/hypr ~/.config/hypr
 yay -S --devel hyprland
 yay -S hyprlock
-
+yay -S hyprpaper
 # font
 yay -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-hackgen ttf-cica ttf-nerd-fonts-symbols ttf-font-awesome
 
@@ -83,3 +83,8 @@ systemctl --user enable mpd
 yay -S sambaclient
 sudo mkdir -p /mnt/Music
 echo "//192.168.10.21/Music /mnt/Music /mnt/Music cifs _netdev,x-sistemd.automount,credentials=/home/boltac/credentials=/home/boltac/credentials/share 0 0" | sudo tee -a /etc/fstab
+
+# remmina
+yay -S remmina freerdp
+# Note:If one protocols is not available in the Remmina dropdown menu after installing the required package, make sure to completely quit Remmina first; run killall remmina.
+# When you restart Reemmina, the protocol should be available.
