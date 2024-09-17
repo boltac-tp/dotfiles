@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "${DIST}" == 'Arch Linux' ]; then
-	yay --noconfirm
+    yay --noconfirm
 fi
 
 echo ''
@@ -23,7 +23,7 @@ deno upgrade
 echo ''
 printf "\e[94m%s\e[m\n" "bun"
 echo ''
-bun upgrade
+bun upgrade --stable
 
 echo ''
 printf "\e[94m%s\e[m\n" "npm app"
@@ -33,7 +33,6 @@ bun update -g
 echo ''
 printf "\e[94m%s\e[m\n" "python app"
 echo ''
-rye self update
 pipx upgrade-all
 
 echo ''

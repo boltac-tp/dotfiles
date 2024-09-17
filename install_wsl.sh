@@ -163,13 +163,8 @@ if "${isUbuntu}"; then
 fi
 # https://github.com/astral-sh/uv
 # https://github.com/astral-sh/ruff
-# https://github.com/astral-sh/rye
 pipx install uv ruff ruff-lsp pyright
 ln -s ~/dotfiles/ruff ~/.config/ruff
-
-# curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
-# mkdir -p ~/.config/rye
-# ln -s ~/dotfiles/rye/config.toml ~/.config/rye/config.toml
 
 #install:rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y
