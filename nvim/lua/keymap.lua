@@ -19,6 +19,15 @@ s("i", "<C-j><C-j>", "<ESC>", { noremap = true, silent = true })
 -- put <Esc> to nohlsearch
 s("n", "<Esc><Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true })
 
+-- caps
+s("i", "<C-l>", function()
+	local line = vim.fn.getline(".")
+	local col = vim.fn.getpos(".")[3]
+	local substring = line:sub(1, col - 1)
+	local result = vim.fn.matchstr(substring, [[\v<(\k(<)@!)*$]])
+	return "<C-w>" .. result:upper()
+end, { expr = true })
+--
 -- telescope
 local telescope = require("telescope")
 local telescope_builtin = require("telescope.builtin")
