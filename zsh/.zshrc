@@ -67,9 +67,8 @@ else
 fi
 
 # alias atcoder
-alias acctp='oj t -c "rye run python main.py" -d ./test/'
-alias acctpp='oj t -c "rye run pypy main.py" -d ./test/'
-alias accspp='acc s main.py -- --guess-python-interpreter pypy'
+alias acct='oj t -c "uv run pypy main.py" -d ./test/'
+alias accs='acc s main.py -- --guess-python-interpreter pypy'
 
 alias ac='cargo compete'
 
