@@ -86,7 +86,7 @@ lspconfig["pyright"].setup({
     settings = {},
 })
 
-lspconfig["ruff_lsp"].setup({
+lspconfig["ruff"].setup({
     capabilities = capabilities,
     settings = {},
 })

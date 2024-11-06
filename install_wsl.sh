@@ -11,10 +11,10 @@ echo "${MY_ENV} ${DIST}"
 isUbuntu=false
 isArch=false
 if [ "${DIST}" == Ubuntu ]; then
-	isUbuntu=true
+    isUbuntu=true
 fi
 if [ "${DIST}" == 'Arch Linux' ]; then
-	isArch=true
+    isArch=true
 fi
 
 mkdir -p "${XDG_CONFIG_HOME}"
@@ -28,52 +28,52 @@ mkdir -p "${HOME}/.local/src"
 # https://github.com/jquer/yqy
 
 if "${isArch}"; then
-	git clone https://aur.archlinux.org/yay-bin.git yay-bin
-	(
-		cd yay-bin || exit
-		makepkg -si --noconfirm
-		cd ..
-	)
-	rm -rf yay-bin
+    git clone https://aur.archlinux.org/yay-bin.git yay-bin
+    (
+        cd yay-bin || exit
+        makepkg -si --noconfirm
+        cd ..
+    )
+    rm -rf yay-bin
 fi
 
 # install some dependency
 if "${isArch}"; then
-	yay -S unzip keychain less man-db pkgfile time lldb --noconfirm
-	# for Scipy
-	yay -S gcc-fortran openblas --noconfirm
-	# for shapely
-	yay -S geos --noconfirm
+    yay -S unzip keychain less man-db pkgfile time lldb --noconfirm
+    # for Scipy
+    yay -S gcc-fortran openblas --noconfirm
+    # for shapely
+    yay -S geos --noconfirm
 fi
 
 if "${isUbuntu}"; then
-	sudo sed -i.bak -r 's!http://(security|us.archive).ubuntu.com/ubuntu!http://ftp.riken.jp/Linux/ubuntu!' /etc/apt/sources.list
-	sudo apt -qq update && sudo apt -qq upgrade -y
-	sudo apt -qq install -y unzip make cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev libyaml-dev
-	# install dependency for scipy
-	sudo apt -qq install -y gcc g++ gfortran libopenblas-dev liblapack-dev pkg-config python3-pip python3-dev
-	# install dependency for shapely
-	sudo apt -qq install -y libgeos-dev
+    sudo sed -i.bak -r 's!http://(security|us.archive).ubuntu.com/ubuntu!http://ftp.riken.jp/Linux/ubuntu!' /etc/apt/sources.list
+    sudo apt -qq update && sudo apt -qq upgrade -y
+    sudo apt -qq install -y unzip make cmake curl pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev libyaml-dev
+    # install dependency for scipy
+    sudo apt -qq install -y gcc g++ gfortran libopenblas-dev liblapack-dev pkg-config python3-pip python3-dev
+    # install dependency for shapely
+    sudo apt -qq install -y libgeos-dev
 fi
 
 # install wslu
 if "${isArch}"; then
-	wget https://pkg.wslutiliti.es/public.key
-	sudo pacman-key --add public.key
-	sudo pacman-key --lsign-key 2D4C887EB08424F157151C493DD50AA7E055D853
-	if grep -e wslutilities /etc/pacman.conf; then
-		:
-	else
-		echo "[wslutilities]" | sudo tee -a /etc/pacman.conf
-		echo "Server = https://pkg.wslutiliti.es/arch/" | sudo tee -a /etc/pacman.conf
-	fi
-	yay -Sy && yay -S --noconfirm wslu
+    wget https://pkg.wslutiliti.es/public.key
+    sudo pacman-key --add public.key
+    sudo pacman-key --lsign-key 2D4C887EB08424F157151C493DD50AA7E055D853
+    if grep -e wslutilities /etc/pacman.conf; then
+        :
+    else
+        echo "[wslutilities]" | sudo tee -a /etc/pacman.conf
+        echo "Server = https://pkg.wslutiliti.es/arch/" | sudo tee -a /etc/pacman.conf
+    fi
+    yay -Sy && yay -S --noconfirm wslu
 fi
 
 if "${isUbuntu}"; then
-	sudo add-apt-repository ppa:wslutilities/wslu
-	sudo apt update
-	sudo apt install wslu
+    sudo add-apt-repository ppa:wslutilities/wslu
+    sudo apt update
+    sudo apt install wslu
 fi
 
 # install:zsh
@@ -82,12 +82,12 @@ ln -s ~/dotfiles/zsh/.zshenv ~/.zshenv
 ln -s ~/dotfiles/zsh ~/.config/zsh
 
 if "${isArch}"; then
-	yay -S shellcheck --noconfirm
+    yay -S shellcheck --noconfirm
 fi
 
 if "${isUbuntu}"; then
-	sudo apt -qq install -y zsh shellcheck
-	sudo chsh -s "$(which zsh)" "$(whoami)"
+    sudo apt -qq install -y zsh shellcheck
+    sudo chsh -s "$(which zsh)" "$(whoami)"
 fi
 
 #install:git
@@ -95,17 +95,17 @@ fi
 # https://cli.github.com/
 ln -s ~/dotfiles/git/ ~/.config/git
 if "${isArch}"; then
-	yay -S github-cli --noconfirm
+    yay -S github-cli --noconfirm
 fi
 if "${isUbuntu}"; then
-	sudo add-apt-repository ppa:git-core/ppa -y
-	sudo apt -qq update && sudo apt -qq install -y git
+    sudo add-apt-repository ppa:git-core/ppa -y
+    sudo apt -qq update && sudo apt -qq install -y git
 
-	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
-		sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
-		echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
-		sudo apt update &&
-		sudo apt install gh -y
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg &&
+        sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null &&
+        sudo apt update &&
+        sudo apt install gh -y
 fi
 
 # install neovim
@@ -118,25 +118,25 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 # https://docs.docker.com
 
 if "${isArch}"; then
-	yay -S docker docker-compose --noconfirm
+    yay -S docker docker-compose --noconfirm
 fi
 if "${isUbuntu}"; then
-	sudo mkdir -p /etc/apt/keyrings
-	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-	echo \
-		"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo \
+        "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 
-	sudo apt -qq update && sudo apt -qq install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+    sudo apt -qq update && sudo apt -qq install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 fi
 sudo usermod -aG docker "${USER}"
 sudo systemctl start docker
 
 # install node
 if "${isArch}"; then
-	yay -S nodejs-lts-iron npm --noconfirm
+    yay -S nodejs-lts-iron npm --noconfirm
 else
-	sudo apt install nodejs
+    sudo apt install nodejs
 fi
 ln -s ~/dotfiles/npm ~/.config/npm
 
@@ -156,14 +156,14 @@ ln -s ~/dotfiles/direnv ~/.config/direnv
 #install:python
 # https://github.com/pypa/pipx
 if "${isArch}"; then
-	yay -S python-pipx --noconfirm
+    yay -S python-pipx --noconfirm
 fi
 if "${isUbuntu}"; then
-	python3 -m pip install --user pipx
+    python3 -m pip install --user pipx
 fi
 # https://github.com/astral-sh/uv
 # https://github.com/astral-sh/ruff
-pipx install uv ruff ruff-lsp pyright
+pipx install uv ruff pyright
 ln -s ~/dotfiles/ruff ~/.config/ruff
 
 #install:rust
@@ -174,11 +174,11 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # other app
 if "${isArch}"; then
-	yay -S eza bat fd ripgrep stylua --noconfirm
+    yay -S eza bat fd ripgrep stylua --noconfirm
 fi
 if "${isUbuntu}"; then
-	sudo apt -qq update && sudo apt -qq install -y eza bat fd-find ripgrep
-	cargo install stylua
+    sudo apt -qq update && sudo apt -qq install -y eza bat fd-find ripgrep
+    cargo install stylua
 fi
 
 pipx install pre-commit tldr
