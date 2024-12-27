@@ -206,7 +206,7 @@ ln -s ~/dotfiles/sheldon ~/.config/sheldon
 
 # for atcoder
 rustup install 1.70.0
-pipx install online-judge-tools
+pipx install git+https://github.com/online-judge-tools/oj.git
 bun install -g atcoder-cli
 
 acc config-dir
