@@ -130,11 +130,12 @@ if "${isUbuntu}"; then
     sudo apt -qq update && sudo apt -qq install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 fi
 sudo usermod -aG docker "${USER}"
+sudo systemctl enable docker
 sudo systemctl start docker
 
 # install node
 if "${isArch}"; then
-    yay -S nodejs-lts-iron npm --noconfirm
+    yay -S nodejs npm --noconfirm
 else
     sudo apt install nodejs
 fi
