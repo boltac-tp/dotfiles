@@ -49,42 +49,16 @@ s("n", "<leader>fs", telescope.extensions.luasnip.luasnip, { noremap = true, des
 
 -- lsp Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
---s("n", "<leader>d", vim.diagnostic.open_float)
---s("n", "[d", vim.diagnostic.goto_prev)
---s("n", "]d", vim.diagnostic.goto_next)
---s("n", "<leader>q", vim.diagnostic.setloclist)
+s("n", "<leader>d", vim.diagnostic.open_float, { silent = true, desc = "diagnostic open float" })
 
--- lspsaga
--- lsp finder
---s("n", "gh", "<cmd>Lspsaga finder<CR>", { silent = true })
--- code action
-s("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { noremap = true, desc = "LSPsaga code actions" })
--- rename
-s("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { silent = true, desc = "LSPsaga rename" })
--- Definition preview
-s("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true, desc = "LSPsaga peek definision" })
-s("n", "gD", "<cmd>Lspsaga goto_definition<CR>", { silent = true, desc = "LSPsaga goto definision" })
--- Definition type preview
-s("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>", { silent = true, desc = "LSPsaga peek type definition" })
-s("n", "gT", "<cmd>Lspsaga goto_type_definition<CR>", { silent = true, desc = "LSPsaga goto type definition" })
--- Diagnostic jump can use '<c-o>' to jump back
-s("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true, desc = "LSPsaga diagnostic jump next" })
-s("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true, desc = "LSPsaga diagnostic jump prev" })
-s("n", "]e", function()
-	require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-end, { silent = true, desc = "Lspsaga error jump next" })
-s("n", "[e", function()
-	require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-end, { silent = true, desc = "Lspsaga error jump prev" })
+s("n", "[d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, { silent = true, desc = "jump to next" })
 
--- Diagnnostic
--- s("n", "<leader>l", "<cmd>Lspsaga show_buf_diagnostics<CR>", { silent = true })
--- Outline
-s("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true, desc = "LSPsaga outline" })
--- Hovor Doc
-s("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true, desc = "LSPsaga hover doc" })
--- float terminal
--- s("n", "<A-t>", "<cmd>Lspsaga term_toggle<CR>", { silent = true })
+s("n", "]d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, { silent = true, desc = "jump to prev" })
+s("n", "<leader>q", vim.diagnostic.setloclist)
 
 --buffer line
 s("n", "]b", "<Cmd>BufferLineCycleNext<CR>", { silent = true, desc = "BufferLine cycle next" })
