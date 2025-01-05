@@ -49,15 +49,15 @@ s("n", "<leader>fs", telescope.extensions.luasnip.luasnip, { noremap = true, des
 
 -- lsp Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-s("n", "<leader>d", vim.diagnostic.open_float, { silent = true, desc = "diagnostic open float" })
+s("n", "<leader>dd", vim.diagnostic.open_float, { silent = true, desc = "diagnostic open float" })
 
 s("n", "[d", function()
 	vim.diagnostic.jump({ count = 1, float = true })
-end, { silent = true, desc = "jump to next" })
+end, { silent = true, desc = "diagnostic jump to next" })
 
 s("n", "]d", function()
 	vim.diagnostic.jump({ count = -1, float = true })
-end, { silent = true, desc = "jump to prev" })
+end, { silent = true, desc = "diagnostic jump to prev" })
 s("n", "<leader>q", vim.diagnostic.setloclist)
 
 --buffer line

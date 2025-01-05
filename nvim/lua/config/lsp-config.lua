@@ -16,47 +16,47 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
 		local opts = { buffer = ev.buf }
 
-		opts.desc = "go to declaration"
+		opts.desc = "LSP go to declaration"
 		s("n", "gD", vim.lsp.buf.declaration, opts)
 
-		opts.desc = "show lsp definitions"
+		opts.desc = "LSP show lsp definitions"
 		s("n", "gd", vim.lsp.buf.definition, opts)
 
-		opts.desc = "show lsp implementations"
+		opts.desc = "LSP show lsp implementations"
 		s("n", "gi", vim.lsp.buf.implementation, opts)
 
-		opts.desc = "type definition"
+		opts.desc = "LSP type definition"
 		s("n", "gt", vim.lsp.buf.type_definition, opts)
 
-		opts.desc = "see available code actions"
+		opts.desc = "LSP see available code actions"
 		s({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
-		opts.desc = "show definition references"
+		opts.desc = "LSP show definition references"
 		s("n", "gr", vim.lsp.buf.references, opts)
 
-		opts.desc = "show signature help"
+		opts.desc = "LSP show signature help"
 		s("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 
-		opts.desc = "show documetation for what is under cursor"
+		opts.desc = "LSP show documetation for what is under cursor"
 		s("n", "K", vim.lsp.buf.hover, opts)
-		opts.desc = "restart LSP"
+		opts.desc = "LSP restart LSP"
 		s("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
 
-		opts.desc = "add workspace"
+		opts.desc = "LSP add workspace"
 		s("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
 
-		opts.desc = "remove workspace"
+		opts.desc = "LSP remove workspace"
 		s("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
 
-		opts.desc = "show workspace list"
+		opts.desc = "LSP show workspace list"
 		s("n", "<leader>wl", function()
 			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 		end, opts)
 
-		opts.desc = "rename"
+		opts.desc = "LSP rename"
 		s("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
-		opts.desc = "format"
+		opts.desc = "LSP format"
 		s("n", "<leader><leader>", function()
 			vim.lsp.buf.format({ async = true })
 		end, opts)
