@@ -41,6 +41,7 @@ cmp.setup({
 				dictionary = "[Dictionary]",
 				mocword = "[mocword]",
 				cmdline_history = "[History]",
+				cody = "[Cody]",
 			},
 		}),
 	},
@@ -112,6 +113,7 @@ cmp.setup({
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
+		{ name = "cody", keyword_length = 2 },
 		{ name = "luasnip" },
 		{ name = "path" },
 		{ name = "emoji", insert = true },

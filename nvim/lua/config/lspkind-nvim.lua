@@ -39,5 +39,6 @@ require("lspkind").init({
 		Event = "",
 		Operator = "󰆕",
 		TypeParameter = "",
+		Cody = "❄️",
 	},
 })
