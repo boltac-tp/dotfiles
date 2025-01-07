@@ -14,3 +14,5 @@ mpd/database
 .jupyter/lab/workspaces/
 *zwc
 .zcompdump
+
+tokens/

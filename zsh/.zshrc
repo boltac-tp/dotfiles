@@ -27,6 +27,9 @@ setopt auto_menu
 setopt complete_in_word
 setopt magic_equal_subst
 
+# tokens
+source ~/dotfiles/tokens/*
+
 # alias general
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
