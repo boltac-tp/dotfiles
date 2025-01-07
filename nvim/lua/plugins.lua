@@ -15,6 +15,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	-------------------------------------------------
+	-- dependencies                                --
+	-------------------------------------------------
+	{ "kkharji/sqlite.lua" },
+	{ "stevearc/dressing.nvim" },
+
+	-------------------------------------------------
 	-- color scheme                                --
 	-------------------------------------------------
 	{
@@ -212,34 +218,6 @@ require("lazy").setup({
 		end,
 	},
 	-------------------------------------------------
-	-- fazzy finder                                --
-	-------------------------------------------------
-	{
-		"nvim-telescope/telescope.nvim",
-		cmd = { "Telescope" },
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-treesitter/nvim-treesitter" },
-			{ "kyazdani42/nvim-web-devicons" },
-			{ "nvim-telescope/telescope-file-browser.nvim" },
-			{ "nvim-telescope/telescope-ui-select.nvim" },
-		},
-		config = function()
-			require("config/telescope")
-		end,
-	},
-	{
-		"prochri/telescope-all-recent.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-			"kkharji/sqlite.lua",
-			"stevearc/dressing.nvim",
-		},
-		opts = {},
-	},
-	-------------------------------------------------
 	-- snipet                                      --
 	-------------------------------------------------
 	{
@@ -248,10 +226,30 @@ require("lazy").setup({
 			require("config/luasnip")
 		end,
 	},
+	-------------------------------------------------
+	-- fazzy finder                                --
+	-------------------------------------------------
 	{
-		"benfowler/telescope-luasnip.nvim",
+		"nvim-telescope/telescope.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
+				cond = function()
+					return vim.fn.executable("make") == 1
+				end,
+			},
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+			{ "kyazdani42/nvim-web-devicons" },
+			{ "nvim-telescope/telescope-file-browser.nvim" },
+			{ "nvim-telescope/telescope-ui-select.nvim" },
+			{ "benfowler/telescope-luasnip.nvim" },
+			{ "prochri/telescope-all-recent.nvim" },
+		},
 		config = function()
-			require("telescope").load_extension("luasnip")
+			require("config/telescope")
 		end,
 	},
 	-------------------------------------------------

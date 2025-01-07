@@ -33,29 +33,50 @@ s("i", "<C-l>", function()
 	local result = vim.fn.matchstr(substring, [[\v<(\k(<)@!)*$]])
 	return "<C-w>" .. result:upper()
 end, { expr = true })
---
+
 -- telescope
-local telescope = require("telescope")
-local telescope_builtin = require("telescope.builtin")
-s("n", "<leader>ff", telescope_builtin.find_files, { noremap = true, desc = "telescope find files" })
-s("n", "<leader>/", telescope_builtin.live_grep, { noremap = true, desc = "telescope live grep" })
-s("n", "<leader>fh", telescope_builtin.help_tags, { noremap = true, desc = "telescope help tags" })
-s("n", "<leader>fb", telescope_builtin.buffers, { noremap = true, desc = "telescope buffer list" })
-s("n", "<leader>fq", telescope_builtin.quickfix, { noremap = true, desc = "telescope quick fix" })
-s("n", "<leader>fd", telescope_builtin.diagnostics, { noremap = true, desc = "telescope diagnostics" })
-s("n", "<leader>fk", telescope_builtin.keymaps, { noremap = true, desc = "telescope keymaps" })
-s("n", "<leader>fc", telescope_builtin.commands, { noremap = true, desc = "telescope command pallete" })
+local builtin = require("telescope.builtin")
+s("n", "<leader>sh", builtin.help_tags, { noremap = true, desc = "Telescope search help" })
+s("n", "<leader>sk", builtin.keymaps, { noremap = true, desc = "Telescope search keymaps" })
+s("n", "<leader>sf", builtin.find_files, { noremap = true, desc = "Telescope search files" })
+s("n", "<leader>ss", builtin.builtin, { noremap = true, desc = "Telescope search select telescope" })
+s("n", "<leader>sw", builtin.grep_string, { noremap = true, desc = "Telescope search current word" })
+s("n", "<leader>sg", builtin.live_grep, { noremap = true, desc = "Telescope live grep" })
+s("n", "<leader>sd", builtin.diagnostics, { noremap = true, desc = "Telescope search diagnostics" })
+s("n", "<leader>sr", builtin.resume, { noremap = true, desc = "Telescope search resume" })
+s("n", "<leader>s.", builtin.oldfiles, { noremap = true, desc = "Telescope search oldfiles" })
+s("n", "<leader><leader>", builtin.buffers, { noremap = true, desc = "Telescope buffer list" })
+
+s("n", "<leader>/", function()
+	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		winblend = 10,
+		previewer = false,
+	}))
+end, { noremap = true, desc = "Telescope fuzzy search in cullent buffer" })
+
+s("n", "<leader>s/", function()
+	builtin.live_grep({
+		grep_open_files = true,
+		prompt_title = "Live Grpe in Open Files",
+	})
+end, { noremap = true, desc = "Telescope grep in open files" })
+
+s("n", "<leader>sn", function()
+	builtin.find_files({ cwd = vim.fn.stdpath("config") })
+end, { desc = "Telescope Search Neovim files" })
+
+s("n", "<leader>fq", builtin.quickfix, { noremap = true, desc = "telescope quick fix" })
+s("n", "<leader>fc", builtin.commands, { noremap = true, desc = "telescope command pallete" })
 s(
 	"n",
-	"<leader>fe",
-	telescope.extensions.file_browser.file_browser,
-	{ noremap = true, desc = "telescope file browser" }
+	"<leader>fs",
+	require("telescope").extensions.luasnip.luasnip,
+	{ noremap = true, desc = "telescope luasnip snipets" }
 )
-s("n", "<leader>fs", telescope.extensions.luasnip.luasnip, { noremap = true, desc = "telescope luasnip snipets" })
 
 -- lsp Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-s("n", "<leader>dd", vim.diagnostic.open_float, { silent = true, desc = "diagnostic open float" })
+--s("n", "<leader>dd", vim.diagnostic.open_float, { silent = true, desc = "diagnostic open float" })
 
 s("n", "[d", function()
 	vim.diagnostic.jump({ count = 1, float = true })

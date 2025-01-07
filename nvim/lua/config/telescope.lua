@@ -1,6 +1,4 @@
-local telescope = require("telescope")
-
-telescope.setup({
+require("telescope").setup({
 	defaults = {
 		mappings = {
 			n = {
@@ -28,5 +26,6 @@ telescope.setup({
 	},
 })
 
-telescope.load_extension("file_browser")
-telescope.load_extension("ui-select")
+pcall(require("telescope").load_extension, "fzf")
+pcall(require("telescope").load_extension, "luasnip")
+pcall(require("telescope").load_extension, "ui-select")

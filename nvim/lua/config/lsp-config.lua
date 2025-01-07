@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		s("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
 		opts.desc = "LSP format"
-		s("n", "<leader><leader>", function()
+		s("n", "<leader>fm", function()
 			vim.lsp.buf.format({ async = true })
 		end, opts)
 	end,
