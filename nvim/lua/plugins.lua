@@ -35,31 +35,6 @@ require("lazy").setup({
 	-- init                                        --
 	-------------------------------------------------
 	{
-		"williamboman/mason.nvim",
-		cmd = {
-			"Mason",
-			"MasonInstall",
-			"MasonUninstall",
-			"MasonUninstallAll",
-			"MasonLog",
-			"MasonUpdate",
-			"MasonUpdateAll",
-		},
-		opts = {
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_uninstalled = "✗",
-					package_pending = "⟳",
-				},
-			},
-		},
-		config = function()
-			require("mason").setup()
-		end,
-		build = ":MasonUpdate",
-	},
-	{
 		"vim-jp/vimdoc-ja",
 		lazy = true,
 		keys = { {
@@ -147,15 +122,12 @@ require("lazy").setup({
 	-------------------------------------------------
 	--
 	{
-		"williamboman/mason-lspconfig.nvim",
-		cmd = { "LspInstall", "LspUninstall" },
-		config = function()
-			require("config/mason-lsp")
-		end,
-	},
-	{
 		"neovim/nvim-lspconfig",
-		dependencies = { "williamboman/mason-lspconfig.nvim" },
+		dependencies = {
+			{ "williamboman/mason.nvim", config = true },
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer",
+		},
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("config/lsp-config")
@@ -175,18 +147,28 @@ require("lazy").setup({
 			require("config/treesitter")
 		end,
 	},
-	-- formatting
-	{
-		"nvimtools/none-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("config/null-ls")
-		end,
-	},
 	-- schema
 	{
 		"b0o/schemastore.nvim",
+	},
+	-- formatting
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		keys = {
+			{
+				"<leader>f",
+				function()
+					require("conform").format({ async = true, lsp_format = "fallback" })
+				end,
+				mode = "",
+				desc = "Format buffer",
+			},
+		},
+		config = function()
+			require("config/conform")
+		end,
 	},
 	-------------------------------------------------
 	-- LLM                                         --
