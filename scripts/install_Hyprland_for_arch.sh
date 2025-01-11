@@ -8,6 +8,7 @@ yay -S hyprlock
 yay -S hyprpaper
 # font
 yay -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-hackgen ttf-cica ttf-nerd-fonts-symbols ttf-font-awesome
+./install_fonts.sh
 
 # ime
 yay -S fcitx5-im
