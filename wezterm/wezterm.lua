@@ -9,6 +9,6 @@ end
 
 return {
 	default_prog = start,
-	font = wezterm.font_with_fallback({ "HackGenNerd Console", "HackGen Console NF" }),
+	font = wezterm.font_with_fallback({ "HackGen Console NF" }),
 	color_scheme = "tokyonight_moon",
 }
