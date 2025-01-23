@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "${DIST}" == 'Arch Linux' ]; then
-    yay --noconfirm
+    paru -Syu --noconfirm
 fi
 
 echo ''

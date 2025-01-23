@@ -24,26 +24,26 @@ mkdir -p "${XDG_STATE_HOME}"
 mkdir -p "${HOME}/.local/bin"
 mkdir -p "${HOME}/.local/src"
 
-# install yay
+# install paru
 # https://github.com/jquer/yqy
 
 if "${isArch}"; then
-    git clone https://aur.archlinux.org/yay-bin.git yay-bin
+    git clone https://aur.archlinux.org/paru.git
     (
-        cd yay-bin || exit
+        cd paru || exit
         makepkg -si --noconfirm
         cd ..
     )
-    rm -rf yay-bin
+    rm -rf paru
 fi
 
 # install some dependency
 if "${isArch}"; then
-    yay -S unzip keychain less man-db pkgfile time lldb --noconfirm
+    paru -S unzip keychain less man-db pkgfile time lldb --noconfirm
     # for Scipy
-    yay -S gcc-fortran openblas --noconfirm
+    paru -S gcc-fortran openblas --noconfirm
     # for shapely
-    yay -S geos --noconfirm
+    paru -S geos --noconfirm
 fi
 
 if "${isUbuntu}"; then
@@ -67,7 +67,7 @@ if "${isArch}"; then
         echo "[wslutilities]" | sudo tee -a /etc/pacman.conf
         echo "Server = https://pkg.wslutiliti.es/arch/" | sudo tee -a /etc/pacman.conf
     fi
-    yay -Sy && yay -S --noconfirm wslu
+    paru -Sy && paru -S --noconfirm wslu
 fi
 
 if "${isUbuntu}"; then
@@ -82,7 +82,7 @@ ln -s ~/dotfiles/zsh/.zshenv ~/.zshenv
 ln -s ~/dotfiles/zsh ~/.config/zsh
 
 if "${isArch}"; then
-    yay -S shellcheck --noconfirm
+    paru -S shellcheck --noconfirm
 fi
 
 if "${isUbuntu}"; then
@@ -95,7 +95,7 @@ fi
 # https://cli.github.com/
 ln -s ~/dotfiles/git/ ~/.config/git
 if "${isArch}"; then
-    yay -S github-cli --noconfirm
+    paru -S github-cli --noconfirm
 fi
 if "${isUbuntu}"; then
     sudo add-apt-repository ppa:git-core/ppa -y
@@ -118,7 +118,7 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 # https://docs.docker.com
 
 if "${isArch}"; then
-    yay -S docker docker-compose --noconfirm
+    paru -S docker docker-compose --noconfirm
 fi
 if "${isUbuntu}"; then
     sudo mkdir -p /etc/apt/keyrings
@@ -135,7 +135,7 @@ sudo systemctl start docker
 
 # install node
 if "${isArch}"; then
-    yay -S nodejs npm --noconfirm
+    paru -S nodejs npm --noconfirm
 else
     sudo apt install nodejs
 fi
@@ -157,7 +157,7 @@ ln -s ~/dotfiles/direnv ~/.config/direnv
 #install:python
 # https://github.com/pypa/pipx
 if "${isArch}"; then
-    yay -S python-pipx --noconfirm
+    paru -S python-pipx --noconfirm
 fi
 if "${isUbuntu}"; then
     python3 -m pip install --user pipx
@@ -175,7 +175,7 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # other app
 if "${isArch}"; then
-    yay -S eza bat fd ripgrep stylua --noconfirm
+    paru -S eza bat fd ripgrep stylua --noconfirm
 fi
 if "${isUbuntu}"; then
     sudo apt -qq update && sudo apt -qq install -y eza bat fd-find ripgrep
