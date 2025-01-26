@@ -9,6 +9,10 @@ fi
 # /usr/bin/keychain --absolute --dir "$XDG_RUNTIME_DIR"/keychain -q --nogui ~/.ssh/id_rsa
 # source $XDG_RUNTIME_DIR/keychain/$HOST-sh
 
+# keybind
+bindkey -d
+bindkey -e
+
 # setopt
 unsetopt glob_dots
 unsetopt ignore_eof
@@ -99,7 +103,7 @@ eval "$(sheldon source)"
 # zsh completion
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 fpath=(~/dotfiles/zsh/completions $fpath)
-autoload -U compinit
+autoload -Uz compinit
 compinit -d ~/.local/share/zsh/compdump
 
 
