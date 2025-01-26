@@ -7,7 +7,7 @@ yay -S --devel hyprland
 yay -S hyprlock
 yay -S hyprpaper
 # font
-yay -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-hackgen ttf-cica ttf-nerd-fonts-symbols ttf-font-awesome
+paru -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-cica ttf-nerd-fonts-symbols ttf-font-awesome ttf-roboto ttf-sarasa-gothic-sc --noconfirm
 ./install_fonts.sh
 
 # ime
