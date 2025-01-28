@@ -14,17 +14,11 @@
         "pulseaudio",
         "battery",
         "network",
+        "custom/nordvpn",
         "clock",
-        "custom/power",
         "idle_inhibitor",
         "tray"
     ],
-
-    "custom/power": {
-        "format": "boltac",
-        "tooltip-format": "power manager",
-        "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Shutdown' 'shutdown -h now' -b 'Restart' 'shutdown -r now' -b 'Logout' 'swaymsg exit' -b 'Hibernate' 'systemctl hibernate' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
-    },
 
     "clock": {
         "interval": 30,
@@ -56,6 +50,14 @@
         "format": "{icon} {capacity}%",
         "format-charging": "⚡ {capacity}%",
         "format-icons": ["", "", "", "", ""]
+    },
+
+     "custom/nordvpn": {
+        "interval": 5,
+        "format": "VPN{}",
+        "exec": "~/.config/waybar/modules/go-waybar-nordvpn exec",
+        "on-click": "~/.config/waybar/modules/go-waybar-nordvpn toggle",
+        "return-type": "json",
     },
 
     "network": {

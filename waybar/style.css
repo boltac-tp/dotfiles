@@ -31,14 +31,6 @@ window#waybar.hidden {
     border-radius: 4px;
 }
 
-#custom-power {
-    font-weight: bold;
-    color: #ffffff;
-    background: #536067;
-    padding: 5px 10px;
-    border-radius: 4px;
-}
-
 #battery,
 #cpu,
 #memory,
