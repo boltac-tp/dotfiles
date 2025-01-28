@@ -89,3 +89,9 @@ echo "//192.168.10.21/Music /mnt/Music /mnt/Music cifs _netdev,noauto,x-systemd.
 yay -S remmina freerdp
 # Note:If one protocols is not available in the Remmina dropdown menu after installing the required package, make sure to completely quit Remmina first; run killall remmina.
 # When you restart Reemmina, the protocol should be available.
+
+# nordvpn
+# https://support.nordvpn.com/hc/en-us/articles/20196094470929-Installing-NordVPN-on-Linux-distributions
+paru -S nordvpn-bin --noconfirm
+sudo systemctl enable nordvpnd.service
+sudo systemctl start nordvpnd.service
