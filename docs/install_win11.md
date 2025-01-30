@@ -1,11 +1,8 @@
 ### keyboard
 
 jis キーボードを US として認識  
-chgkey でスキャンコード変更  
-powertoys で  
-F13,F14 を無変換・変換キーに  
-IME 設定で無変換を IME OFF  
-変換を IME ON に
+必要あればchgkey でスキャンコード変更  
+powertoys で F13 -> IME OFF F14 -> IME ON に
 
 ### drivers
 
@@ -55,7 +52,6 @@ ubuntu の導入
 | Amazon Games                 | Amazon.Games                     |
 | Mp3tag                       | Mp3tag.Mp3tag                    |
 | QNAP Qfinder Pro             | QNAP.Qfinderpro                  |
-| AutoHotkey                   | Lexikos.AutoHotkey               |
 | calibre                      | calibre.calibre                  |
 | DeepL                        | DeepL.DeepL                      | 
 | GIMP                         | GIMP.GIMP                        |
