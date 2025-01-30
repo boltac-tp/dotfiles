@@ -175,10 +175,10 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # other app
 if "${isArch}"; then
-    paru -S eza bat fd ripgrep stylua --noconfirm
+    paru -S eza bat fd ripgrep stylua shfmt --noconfirm
 fi
 if "${isUbuntu}"; then
-    sudo apt -qq update && sudo apt -qq install -y eza bat fd-find ripgrep
+    sudo apt -qq update && sudo apt -qq install -y eza bat fd-find ripgrep shfmt
     cargo install stylua
 fi
 
@@ -192,7 +192,6 @@ go install golang.org/x/tools/cmd/goimports@latest
 go install golang.org/x/tools/cmd/godoc@latest
 go install github.com/jesseduffield/lazygit@latest
 go install github.com/jesseduffield/lazydocker@latest
-go install mvdan.cc/sh/v3/cmd/shfmt@latest
 go install -tags extended github.com/gohugoio/hugo@latest
 
 rustup component add rust-analyzer

@@ -14,7 +14,6 @@
         "pulseaudio",
         "battery",
         "network",
-        "custom/nordvpn",
         "clock",
         "idle_inhibitor",
         "tray"
@@ -50,14 +49,6 @@
         "format": "{icon} {capacity}%",
         "format-charging": "⚡ {capacity}%",
         "format-icons": ["", "", "", "", ""]
-    },
-
-     "custom/nordvpn": {
-        "interval": 5,
-        "format": "VPN{}",
-        "exec": "~/.config/waybar/modules/go-waybar-nordvpn exec",
-        "on-click": "~/.config/waybar/modules/go-waybar-nordvpn toggle",
-        "return-type": "json",
     },
 
     "network": {
