@@ -1,97 +1,98 @@
 # GUI librualy
-yay -S qt5-wayland qt6-wayland xorg-xwayland
+paru --noconfirm -S qt5-wayland qt6-wayland xorg-xwayland
 
 # hyprland
 ln -s ~/dotfiles/hypr ~/.config/hypr
-yay -S --devel hyprland
-yay -S hyprlock
-yay -S hyprpaper
+paru --noconfirm -S --devel hyprland
+paru --noconfirm -S hyprlock
+paru --noconfirm -S hyprpaper
 # font
 paru -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-cica ttf-nerd-fonts-symbols ttf-font-awesome ttf-roboto ttf-sarasa-gothic-sc --noconfirm
 ./install_fonts.sh
 
 # ime
-yay -S fcitx5-im
+paru --noconfirm -S fcitx5-im
 
 # pipewire
-yay -S pipewire pipewire-pulse
+paru --noconfirm -S pipewire pipewire-pulse
 
 # 通知サービス
 ln -s ~/dotfiles/mako ~/.config/mako
-yay -S mako
+paru --noconfirm -S mako
 
 # status bar
 kn -s ~/dotfiles/waybar ~/.config/waybar
-yay -S waybar
+paru --noconfirm -S waybar
 
 # ランチャ
-yay -S wofi
+paru --noconfirm -S wofi
 
 # terminal
 ln -s ~/dotfiles/kitty ~/.config/kitty
-yay -S kitty
+paru --noconfirm -S kitty
 
 # clipboard
-yay -S cliphist
+paru --noconfirm -S cliphist
 
 # snapshot
-yay -S grim blast
+paru --noconfirm -S grim blast
 
 # logout
 ln -s ~/dotfiles/wlogout ~/.config/wlogout
-yay -S wlogout
+paru --noconfirm -S wlogout
 
 # file manager
-yay -S thunar gvfs gvfs-smb thmbler ffmpegthumbnailer
+paru --noconfirm -S thunar gvfs gvfs-smb thmbler ffmpegthumbnailer
 
 # network manager applet
-yay -S network-manager-applet
+paru --noconfirm -S network-manager-applet
 
 # firewall
-yay -S ufw
+paru --noconfirm -S ufw
 
 # browser
-yay -S firefox microsoft-edge-dev-bin
+paru --noconfirm -S firefox microsoft-edge-dev-bin
 
 # login
 # https://wiki.archlinux.jp/index.php/Greetd
 # を参考に
-yay -S greetd-tuigreet
+paru --noconfirm -S greetd-tuigreet
 # gnome-keyring
 # https://wiki.archlinux.jp/index.php/GNOME/Keyring
 # を参考に
-yay -S gnome-keyring seahorse libsecret
+paru --noconfirm -S gnome-keyring seahorse libsecret
 
 # mailer
-yay -S thunderbird
+paru --noconfirm -S thunderbird
 
 # dropbox
-yay -S dropbox thaunar-dropbox
+paru --noconfirm -S dropbox thaunar-dropbox
 
 # keepass
-yay -S keepassxc
+paru --noconfirm -S keepassxc
 
 # pdf e-pub zip_archive reader
-yay -S rar unrar apvlv thorium-reader-bin mcomix
+paru --noconfirm -S rar unrar apvlv thorium-reader-bin mcomix
 
 # media
-yay -S mpv mpd ymuse
+paru --noconfirm -S mpv mpd ymuse
 lm -s ~/dotfiles/mpd ~/.config/mpd
 systemctl --user start mpd
 systemctl --user enable mpd
 
 # samba
-yay -S sambaclient
+# ~/.local/credentials/shareファイルを作ること
+paru --noconfirm -S sambaclient
 sudo mkdir -p /mnt/Music
-echo "//192.168.10.21/Music /mnt/Music /mnt/Music cifs _netdev,noauto,x-systemd.automount,credentials=/home/boltac/credentials=/home/boltac/credentials/share 0 0" | sudo tee -a /etc/fstab
+echo "//192.168.10.21/Music /mnt/Music cifs _netdev,x-systemd.automount,credentials=/home/boltac/.config/credentials/share 0 0" | sudo tee -a /etc/fstab
 
 # remmina
-yay -S remmina freerdp
+paru --noconfirm -S remmina freerdp
 # Note:If one protocols is not available in the Remmina dropdown menu after installing the required package, make sure to completely quit Remmina first; run killall remmina.
 # When you restart Reemmina, the protocol should be available.
 
 # nordvpn
 # https://support.nordvpn.com/hc/en-us/articles/20196094470929-Installing-NordVPN-on-Linux-distributions
-paru -S nordvpn-bin --noconfirm
+paru --noconfirm -S nordvpn-bin
 sudo systemctl enable nordvpnd.service
 sudo systemctl start nordvpnd.service
