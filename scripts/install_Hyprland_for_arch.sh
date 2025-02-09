@@ -96,3 +96,4 @@ paru --noconfirm -S remmina freerdp
 paru --noconfirm -S nordvpn-bin
 sudo systemctl enable nordvpnd.service
 sudo systemctl start nordvpnd.service
+sudo usermod -aG nordvpn $USER
