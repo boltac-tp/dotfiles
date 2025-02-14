@@ -123,11 +123,6 @@ require("lazy").setup({
 	--
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = {
-			{ "williamboman/mason.nvim", config = true },
-			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer",
-		},
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("config/lsp-config")

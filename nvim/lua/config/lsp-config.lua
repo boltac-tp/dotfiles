@@ -67,9 +67,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- LSP servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local util = require("lspconfig/util")
 if not configs.golangcilsp then
 	configs.golangcilsp = {
@@ -92,94 +91,66 @@ if not configs.golangcilsp then
 	}
 end
 
-local servers = {
-	pyright = {},
-	ruff = {},
-	vtsls = {},
-	biome = {},
-	jsonls = {
-		settings = {
-			json = {
-				schemas = require("schemastore").json.schemas(),
-				validate = { enable = true },
+lspconfig.lua_ls.setup({
+	capabilities = capabilies,
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+				disable = { "missing-fields" },
+			},
+			completion = {
+				callSnippet = "Replace",
 			},
 		},
-	},
-	gopls = {
-		cmd = { "gopls", "serve" },
-		filetypes = { "go", "gomod" },
-		root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-		settings = {
-			gopls = {
-				analyses = {
-					unusedparams = true,
-				},
-				staticcheck = true,
-			},
-		},
-	},
-	golangci_lint_ls = {
-		filetypes = { "go", "gomod" },
-	},
-	lua_ls = {
-		settings = {
-			Lua = {
-				diagnostics = {
-					globals = { "vim" },
-					disable = { "missing-fields" },
-				},
-				completion = {
-					callSnippet = "Replace",
-				},
-			},
-		},
-	},
-	hls = {
-		filetypes = { "haskell", "lhaskell", "cabal" },
-	},
-	taplo = {},
-	bashls = {},
-	dockerls = {},
-	docker_compose_language_service = {},
-	yamlls = {
-		settings = {
-			yaml = {
-				schemaStore = {
-					enable = false,
-					url = "",
-				},
-				schemas = require("schemastore").yaml.schemas(),
-			},
-		},
-	},
-}
-
-require("mason").setup()
-local ensure_installed = vim.tbl_keys(servers or {})
-vim.list_extend(ensure_installed, {
-	"pyright",
-	"ruff",
-	"vtsls",
-	"biome",
-	"jsonls",
-	"gopls",
-	"golangci_lint_ls",
-	"lua_ls",
-	"hls",
-	"taplo",
-	"bashls",
-	"dockerls",
-	"docker_compose_language_service",
-	"yamlls",
-})
-require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
-require("mason-lspconfig").setup({
-	handlers = {
-		function(server_name)
-			local server = servers[server_name] or {}
-			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-			require("lspconfig")[server_name].setup(server)
-		end,
 	},
 })
+
+lspconfig.pyright.setup({})
+lspconfig.ruff.setup({})
+lspconfig.vtsls.setup({})
+lspconfig.biome.setup({})
+lspconfig.jsonls.setup({
+	settings = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
+})
+lspconfig.gopls.setup({
+	cmd = { "gopls", "serve" },
+	filetypes = { "go", "gomod" },
+	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	},
+})
+
+lspconfig.golangci_lint_ls.setup({
+	filetypes = { "go", "gomod" },
+})
+
+lspconfig.taplo.setup({})
+lspconfig.bashls.setup({})
+lspconfig.dockerls.setup({})
+lspconfig.docker_compose_language_service.setup({})
+lspconfig.yamlls.setup({
+	settings = {
+		yaml = {
+			schemaStore = {
+				enable = false,
+				url = "",
+			},
+			schemas = require("schemastore").yaml.schemas(),
+		},
+	},
+})
+-- lspconfig.hls.setup({
+-- 	filetypes = { "haskell", "lhaskell", "cabal" },
+-- })

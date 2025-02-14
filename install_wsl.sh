@@ -199,7 +199,7 @@ cargo install cargo-binstall cargo-update cargo-edit cargo-compete
 cargo install --features lsp --locked taplo-cli
 cargo binstall sheldon
 
-bun install -g typescript-language-server typescript @biomejs/biome
+bun install -g typescript-language-server typescript @biomejs/biome bash-language-server @vtsls/language-server dockerfile-language-server-nodejs @microsoft/compose-language-service yaml-language-server vscode-langservers-extracted
 
 # sheldon setting
 ln -s ~/dotfiles/sheldon ~/.config/sheldon
