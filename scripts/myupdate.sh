@@ -4,11 +4,11 @@ if [ "${DIST}" == 'Arch Linux' ]; then
     paru -Syu --noconfirm
 fi
 
-echo ''
-printf "\e[94m%s\e[m\n" "neovim"
-echo ''
-
-~/dotfiles/scripts/install_neovim_head.sh
+# echo ''
+# printf "\e[94m%s\e[m\n" "neovim"
+# echo ''
+#
+# ~/dotfiles/scripts/install_neovim_head.sh
 
 echo ''
 printf "\e[94m%s\e[m\n" "zsh plugins"

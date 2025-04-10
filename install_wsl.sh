@@ -111,8 +111,9 @@ fi
 # install neovim
 # https://github.com/neovim/neovim
 
-~/dotfiles/scripts/install_neovim_head.sh
-ln -s ~/dotfiles/nvim ~/.config/nvim
+# ~/dotfiles/scripts/install_neovim_head.sh
+# ln -s ~/dotfiles/nvim ~/.config/nvim
+paru -S nvim --noconfirm
 
 # install docker
 # https://docs.docker.com
