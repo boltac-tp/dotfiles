@@ -171,10 +171,10 @@ require("lazy").setup({
 		event = "VeryLazy", -- Or `LspAttach`
 		priority = 1000,
 		config = function()
+			vim.diagnostic.config({ virtual_text = false })
 			require("tiny-inline-diagnostic").setup({
 				preset = "simple",
 			})
-			vim.diagnostic.config({ virtual_text = false })
 		end,
 	},
 

@@ -79,11 +79,11 @@ s(
 --s("n", "<leader>dd", vim.diagnostic.open_float, { silent = true, desc = "diagnostic open float" })
 
 s("n", "[d", function()
-	vim.diagnostic.jump({ count = 1, float = true })
+	vim.diagnostic.jump({ count = 1, float = false })
 end, { silent = true, desc = "diagnostic jump to next" })
 
 s("n", "]d", function()
-	vim.diagnostic.jump({ count = -1, float = true })
+	vim.diagnostic.jump({ count = -1, float = false })
 end, { silent = true, desc = "diagnostic jump to prev" })
 
 s("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic quickfix list" })
