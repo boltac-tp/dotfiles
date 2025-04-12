@@ -82,7 +82,7 @@ ln -s ~/dotfiles/zsh/.zshenv ~/.zshenv
 ln -s ~/dotfiles/zsh ~/.config/zsh
 
 if "${isArch}"; then
-    paru -S shellcheck --noconfirm
+    paru -S shellcheck-bin --noconfirm
 fi
 
 if "${isUbuntu}"; then
@@ -113,7 +113,7 @@ fi
 
 # ~/dotfiles/scripts/install_neovim_head.sh
 # ln -s ~/dotfiles/nvim ~/.config/nvim
-paru -S nvim --noconfirm
+paru -S neovim --noconfirm
 
 # install docker
 # https://docs.docker.com
