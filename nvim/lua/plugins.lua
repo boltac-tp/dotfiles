@@ -323,14 +323,13 @@ require("lazy").setup({
 	},
 	-- indent
 	{
-		"lukas-reineke/indent-blankline.nvim",
+		"shellRaining/hlchunk.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		main = "ibl",
-		ops = {},
 		config = function()
-			require("ibl").setup()
+			require("config/hlchunk")
 		end,
 	},
+
 	{
 		"norcalli/nvim-colorizer.lua",
 		event = { "BufReadPre", "BufNewFile" },
