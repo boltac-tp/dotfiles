@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<leader>rn", vim.lsp.buf.rename, "Rename")
 		map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
 		map("<leader>K", vim.lsp.buf.signature_help, "Signature Help")
-		map("K", vim.lsp.buf.hover, "Hover")
+		-- map("K", vim.lsp.buf.hover, "Hover")
 		map("<leader>rs", "<cmd>LspRestart<CR>", "Lsp Restart")
 
 		map("<leader>wa", vim.lsp.buf.add_workspace_folder, "Add Workspace Folder")

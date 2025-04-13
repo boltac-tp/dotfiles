@@ -165,7 +165,7 @@ require("lazy").setup({
 			require("config/conform")
 		end,
 	},
-
+	-- other
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
 		event = "VeryLazy", -- Or `LspAttach`
@@ -177,7 +177,12 @@ require("lazy").setup({
 			})
 		end,
 	},
-
+	{
+		"lewis6991/hover.nvim",
+		config = function()
+			require("config/hover")
+		end,
+	},
 	-------------------------------------------------
 	-- LLM                                         --
 	-------------------------------------------------
