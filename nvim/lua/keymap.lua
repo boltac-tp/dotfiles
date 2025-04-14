@@ -74,6 +74,20 @@ s(
 	{ noremap = true, desc = "telescope luasnip snipets" }
 )
 
+-- hoover .nvim
+s("n", "K", require("hover").hover, { desc = "hover.nvim" })
+s("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
+s("n", "<C-p>", function()
+	require("hover").hover_switch("previous")
+end, { desc = "hover.nvim (previous source)" })
+s("n", "<C-n>", function()
+	require("hover").hover_switch("next")
+end, { desc = "hover.nvim (next source)" })
+
+-- Mouse support
+s("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mouse)" })
+vim.o.mousemoveevent = true
+
 -- lsp Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 --s("n", "<leader>dd", vim.diagnostic.open_float, { silent = true, desc = "diagnostic open float" })
