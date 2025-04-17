@@ -176,7 +176,7 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # other app
 if "${isArch}"; then
-    paru -S eza bat fd ripgrep stylua shfmt --noconfirm
+    paru -S eza bat fd ripgrep lua-language-server stylua shfmt --noconfirm
 fi
 if "${isUbuntu}"; then
     sudo apt -qq update && sudo apt -qq install -y eza bat fd-find ripgrep shfmt

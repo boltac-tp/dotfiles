@@ -2,7 +2,7 @@ local s = vim.keymap.set
 
 -- leader
 vim.g.mapleader = " "
-vim.g.maplocalloader = "\\"
+vim.g.maplocalloader = " "
 
 -- cursor move
 s("n", "gh", "^", { noremap = true, silent = true })
@@ -74,7 +74,7 @@ s(
 	{ noremap = true, desc = "telescope luasnip snipets" }
 )
 
--- hoover .nvim
+-- hover.nvim
 s("n", "K", require("hover").hover, { desc = "hover.nvim" })
 s("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
 s("n", "<C-p>", function()
@@ -109,6 +109,12 @@ s("n", "[b", "<Cmd>BufferLineCyclePrev<CR>", { silent = true, desc = "BufferLine
 -- LLM cody
 s("n", "<leader>9", ":<C-u>CodyToggle<CR>", { silent = true, desc = "Cody toggle" })
 
+s({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+s({ "n", "v" }, "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+s("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+
+-- Expand 'cc' into 'CodeCompanion' in the command line
+vim.cmd([[cab cc CodeCompanion]])
 --dap
 s("n", "<leader>dap", ':lua require("dapui").toggle()<CR>', { desc = "DAP" })
 
