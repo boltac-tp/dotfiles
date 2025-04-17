@@ -1,18 +1,28 @@
 local s = vim.keymap.set
-
+local opts = { noremap = true, silent = true }
 -- leader
 vim.g.mapleader = " "
 vim.g.maplocalloader = " "
 
 -- cursor move
-s("n", "gh", "^", { noremap = true, silent = true })
-s("n", "gl", "$", { noremap = true, silent = true })
-s("n", "gj", "j", { noremap = true, silent = true })
-s("n", "gk", "k", { noremap = true, silent = true })
-s("n", "j", "gj", { noremap = true, silent = true })
-s("n", "k", "gk", { noremap = true, silent = true })
-s("n", "ge", "G", { noremap = true, silent = true })
+s("n", "gh", "^", opts)
+s("n", "gl", "$", opts)
+s("n", "gj", "j", opts)
+s("n", "gk", "k", opts)
+s("n", "j", "gj", opts)
+s("n", "k", "gk", opts)
+s("n", "ge", "G", opts)
 
+-- dial.nvim
+s("n", "+", require("dial.map").inc_normal(), opts)
+s("n", "_", require("dial.map").dec_normal(), opts)
+s("v", "+", require("dial.map").inc_visual(), opts)
+s("v", "_", require("dial.map").dec_visual(), opts)
+s("v", "g+", require("dial.map").inc_gvisual(), opts)
+s("v", "g_", require("dial.map").dec_gvisual(), opts)
+s("n", "~", require("dial.map").inc_normal("case"), opts)
+s("v", "~", require("dial.map").inc_visual("case"), opts)
+--
 --  See `:help wincmd` for a list of all window commands
 s("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 s("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
@@ -110,7 +120,7 @@ s("n", "[b", "<Cmd>BufferLineCyclePrev<CR>", { silent = true, desc = "BufferLine
 s("n", "<leader>9", ":<C-u>CodyToggle<CR>", { silent = true, desc = "Cody toggle" })
 
 s({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-s({ "n", "v" }, "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+s({ "n", "v" }, "<Leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
 s("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
