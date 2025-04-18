@@ -35,7 +35,7 @@ opt.termguicolors = true
 opt.spell = true
 opt.spelllang = { "en_us" }
 
---opt.whichwrap = "b", "s", "h", "l", "<", ">", "[", "]"
+opt.whichwrap = "b,s,h,l,<,>,[,],~"
 opt.backspace = { "start", "eol", "indent" }
 
 opt.helplang = { "ja", "en" }
