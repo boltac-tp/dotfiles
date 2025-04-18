@@ -13,16 +13,6 @@ s("n", "j", "gj", opts)
 s("n", "k", "gk", opts)
 s("n", "ge", "G", opts)
 
--- dial.nvim
-s("n", "+", require("dial.map").inc_normal(), opts)
-s("n", "_", require("dial.map").dec_normal(), opts)
-s("v", "+", require("dial.map").inc_visual(), opts)
-s("v", "_", require("dial.map").dec_visual(), opts)
-s("v", "g+", require("dial.map").inc_gvisual(), opts)
-s("v", "g_", require("dial.map").dec_gvisual(), opts)
-s("n", "~", require("dial.map").inc_normal("case"), opts)
-s("v", "~", require("dial.map").inc_visual("case"), opts)
---
 --  See `:help wincmd` for a list of all window commands
 s("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 s("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
@@ -30,7 +20,7 @@ s("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 s("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- ctrl-jj to ESC
-s("i", "<C-j><C-j>", "<ESC>", { noremap = true, silent = true })
+s("i", "<C-j><C-j>", "<ESC>", { noremap = true, silent = true, desc = "ESC" })
 
 -- put <Esc> to nohlsearch
 s("n", "<Esc><Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true, silent = true })
@@ -42,46 +32,56 @@ s("i", "<C-l>", function()
 	local substring = line:sub(1, col - 1)
 	local result = vim.fn.matchstr(substring, [[\v<(\k(<)@!)*$]])
 	return "<C-w>" .. result:upper()
-end, { expr = true })
+end, { expr = true, desc = "caps" })
+
+-- dial.nvim
+s("n", "+", require("dial.map").inc_normal(), opts)
+s("n", "_", require("dial.map").dec_normal(), opts)
+s("v", "+", require("dial.map").inc_visual(), opts)
+s("v", "_", require("dial.map").dec_visual(), opts)
+s("v", "g+", require("dial.map").inc_gvisual(), opts)
+s("v", "g_", require("dial.map").dec_gvisual(), opts)
+s("n", "~", require("dial.map").inc_normal("case"), opts)
+s("v", "~", require("dial.map").inc_visual("case"), opts)
 
 -- telescope
 local builtin = require("telescope.builtin")
-s("n", "<leader>sh", builtin.help_tags, { noremap = true, desc = "Telescope search help" })
-s("n", "<leader>sk", builtin.keymaps, { noremap = true, desc = "Telescope search keymaps" })
-s("n", "<leader>sf", builtin.find_files, { noremap = true, desc = "Telescope search files" })
-s("n", "<leader>ss", builtin.builtin, { noremap = true, desc = "Telescope search select telescope" })
-s("n", "<leader>sw", builtin.grep_string, { noremap = true, desc = "Telescope search current word" })
-s("n", "<leader>sg", builtin.live_grep, { noremap = true, desc = "Telescope live grep" })
-s("n", "<leader>sd", builtin.diagnostics, { noremap = true, desc = "Telescope search diagnostics" })
-s("n", "<leader>sr", builtin.resume, { noremap = true, desc = "Telescope search resume" })
-s("n", "<leader>s.", builtin.oldfiles, { noremap = true, desc = "Telescope search oldfiles" })
-s("n", "<leader><leader>", builtin.buffers, { noremap = true, desc = "Telescope buffer list" })
+s("n", "<leader>sh", builtin.help_tags, { noremap = true, desc = "Telescope: search help" })
+s("n", "<leader>sk", builtin.keymaps, { noremap = true, desc = "Telescope: search keymaps" })
+s("n", "<leader>sf", builtin.find_files, { noremap = true, desc = "Telescope: search files" })
+s("n", "<leader>ss", builtin.builtin, { noremap = true, desc = "Telescope: search select telescope" })
+s("n", "<leader>sw", builtin.grep_string, { noremap = true, desc = "Telescope: search current word" })
+s("n", "<leader>sg", builtin.live_grep, { noremap = true, desc = "Telescope: live grep" })
+s("n", "<leader>sd", builtin.diagnostics, { noremap = true, desc = "Telescope: search diagnostics" })
+s("n", "<leader>sr", builtin.resume, { noremap = true, desc = "Telescope: search resume" })
+s("n", "<leader>s.", builtin.oldfiles, { noremap = true, desc = "Telescope: search oldfiles" })
+s("n", "<leader><leader>", builtin.buffers, { noremap = true, desc = "Telescope: buffer list" })
 
 s("n", "<leader>/", function()
 	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 		winblend = 10,
 		previewer = false,
 	}))
-end, { noremap = true, desc = "Telescope fuzzy search in cullent buffer" })
+end, { noremap = true, desc = "Telescope: fuzzy search in cullent buffer" })
 
 s("n", "<leader>s/", function()
 	builtin.live_grep({
 		grep_open_files = true,
 		prompt_title = "Live Grpe in Open Files",
 	})
-end, { noremap = true, desc = "Telescope grep in open files" })
+end, { noremap = true, desc = "Telescope: grep in open files" })
 
 s("n", "<leader>sn", function()
 	builtin.find_files({ cwd = vim.fn.stdpath("config") })
-end, { desc = "Telescope Search Neovim files" })
+end, { desc = "Telescope: Search Neovim files" })
 
-s("n", "<leader>fq", builtin.quickfix, { noremap = true, desc = "telescope quick fix" })
-s("n", "<leader>fc", builtin.commands, { noremap = true, desc = "telescope command pallete" })
+s("n", "<leader>fq", builtin.quickfix, { noremap = true, desc = "Telescope: quick fix" })
+s("n", "<leader>fc", builtin.commands, { noremap = true, desc = "Telescope: command pallete" })
 s(
 	"n",
 	"<leader>fs",
 	require("telescope").extensions.luasnip.luasnip,
-	{ noremap = true, desc = "telescope luasnip snipets" }
+	{ noremap = true, desc = "Telescope: luasnip snipets" }
 )
 
 -- hover.nvim
@@ -89,13 +89,13 @@ s("n", "K", require("hover").hover, { desc = "hover.nvim" })
 s("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
 s("n", "<C-p>", function()
 	require("hover").hover_switch("previous")
-end, { desc = "hover.nvim (previous source)" })
+end, { desc = "hover.nvim: (previous source)" })
 s("n", "<C-n>", function()
 	require("hover").hover_switch("next")
-end, { desc = "hover.nvim (next source)" })
+end, { desc = "hover.nvim: (next source)" })
 
 -- Mouse support
-s("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mouse)" })
+s("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim: (mouse)" })
 vim.o.mousemoveevent = true
 
 -- lsp Global mappings.
@@ -104,24 +104,34 @@ vim.o.mousemoveevent = true
 
 s("n", "[d", function()
 	vim.diagnostic.jump({ count = 1, float = false })
-end, { silent = true, desc = "diagnostic jump to next" })
+end, { silent = true, desc = "LSP: diagnostic jump to next" })
 
 s("n", "]d", function()
 	vim.diagnostic.jump({ count = -1, float = false })
-end, { silent = true, desc = "diagnostic jump to prev" })
+end, { silent = true, desc = "LSP: diagnostic jump to prev" })
 
-s("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic quickfix list" })
+s("n", "<leader>q", vim.diagnostic.setloclist, { desc = "LSP: Open diagnostic quickfix list" })
 
 --buffer line
-s("n", "]b", "<Cmd>BufferLineCycleNext<CR>", { silent = true, desc = "BufferLine cycle next" })
-s("n", "[b", "<Cmd>BufferLineCyclePrev<CR>", { silent = true, desc = "BufferLine cycle prev" })
+s("n", "]b", "<Cmd>BufferLineCycleNext<CR>", { silent = true, desc = "BufferLine: cycle next" })
+s("n", "[b", "<Cmd>BufferLineCyclePrev<CR>", { silent = true, desc = "BufferLine: cycle prev" })
 
 -- LLM cody
-s("n", "<leader>9", ":<C-u>CodyToggle<CR>", { silent = true, desc = "Cody toggle" })
+s("n", "<leader>9", ":<C-u>CodyToggle<CR>", { silent = true, desc = "Cody: toggle" })
 
-s({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-s({ "n", "v" }, "<Leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-s("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+s(
+	{ "n", "v" },
+	"<C-a>",
+	"<cmd>CodeCompanionActions<cr>",
+	{ noremap = true, silent = true, desc = "CodeCompation: Actions" }
+)
+s(
+	{ "n", "v" },
+	"<Leader>a",
+	"<cmd>CodeCompanionChat Toggle<cr>",
+	{ noremap = true, silent = true, desc = "CodeCompanion: Chat Toggle" }
+)
+s("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true, desc = "CodeCompanion: Chat Add" })
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])
