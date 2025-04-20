@@ -32,9 +32,9 @@ setopt complete_in_word
 setopt magic_equal_subst
 
 # tokens
-source ~/dotfiles/tokens/*
+source ~/dotfiles/tokens/api
 
-# alias general
+# aias general
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
