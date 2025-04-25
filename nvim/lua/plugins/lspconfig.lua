@@ -5,9 +5,6 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
-			local configs = require("lspconfig/configs")
-
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -73,56 +70,25 @@ return {
 			})
 
 			--- server settings
-
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local lspconfig = require("lspconfig")
-
-			lspconfig["lua_ls"].setup({
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim" },
-							disable = { "missing-fields" },
-						},
-						completion = {
-							callSnippet = "Replace",
-						},
-					},
-				},
+			vim.lsp.config("*", {
+				capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			})
-			lspconfig["jsonls"].setup({
-				capabilities = capabilities,
-				settings = {
-					json = {
-						schemas = require("schemastore").json.schemas(),
-						validate = { enable = true },
-					},
-				},
+			vim.lsp.enable({
+				"lua_ls",
+				"jsonls",
+				"yamlls",
+				"pyright",
+				"ruff",
+				"vtsls",
+				"biome",
+				"taplo",
+				"bashls",
+				"dockerls",
+				"docker_compose_language_service",
+				"gopls",
+				"golangci_lint_ls",
+				-- "hls",
 			})
-			lspconfig["yamlls"].setup({
-				capabilities = capabilities,
-				settings = {
-					yaml = {
-						schemaStore = {
-							enable = false,
-							url = "",
-						},
-						schemas = require("schemastore").yaml.schemas(),
-					},
-				},
-			})
-			lspconfig["pyright"].setup({ capabilities = capabilities })
-			lspconfig["ruff"].setup({ capabilities = capabilities })
-			lspconfig["vtsls"].setup({ capabilities = capabilities })
-			lspconfig["biome"].setup({ capabilities = capabilities })
-			lspconfig["taplo"].setup({ capabilities = capabilities })
-			lspconfig["bashls"].setup({ capabilities = capabilities })
-			lspconfig["dockerls"].setup({ capabilities = capabilities })
-			lspconfig["docker_compose_language_service"].setup({ capabilities = capabilities })
-			lspconfig["gopls"].setup({ capabilities = capabilities })
-			lspconfig["golangci_lint_ls"].setup({ capabilities = capabilities })
-			--lspconfig["hls"].setup({ capabilities = capabilities, filetypes = { "haskell", "lhaskell", "cabel" } })
 		end,
 	},
 	-- https://github.com/b0o/SchemaStore.nvim
