@@ -11,7 +11,7 @@ paru -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-cica ttf
 ./install_fonts.sh
 
 # ime
-paru --noconfirm -S fcitx5-im
+paru --noconfirm -S fcitx5-im fcitx5-mozc
 
 # pipewire
 paru --noconfirm -S pipewire pipewire-pulse
@@ -40,6 +40,14 @@ paru --noconfirm -S grim blast
 # logout
 ln -s ~/dotfiles/wlogout ~/.config/wlogout
 paru --noconfirm -S wlogout
+
+# bluetooth
+# https://github.com/bluez/bluez
+# デーモンスタート
+# systemctl enable --now bluetooth.service
+# bluetoolthctlコマンドによる設定 or
+# bluetuiを使って設定
+paru --noconfirm -S bluez bluez-utils bluetui
 
 # file manager
 paru --noconfirm -S thunar gvfs gvfs-smb thmbler ffmpegthumbnailer
