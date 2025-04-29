@@ -243,6 +243,9 @@ return {
 				},
 				cond = conditions.hide_in_width,
 			})
+			ins_right({
+				require("lualine/CodeCompanion-component"),
+			})
 
 			ins_right({
 				function()
