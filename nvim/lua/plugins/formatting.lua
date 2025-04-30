@@ -17,8 +17,10 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			go = { "goimports", "gofmt" },
-			javascript = { "biome" },
-			typescript = { "biome" },
+			-- javascript = { { "biome", "prettierd", "prettier" } },
+			-- javascriptreact = { { "biome", "prettierd", "prettier" } },
+			-- typescript = { { "biome", "prettierd", "prettier" } },
+			-- typescriptreact = { { "biome", "prettierd", "prettier" } },
 			sh = { "shfmt" },
 		},
 		default_format_opts = {
