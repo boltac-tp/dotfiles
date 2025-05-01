@@ -10,6 +10,7 @@ Nvidia ドライバ
 [Nvidia](https://www.nvidia.co.jp/Download/index.aspx?lang=jp)  
 マウスドライバ  
 [Logocool Options](https://www.logicool.co.jp/ja-jp/product/options)  
+[Kensington](https://customer.kensington.com/ja/jp/s/k72194jp/pro_fit___ergo_tb450________#sw)
 プリンタドライバ  
 [EPSON EP-807](https://www.epson.jp/support/portal/download/ep-807aw.htm)  
 サウンドドライバ  
@@ -18,12 +19,12 @@ Nvidia ドライバ
 ### fonts
 
 [Hackgen](https://github.com/yuru7/HackGen)  
-```choco install font-hackgen-nerd```
+[PlemolJP](https://github.com/yuru7/PlemolJP)
 
 ### wsl
 
-ubuntu の導入  
-[Microsoft Document](https://docs.microsoft.com/ja-jp/windows/wsl/https://docs.microsoft.com/ja-jp/windows/wsl/)
+arch linuxの導入  
+[Microsoft Document](https://docs.microsoft.com/ja-jp/windows/wsl/)
 
 ### winget
 
@@ -44,13 +45,11 @@ ubuntu の導入
 | KeePassXC                    | KeepassXCteam.KeepassXC          |
 | Modilla Thunderbird          | Mozilla.Thunderbird              |
 | Notepad++                    | Notepad++.Notepad++              |
-| Foxit PDF Reader             | Foxit.FoxitReader                |
 | XnViewMP                     | XnSoft.XnViewMP                  |
 | Avidmux                      | Avidemux.Avidemux                |
-| Steam                        | Valve.Steam                      |
-| Amazon Kindle                | Amazon.Kindle                    |
 | Amazon Games                 | Amazon.Games                     |
 | Mp3tag                       | Mp3tag.Mp3tag                    |
+|MPC-BE                        |MPC-BE.MPC-BE                     |
 | QNAP Qfinder Pro             | QNAP.Qfinderpro                  |
 | calibre                      | calibre.calibre                  |
 | DeepL                        | DeepL.DeepL                      | 
@@ -58,20 +57,17 @@ ubuntu の導入
 | Thorium                      | EDRlab.Thorium                   |
 
 ### choco
-sudo
 
 ### powershell
 
 ### store app
 
 Minecraft for Windows 10  
-MusicBee  
-MPC-BE  
-NeeView
 Microsoft365
 
 ###
 
+[Adobe Acrobat Reader](https://get.adobe.com/jp/reader)
 Asus  
 AI Suite
 FreeCommander  
@@ -80,12 +76,20 @@ Apple icloud
 Amazon Photos  
 Google Drive  
 Dropbox  
-biscuit  
-air video server HD  
 EAC  
-Origin  
-UBI  
-Epic Games Launcher  
 MediaHumanAudioConverter  
-crecode3  
+[MusicBee](https://getmusicbee.com/)
+[NeeView](https://github.com/neelabo/NeeView)
+[xrecode3](https://xrecode.com)
+[WinRAR](https://www.winrarjapan.com/)
 家計簿ひかる
+
+### GAME
+
+Origin  
+Epic Games Launcher  
+UBI  
+STEAM
+
+### DTM
+
