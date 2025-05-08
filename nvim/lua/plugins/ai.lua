@@ -6,6 +6,16 @@ return {
 		opts = {},
 	},
 	{
+		"Exafunction/windsurf.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+		},
+		config = function()
+			require("codeium").setup({})
+		end,
+	},
+	{
 		-- https://github.com/olimorris/codecompanion.nvim
 		"olimorris/codecompanion.nvim",
 		dependencies = {

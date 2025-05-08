@@ -46,6 +46,7 @@ return {
 					Operator = "󰆕",
 					TypeParameter = "",
 					Cody = "❄️",
+					Codeium = "",
 				},
 			})
 		end,
@@ -70,6 +71,7 @@ return {
 			"ray-x/cmp-treesitter",
 			"lukas-reineke/cmp-under-comparator",
 			"onsails/lspkind.nvim",
+			"Exafunction/windsurf.nvim",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -112,6 +114,7 @@ return {
 							mocword = "[mocword]",
 							cmdline_history = "[History]",
 							cody = "[Cody]",
+							codeium = "[Codeium]",
 						},
 					}),
 				},
@@ -181,6 +184,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "cody", keyword_length = 2 },
+					{ name = "codeium" },
 					{ name = "luasnip" },
 					{ name = "path" },
 					{ name = "emoji", insert = true },
