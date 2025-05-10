@@ -157,9 +157,14 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<CR>"] = cmp.mapping.confirm({
-						select = true,
-					}),
+					["<CR>"] = cmp.mapping(function(fallback)
+						-- use the internal non-blocking call to check if cmp is visible
+						if cmp.core.view:visible() then
+							cmp.confirm({ select = false })
+						else
+							fallback()
+						end
+					end),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
