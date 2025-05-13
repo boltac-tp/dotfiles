@@ -111,3 +111,8 @@ compinit -d ~/.local/share/zsh/compdump
 [ -s "/home/boltac/.bun/_bun" ] && source "/home/boltac/.bun/_bun"
 
 [ -f "/home/boltac/.ghcup/env" ] && . "/home/boltac/.ghcup/env" # ghcup-env
+
+# uv
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
+. "$HOME/.local/share/../bin/env"

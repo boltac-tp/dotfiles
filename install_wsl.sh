@@ -156,16 +156,13 @@ curl -sfL https://direnv.net/install.sh | bash
 ln -s ~/dotfiles/direnv ~/.config/direnv
 
 #install:python
-# https://github.com/pypa/pipx
-if "${isArch}"; then
-    paru -S python-pipx --noconfirm
-fi
-if "${isUbuntu}"; then
-    python3 -m pip install --user pipx
-fi
 # https://github.com/astral-sh/uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
 # https://github.com/astral-sh/ruff
-pipx install uv ruff pyright
+uv tool install tldr
+uv tool install ruff
+uv tool install pyright
+uv tool install pre-commit
 ln -s ~/dotfiles/ruff ~/.config/ruff
 
 #install:rust
@@ -182,8 +179,6 @@ if "${isUbuntu}"; then
     sudo apt -qq update && sudo apt -qq install -y eza bat fd-find ripgrep shfmt
     cargo install stylua
 fi
-
-pipx install pre-commit tldr
 
 go install github.com/nao1215/gup@latest
 go install golang.org/x/tools/gopls@latest
@@ -207,7 +202,8 @@ ln -s ~/dotfiles/sheldon ~/.config/sheldon
 
 # for atcoder
 rustup install 1.70.0
-pipx install git+https://github.com/online-judge-tools/oj.git
+
+uv tool install git+https://github.com/online-judge-tools/oj.git
 bun install -g atcoder-cli
 
 acc config-dir

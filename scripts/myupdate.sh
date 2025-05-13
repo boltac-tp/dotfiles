@@ -33,7 +33,8 @@ bun update -g
 echo ''
 printf "\e[94m%s\e[m\n" "python app"
 echo ''
-pipx upgrade-all
+uv self update
+uv tool upgrade --all
 
 echo ''
 printf "\e[94m%s\e[m\n" "go & go app"
