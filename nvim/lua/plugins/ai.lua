@@ -24,11 +24,11 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		config = function()
-			local hostname = vim.uv.os_gethostname()
+			-- local hostname = vim.uv.os_gethostname()
 			local myadapter = "gemini"
-			if hostname == "Melchior" then
-				myadapter = "ollama"
-			end
+			-- if hostname == "Melchior" then
+			-- 	myadapter = "ollama"
+			-- end
 
 			require("codecompanion").setup({
 				strategies = {
@@ -53,7 +53,7 @@ return {
 						return require("codecompanion.adapters").extend("ollama", {
 							schema = {
 								model = {
-									default = "gemma3:4b",
+									default = "gemma3:12b",
 								},
 							},
 						})
