@@ -31,6 +31,7 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.wrapscan = true
 opt.termguicolors = true
+opt.splitright = true
 
 opt.spell = true
 opt.spelllang = { "en_us" }
