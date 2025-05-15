@@ -44,6 +44,14 @@ systemd=true
 [wsl2]
 localhostFowwarding=true
 memory=16GB
+
+[network]
+generateResolvConf=false
+```
+
+### resolv.confの修正
+```
+nameserver 1.1.1.1
 ```
 
 ### windowspathをWSLに通す
