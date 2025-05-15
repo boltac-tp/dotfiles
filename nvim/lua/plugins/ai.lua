@@ -22,17 +22,28 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
+			"j-hui/fidget.nvim",
 		},
 		config = function()
-			-- local hostname = vim.uv.os_gethostname()
+			require("scripts.fidget-spinner"):init()
+
+			local hostname = vim.uv.os_gethostname()
 			local myadapter = "gemini"
-			-- if hostname == "Melchior" then
-			-- 	myadapter = "ollama"
-			-- end
+			if hostname == "Melchior" then
+				myadapter = "ollama"
+			end
 
 			require("codecompanion").setup({
 				strategies = {
-					chat = { adapter = myadapter },
+					chat = {
+						adapter = myadapter,
+						roles = {
+							llm = function(adapter)
+								return "  CodeCompanion (" .. adapter.formatted_name .. ")"
+							end,
+							user = "  Me",
+						},
+					},
 					inline = { adapter = myadapter },
 					cmd = { adapter = myadapter },
 				},
@@ -42,6 +53,7 @@ return {
 							schema = {
 								model = {
 									default = "gemini-2.5-pro-exp-03-25",
+									-- default = "gemini-2.5-flash-preview-04-17",
 								},
 							},
 							env = {
@@ -53,7 +65,7 @@ return {
 						return require("codecompanion.adapters").extend("ollama", {
 							schema = {
 								model = {
-									default = "gemma3:12b",
+									default = "gemma3:4b",
 								},
 							},
 						})
@@ -61,6 +73,12 @@ return {
 				},
 				opts = {
 					language = "Japanese",
+				},
+				display = {
+					chat = {
+						auto_scroll = false,
+						show_header_separator = true,
+					},
 				},
 			})
 		end,

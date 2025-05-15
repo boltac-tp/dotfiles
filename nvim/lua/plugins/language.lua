@@ -47,12 +47,13 @@ return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-		ft = { "markdown" },
+		ft = { "markdown", "markdown.mdx", "codecompanion" },
 		---@module 'render-marksown'
 		---@type render.md.UserConfig
 		opts = {
 			completions = { lsp = { enabled = true } },
 			render_modes = true,
+			file_types = { "markdown", "codecompanion" },
 		},
 	},
 }
