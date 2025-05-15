@@ -34,6 +34,11 @@ s("i", "<C-l>", function()
 	return "<C-w>" .. result:upper()
 end, { expr = true, desc = "caps" })
 
+-- open oil
+s("n", "<leader>e", function()
+	require("oil").open_float()
+end, { desc = "Oil current buffer's directory" })
+
 -- dial.nvim
 s("n", "+", require("dial.map").inc_normal(), opts)
 s("n", "_", require("dial.map").dec_normal(), opts)
