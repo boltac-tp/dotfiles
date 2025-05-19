@@ -29,9 +29,9 @@ return {
 
 			local hostname = vim.uv.os_gethostname()
 			local myadapter = "gemini"
-			if hostname == "Melchior" then
-				myadapter = "ollama"
-			end
+			-- if hostname == "Melchior" then
+			-- 	myadapter = "ollama"
+			-- end
 
 			require("codecompanion").setup({
 				strategies = {
@@ -52,8 +52,7 @@ return {
 						return require("codecompanion.adapters").extend("gemini", {
 							schema = {
 								model = {
-									default = "gemini-2.5-pro-exp-03-25",
-									-- default = "gemini-2.5-flash-preview-04-17",
+									default = "gemini-2.5-flash-preview-04-17",
 								},
 							},
 							env = {
@@ -65,7 +64,7 @@ return {
 						return require("codecompanion.adapters").extend("ollama", {
 							schema = {
 								model = {
-									default = "gemma3:4b",
+									default = "qwen3:8b",
 								},
 							},
 						})
