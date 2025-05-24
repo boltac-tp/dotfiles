@@ -161,7 +161,9 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 # https://github.com/astral-sh/ruff
 uv tool install tldr
 uv tool install ruff
-uv tool install pyright
+# uv tool install pyright
+uv tool install "python-lsp-server[all]"
+uv tool install ty
 uv tool install pre-commit
 ln -s ~/dotfiles/ruff ~/.config/ruff
 
