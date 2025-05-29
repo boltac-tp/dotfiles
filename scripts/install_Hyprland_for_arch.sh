@@ -8,7 +8,7 @@ paru --noconfirm -S hyprlock
 paru --noconfirm -S hyprpaper
 # font
 paru -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-cica ttf-nerd-fonts-symbols ttf-font-awesome ttf-roboto ttf-sarasa-gothic-sc --noconfirm
-./install_fonts.sh
+~/dotfiles/scripts/install_fonts.sh
 
 # ime
 paru --noconfirm -S fcitx5-im fcitx5-mozc
@@ -35,7 +35,7 @@ paru --noconfirm -S kitty
 paru --noconfirm -S cliphist
 
 # snapshot
-paru --noconfirm -S grim blast
+# paru --noconfirm -S grim blast
 
 # logout
 ln -s ~/dotfiles/wlogout ~/.config/wlogout
@@ -59,12 +59,16 @@ paru --noconfirm -S network-manager-applet
 paru --noconfirm -S ufw
 
 # browser
-paru --noconfirm -S firefox microsoft-edge-dev-bin
+paru --noconfirm -S firefox microsoft-edge-dev-bin brave-bin
 
 # login
 # https://wiki.archlinux.jp/index.php/Greetd
 # を参考に
 paru --noconfirm -S greetd-tuigreet
+# /etc/greetd/config.toml
+# [default_session]
+# command = "tuigreet --theme 'border=cyan;button=cyan'"
+
 # gnome-keyring
 # https://wiki.archlinux.jp/index.php/GNOME/Keyring
 # を参考に
@@ -74,7 +78,7 @@ paru --noconfirm -S gnome-keyring seahorse libsecret
 paru --noconfirm -S thunderbird
 
 # dropbox
-paru --noconfirm -S dropbox thaunar-dropbox
+paru --noconfirm -S dropbox thunar-dropbox
 
 # keepass
 paru --noconfirm -S keepassxc
@@ -90,7 +94,7 @@ systemctl --user enable mpd
 
 # samba
 # ~/.local/credentials/shareファイルを作ること
-paru --noconfirm -S sambaclient
+paru --noconfirm -S smbclient
 sudo mkdir -p /mnt/Music
 echo "//192.168.10.21/Music /mnt/Music cifs _netdev,x-systemd.automount,credentials=/home/boltac/.config/credentials/share 0 0" | sudo tee -a /etc/fstab
 

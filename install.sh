@@ -16,6 +16,9 @@ fi
 if [ "${DIST}" == 'Arch Linux' ]; then
     isArch=true
 fi
+if [ "${MY_ENV}" == WSL ]; then
+    isWsl=true
+fi
 
 mkdir -p "${XDG_CONFIG_HOME}"
 mkdir -p "${XDG_CACHE_HOME}"
@@ -25,7 +28,6 @@ mkdir -p "${HOME}/.local/bin"
 mkdir -p "${HOME}/.local/src"
 
 # install paru
-# https://github.com/jquer/yqy
 
 if "${isArch}"; then
     git clone https://aur.archlinux.org/paru.git
@@ -57,7 +59,7 @@ if "${isUbuntu}"; then
 fi
 
 # install wslu
-if "${isArch}"; then
+if "${isWsl}" && "${isArch}"; then
     wget https://pkg.wslutiliti.es/public.key
     sudo pacman-key --add public.key
     sudo pacman-key --lsign-key 2D4C887EB08424F157151C493DD50AA7E055D853
@@ -70,7 +72,7 @@ if "${isArch}"; then
     paru -Sy && paru -S --noconfirm wslu
 fi
 
-if "${isUbuntu}"; then
+if "${isWsl}" && "${isUbuntu}"; then
     sudo add-apt-repository ppa:wslutilities/wslu
     sudo apt update
     sudo apt install wslu
@@ -110,10 +112,8 @@ fi
 
 # install neovim
 # https://github.com/neovim/neovim
-
-# ~/dotfiles/scripts/install_neovim_head.sh
-# ln -s ~/dotfiles/nvim ~/.config/nvim
 paru -S neovim --noconfirm
+ln -s ~/dotfiles/nvim ~/.config/nvim
 
 # install docker
 # https://docs.docker.com
@@ -198,6 +198,10 @@ cargo install --features lsp --locked taplo-cli
 cargo binstall sheldon
 
 bun install -g typescript-language-server typescript @biomejs/biome bash-language-server @vtsls/language-server dockerfile-language-server-nodejs @microsoft/compose-language-service yaml-language-server prettier @fsouza/prettierd vscode-langservers-extracted
+
+# tokens
+mkdir ~/dotfiles/tokens
+touch ~/dotfiles/tokens/api
 
 # sheldon setting
 ln -s ~/dotfiles/sheldon ~/.config/sheldon
