@@ -36,7 +36,7 @@ end, { expr = true, desc = "caps" })
 
 -- open oil
 s("n", "<leader>e", function()
-	require("oil").open_float()
+	require("oil").open()
 end, { desc = "Oil current buffer's directory" })
 
 -- dial.nvim
