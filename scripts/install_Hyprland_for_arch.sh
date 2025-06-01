@@ -6,6 +6,7 @@ ln -s ~/dotfiles/hypr ~/.config/hypr
 paru --noconfirm -S --devel hyprland
 paru --noconfirm -S hyprlock
 paru --noconfirm -S hyprpaper
+paru --noconfirm -S hyprpolkitagent
 # font
 paru -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-cica ttf-nerd-fonts-symbols ttf-font-awesome ttf-roboto ttf-sarasa-gothic-sc --noconfirm
 ~/dotfiles/scripts/install_fonts.sh
@@ -72,7 +73,7 @@ paru --noconfirm -S greetd-tuigreet
 # gnome-keyring
 # https://wiki.archlinux.jp/index.php/GNOME/Keyring
 # を参考に
-paru --noconfirm -S gnome-keyring seahorse libsecret
+# paru --noconfirm -S gnome-keyring seahorse libsecret
 
 # mailer
 paru --noconfirm -S thunderbird
@@ -109,3 +110,6 @@ paru --noconfirm -S nordvpn-bin
 sudo systemctl enable nordvpnd.service
 sudo systemctl start nordvpnd.service
 sudo usermod -aG nordvpn $USER
+
+# vscode
+paru --noconfirm -S visual-studio-code-bin
