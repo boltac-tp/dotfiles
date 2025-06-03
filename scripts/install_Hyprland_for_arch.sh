@@ -45,7 +45,7 @@ paru --noconfirm -S wlogout
 # bluetooth
 # https://github.com/bluez/bluez
 # デーモンスタート
-# systemctl enable --now bluetooth.service
+systemctl enable --now bluetooth.service
 # bluetoolthctlコマンドによる設定 or
 # bluetuiを使って設定
 paru --noconfirm -S bluez bluez-utils bluetui
@@ -66,6 +66,7 @@ paru --noconfirm -S firefox microsoft-edge-dev-bin brave-bin
 # https://wiki.archlinux.jp/index.php/Greetd
 # を参考に
 paru --noconfirm -S greetd-tuigreet
+systmectl enable --now greetd.service
 # /etc/greetd/config.toml
 # [default_session]
 # command = "tuigreet --theme 'border=cyan;button=cyan'"
